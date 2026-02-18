@@ -571,8 +571,15 @@ class ReactionKG:
             
         for item in self.reaction_identifiers: 
             identifier_class = identifier_mapping.get(item['type'])
+            if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
+                print("DEBUG IMPORTANTTTTT", item['type'])
+                print("this is the item", item)
+
+                self.instance_dict['has text value'].append([item['reactionID'], item['value']]) 
+
             if identifier_class == None:
                 identifier_type = 'Custom'
+                print("DEBUG - mapping an calss not in ")
             else: 
                 identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
             if identifier_class: 
