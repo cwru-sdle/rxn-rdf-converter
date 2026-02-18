@@ -131,26 +131,16 @@ class ReactionKG:
         # reaction inputs, components, and compound identifiers
         for input in self.reaction_pb.inputs: 
 
-            #has_whitespace = any(char.isspace() for char in str(input.strip()))
-            #if has_whitespace == True: 
-                #input_string = re.sub(r'\s+', '', str(input.strip()))
-            #else: 
-                #input_string = input.strip()
-
-
             input_string = re.sub(r'\s+', '', str(input.strip()))
 
             reaction_input_dict = {'reactionID':self.reaction_id, 'InputKey':input_string}
-            reaction_input_dict.update({item: None for item in list(self.reaction_pb.inputs[input].DESCRIPTOR.fields_by_name)})
+
             reaction_input_dict.update(message_to_row(self.reaction_pb.inputs[input]))
-
-
-
 
             # Get  possible fields 
             fields = list(self.reaction_pb.inputs[input].DESCRIPTOR.fields_by_name)
 
-            # fill reaction inputs dict
+            # fill reaction inputs dict via loop
             try:
                 for s in fields:
                     field_value = getattr(self.reaction_pb.inputs[input], s, None)
@@ -158,8 +148,6 @@ class ReactionKG:
             except Exception as  e:
                 print("ERROR filling dict ", e)
 
-
-            
             for ind, component in enumerate(self.reaction_pb.inputs[input].components): 
                 identifier_list, inchi_key = self.generate_compound_identifiers(component.identifiers)
                 if inchi_key:
@@ -185,18 +173,11 @@ class ReactionKG:
         conditions_dict.update({item:None for item in list(self.reaction_pb.conditions.DESCRIPTOR.fields_by_name)})
         conditions_dict.update(message_to_row(self.reaction_pb.conditions))
 
-        if self.reaction_pb.conditions.temperature: 
-            conditions_dict['temperature'] = True
-        if self.reaction_pb.conditions.pressure: 
-            conditions_dict['pressure'] = True
-        if self.reaction_pb.conditions.stirring: 
-            conditions_dict['stirring'] = True
-        if self.reaction_pb.conditions.electrochemistry: 
-            conditions_dict['electrochemistry'] = True
-        if self.reaction_pb.conditions.flow: 
-            conditions_dict['flow'] = True
-        if self.reaction_pb.conditions.illumination: 
-            conditions_dict['illumination'] = True
+        #loop through conditions and add to self dict
+        for i in self.reaction_pb.conditions.DESCRIPTOR.fields_by_name:
+            field_value = getattr(self.reaction_pb.conditions, i, None)
+            if field_value: conditions_dict[str(i)] = True
+
         self.reaction_conditions.append(conditions_dict)
 
         # reaction notes
@@ -210,6 +191,7 @@ class ReactionKG:
             workups_dict = {'reactionID':self.reaction_id, 'Index':ind}
             workups_dict.update({item:None for item in list(workup.DESCRIPTOR.fields_by_name)})
             workups_dict.update(message_to_row(workup))
+
             if workup.input: 
                 workups_dict['input'] = True
                 for ind, component in enumerate(workup.input.components):
