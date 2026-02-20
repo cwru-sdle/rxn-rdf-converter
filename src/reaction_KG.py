@@ -100,6 +100,40 @@ class ReactionKG:
         self.reaction_environment = None
         self.crude_product = None
 
+
+    def _create_instance(self, ontology_class, instance_id, *triples):
+
+        """
+        creates ontology instance, addes triple for id and any provided triples
+
+        Args:
+            ontology_class: owl ready2 class to instantiate
+            instance_id (str): unqiue identifier for this instance
+            triples: variable number of triples to be added in tupble format (label, value)
+
+        Returns:
+            a created owlready2 instance
+        """
+
+        instance = ontology_class(instance_id)
+
+        #add type triple
+        self.instance_dict['type'].append([instance.iri, instance.is_instance_of[0].iri])
+
+
+        for prop_label, obj_value in  triples:
+            self.instance_dict[prop_label].append([instance.iri, obj_value])
+
+        return instance
+
+    def _apply_triples(self, ontology_class, *triples):
+
+
+        for prop_label, obj_value in triples:
+            self.instance_dict[prop_label].append([ontology_class.iri, obj_value])
+
+
+
     
     def generate_reaction (self): 
         """Parses the reaction protocol buffer and populates the internal data lists. 
@@ -240,7 +274,8 @@ class ReactionKG:
     def generate_compound_identifiers (self, identifiers): 
         """Processes a compound's identifiers and attempts to generate InChIKey, InChI, and SMILES strings for the compound.
 
-        This method converts the ORD Identifiers Protocol Buffer message into a list of dictionaries. If **InChIKey** is not present, it attempts to generate it (and potentially InChI/SMILES) from an existing InChI or SMILES identifier using **RDKit**.
+        This method converts the ORD Identifiers Protocol Buffer message into a list of dictionaries. If **InChIKey** is not present, 
+        it attempts to generate it (and potentially InChI/SMILES) from an existing InChI or SMILES identifier using **RDKit**.
         The generated identifiers are added to the list. The final InChIKey is attached to all identifier dictionaries in the list.
 
 
@@ -290,9 +325,11 @@ class ReactionKG:
         return identifier_list, inchi_key
     
     def generate_instances (self, onto_file_path): 
-        """Main method orchestrates all other methods - coordinates all instance generation.
+        """
+        Main method orchestrates all other methods - coordinates all instance generation.
 
-        Coordinates the initialization of the ontology environment and the sequential processing of all reaction data structures (lists of dictionaries) into semantically rich data instances based on MDS-Onto.
+        Coordinates the initialization of the ontology environment and the sequential processing of all reaction data structures (lists of dictionaries) into semantically rich data  instance
+        bassed MDS-Onto.
 
         The method calls private helper methods in a specific order: 
         :meth:`_initialize_instance_dict`, :meth:`_process_reaction_identifiers`, :meth:`_process_reaction_inputs`, :meth:`_process_reaction_conditions`, 
@@ -302,14 +339,17 @@ class ReactionKG:
             onto_file_path (str): A file path to the MDS-Onto (a domain ontology for Materials Data Science) owl file. 
         
         Returns
-            - self (:class:`ReactionKG`): The instance after processing with the attributes (:attr:`mds`, :attr:`cco`, :attr:`instance_dict`, etc.) populated with data instances based on the  MDS-Onto semantic model.
+            - self (:class:`ReactionKG`): The instance after processing with the attributes (:attr:`mds`, :attr:`cco`, :attr:`instance_dict`, etc.) populated with 
+            data instances based on the MDS-Onto semantic model.
 
         Notes
             Exceptions during processing are not raised. Instead, they are logged using the module logger and skipped.
-        """
+       """ 
+
         try: 
             self._initialize_instance_dict(onto_file_path)
         except Exception as e: 
+            raise ValueError(e)
             logger.error(f"Failed to initialize dictionaries of instances for reaction {self.reaction_id}: {e}")
             pass
         
@@ -366,8 +406,10 @@ class ReactionKG:
     def _initialize_instance_dict(self, onto_file_path): 
         """Initialization of the ontology environment, property metadata, and core reaction instances. 
 
-        Loads the OWL 2 ontology, establishes necesary namespaces (MDS, CCO, OBO, QUDT), creates a mapping for ORD enumeration units to QUDT units, and extracts all object/datatype properties into :attr:`prop_metadata_dict`. 
-        Finally it creates the core instances (:attr:`chemical_reaction`, :attr:`reaction_mixture, :attr:`reaction_environment`, :attr:`crude_product`) and populates the inital structure of :attr:`instance_dict`.
+        Loads the OWL 2 ontology, establishes necesary namespaces (MDS, CCO, OBO, QUDT), 
+        creates a mapping for ORD enumeration units to QUDT units, and extracts all object/datatype properties into :attr:`prop_metadata_dict`. 
+        Finally it creates the core instances (:attr:`chemical_reaction`, :attr:`reaction_mixture, :attr:`reaction_environment`, :attr:`crude_product`) 
+        and populates the inital structure of :attr:`instance_dict`.
         
         Args
             onto_file_path (str): A file path to the MDS-Onto (a domain ontology for Materials Data Science) owl (rdf/xml) file. 
@@ -390,10 +432,7 @@ class ReactionKG:
 
         self.onto = get_ontology(onto_file_path).load()
 
-        
-
-
-       
+        #get namespaces 
         self.onto.get_namespace('http://purl.allotrope.org/ontologies/equipment#')
         self.onto.get_namespace('http://purl.allotrope.org/ontologies/result#')
         self.onto.get_namespace('http://purl.allotrope.org/ontologies/role#')
@@ -409,7 +448,6 @@ class ReactionKG:
         
         # Store namespaces as instance variables for use in other methods
         self.mds = mds
-
         self.cco = cco
         self.obo = obo
         self.qudt = qudt
@@ -472,47 +510,20 @@ class ReactionKG:
         self.prop_metadata_dict['type'] = ('http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'Object Property')
         
         self.instance_dict = {}
-
-
-        
+    
         for prop in self.onto.properties():
             self.instance_dict[str(prop.label[0])] = []
+
         self.instance_dict['type'] = []
 
 
+        self.crude_product = self._create_instance(self.mds.CrudeProduct, 'CrudeProduct#' + self.reaction_id)
+        self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction#' + self.reaction_id, ('has output', self.crude_product.iri))
+        self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture#' + self.reaction_id, ('is input of', self.chemical_reaction.iri)) 
+        self.reaction_environment = self._create_instance(self.mds.ReactionEnvironment, 'ReactionEnvironment#' + self.reaction_id, ('environs', self.chemical_reaction.iri))
 
 
-        # Check if ReactionMixture exists in the namespace
-        print(f"mds.ReactionMixture is: {mds.ReactionMixture}")
-        print(f"Type of mds.ReactionMixture: {type(mds.ReactionMixture)}")
-        
-        # List all available classes in the namespace
-        print("\nAvailable classes in mds namespace:")
-        for attr_name in dir(mds):
-            attr = getattr(mds, attr_name)
-            if not attr_name.startswith('_') and hasattr(attr, '__class__'):
-                print(f"  {attr_name}: {type(attr)}")
 
-
-        self.chemical_reaction = self.mds.ChemicalReaction('ChemicalReaction#' + self.reaction_id)
-
-
-        self.reaction_mixture = self.mds.ReactionMixture('ReactionMixture#' + self.reaction_id)
-
-        print("reaction mix  ", self.chemical_reaction)
-
-        self.reaction_environment = self.mds.ReactionEnvironment('ReactionEnvironment#' + self.reaction_id)
-
-        self.crude_product = self.mds.CrudeProduct('CrudeProduct#' + self.reaction_id)
-        
-        self.instance_dict['type'].append([self.chemical_reaction.iri, self.chemical_reaction.is_instance_of[0].iri])
-        self.instance_dict['type'].append([self.reaction_mixture.iri, self.reaction_mixture.is_instance_of[0].iri])
-        self.instance_dict['type'].append([self.reaction_environment.iri, self.reaction_environment.is_instance_of[0].iri])
-        self.instance_dict['type'].append([self.crude_product.iri, self.crude_product.is_instance_of[0].iri])
-        
-        self.instance_dict['is input of'].append([self.reaction_mixture.iri, self.chemical_reaction.iri])
-        self.instance_dict['environs'].append([self.reaction_environment.iri, self.chemical_reaction.iri])
-        self.instance_dict['has output'].append([self.chemical_reaction.iri, self.crude_product.iri]) 
     
     def _extract_index_set(self, item_dict, pattern): 
         """Extract unique indices (either numeric or string keys) from dictionary keys based on regex pattern. 
@@ -571,26 +582,27 @@ class ReactionKG:
             
         for item in self.reaction_identifiers: 
             identifier_class = identifier_mapping.get(item['type'])
-            if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
-                print("DEBUG IMPORTANTTTTT", item['type'])
-                print("this is the item", item)
 
+            #for CUSTOM reaction identifiers, add id and value
+            if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
                 self.instance_dict['has text value'].append([item['reactionID'], item['value']]) 
 
             if identifier_class == None:
                 identifier_type = 'Custom'
-                print("DEBUG - mapping an calss not in ")
             else: 
                 identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
+
             if identifier_class: 
-                identifier = identifier_class(f"{identifier_type}{self.reaction_id}")
-                self.instance_dict['type'].append([identifier.iri, identifier.is_instance_of[0].iri])
-                self.instance_dict['designates'].append([identifier.iri, self.chemical_reaction.iri])
-                self.instance_dict['has text value'].append([identifier.iri, item['value']])
-                if item['details']: 
-                    self.instance_dict['details'].append([identifier.iri, item['details']])
-                if item['is_mapped']:
-                    self.instance_dict['is mapped'].append([identifier.iri, item['is_mapped']])
+
+                triples = [
+                        ('designates', self.chemical_reaction.iri),
+                        ('has text value', item['value']),
+                ]
+                if item['details']: triples.append(('details', item['details']))
+                if item['is_mapped']: triples.append(('is mapped', item['is_mapped']))
+
+                identifier = self._create_instance(identifier_class, f"{identifier_type}{self.reaction_id}", *triples)
+
             
     def _extract_components(self, component_list, process_node=None, context='input'):
         """Private method to process components (reactants, inputs, workup materials, or products).
@@ -817,14 +829,18 @@ class ReactionKG:
                     else:
                         identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
                     if identifier_class:
-                        identifier = identifier_class(f"{identifier_type}#{identifier_id_base}_identifier_{j}")
-                        self.instance_dict['designates'].append([identifier.iri, reaction_component.iri])
-                        self.instance_dict['type'].append([identifier.iri, identifier.is_instance_of[0].iri])
-                        self.instance_dict['has text value'].append([identifier.iri, component_list[f"{prefix}[{i}].identifiers[{j}].value"]])
+
+                        triples = [
+                                ('designates', reaction_component.iri),
+                                ('has text value', component_list[f"{prefix}[{i}].identifiers[{j}].value"]),
+                        ]
                         if f"{prefix}[{i}].identifiers[{j}].details" in component_list: 
-                            self.instance_dict['details'].append([identifier.iri, component_list[f"{prefix}[{i}].identifiers[{j}].details"]])
+                            triples.append(('details', component_list[f"{prefix}[{i}].identifiers[{j}].details"]))
                         if f"{prefix}[{i}].identifiers[{j}].is_mapped" in component_list: 
-                            self.instance_dict['is mapped'].append([identifier.iri, component_list[f"{prefix}[{i}].identifiers[{j}].is_mapped"]])
+                            triples.append(('is mapped', component_list[f"{prefix}[{i}].identifiers[{j}].is_mapped"]))
+
+                        identifier = self._create_instance(identifier_class, f"{identifier_type}#{identifier_id_base}_identifier_{j}", *triples)
+                        
             except Exception as e: 
                 logger.error(f"Failed to process identifier {j} for {prefix} {i} in reaction {self.reaction_id}: {e}")
                 continue
@@ -842,51 +858,45 @@ class ReactionKG:
         """
         
         for item in self.reaction_inputs:
-            input_addition = self.mds.InputAddition(f'InputAddition#{self.reaction_id}_{item["InputKey"]}')
-            self.instance_dict['type'].append([input_addition.iri, input_addition.is_instance_of[0].iri])
-            self.instance_dict['has process part'].append([self.chemical_reaction.iri, input_addition.iri])
-            self.instance_dict['has output'].append([input_addition.iri, self.reaction_mixture.iri])
-            
+
+            input_addition = self._create_instance(self.mds.InputAddition, f'InputAddition#{self.reaction_id}_{item["InputKey"]}', 
+                    ('has output', self.reaction_mixture.iri))
+            self._apply_triples(self.chemical_reaction, ('has process part', input_addition.iri))
+
             self._extract_components(item, input_addition)
             
             if item['addition_order']: 
-                self.instance_dict['addition order'].append([input_addition.iri, item['addition_order']])
-            
+                self._apply_triples(input_addition, ('addition order', item['addition_order']))
             if item['addition_speed'] == True and 'addition_speed.type' in item: 
-                addition_speed = self.mds.AdditionSpeed(f'AdditionSpeed#{self.reaction_id}')
-                self.instance_dict['type'].append([addition_speed.iri, addition_speed.is_instance_of[0].iri])
-                self.instance_dict['has occurent part'].append([input_addition.iri, addition_speed.iri])
-                self.instance_dict['has text value'].append([addition_speed.iri, item['addition_speed.type']])
-                if 'addition_speed.details' in item: 
-                    self.instance_dict['details'].append([addition_speed.iri, item['addition_speed.details']])
+                addition_speed = self._create_instance(self.mds.AdditionSpeed,f'AdditionSpeed#{self.reaction_id}', 
+                        ('has text value', item['addition_speed.type']))
+                if 'addition_speed.details' in item: self._apply_triples(addition_speed, ('details',item['addition_speed.details']))
+                self._apply_triples(input_addition, ('has occurent part', addition_speed.iri))
             
             if item['addition_duration'] == True and 'addition_duration.value' in item and 'addition_duration.units' in item:
-                addition_duration = self.obo.BFO_0000202(f'AdditionDuration#{self.reaction_id}')
-                self.instance_dict['type'].append([addition_duration.iri, addition_duration.is_instance_of[0].iri])
-                self.instance_dict['occupies temporal region'].append([input_addition.iri, addition_duration.iri])
-                self.instance_dict['has datetime value'].append([addition_duration.iri, item['addition_duration.value']])
-                self.instance_dict['uses measurement unit'].append([addition_duration.iri, self.unit_mapping[item['addition_duration.units']].iri])
-            
+                addition_duration = self._create_instance(self.obo.BFO_0000202, f'AdditionDuration#{self.reaction_id}',
+                    [('has datetime value',  item['addition_duration.value']),
+                     ('uses measurement unit', self.unit_mapping[item['addition_duration.units']].iri)
+                    ])
+                self._apply_triples(input_addition, ('occupies temporal region', addition_duration.iri))
+                    
             if item['addition_time'] == True and 'addition_time.value' in item and 'addition_time.units' in item:
-                addition_time = self.obo.BFO_0000202(f'AdditionTime#{self.reaction_id}')
-                self.instance_dict['type'].append([addition_time.iri, addition_time.is_instance_of[0].iri])
-                self.instance_dict['occupies temporal region'].append([input_addition.iri, addition_time.iri])
-                self.instance_dict['has datetime value'].append([addition_time.iri, item['addition_time.value']])
-                self.instance_dict['uses measurement unit'].append([addition_time.iri, self.unit_mapping[item['addition_time.units']].iri])
-
+                addition_time = self._create_instance(self.obo.BFO_0000202, f'AdditionTime#{self.reaction_id}', 
+                    [('has datetime value', item['addition_time.value']),
+                    ('uses measurement unit', self.unit_mapping[item['addition_time.units']].iri)])
+                self._apply_triples(input_addition, ('occupies temporal region',addition_time.iri))
+                    
             if item['flow_rate'] == True and 'flow_rate.value' in item and 'flow_rate.units' in item:
-                flow_rate = self.mds.FlowRate(f'FlowRate#{self.reaction_id}')
-                self.instance_dict['type'].append([flow_rate.iri, flow_rate.is_instance_of[0].iri])
-                self.instance_dict['has occurent part'].append([input_addition.iri, flow_rate.iri])
-                self.instance_dict['has decimal value'].append([flow_rate.iri, item['flow_rate.value']])
-                self.instance_dict['uses measurement unit'].append([flow_rate.iri, item['flow_rate.units']])
+                flow_rate = self._create_instance(self.mds.FLowRate, f'FlowRate#{self.reaction_id}', 
+                        [('has decimal value', item['flow_rate.value']),
+                        ('uses measurement unit', item['flow_rate.units'])])
+                self._apply_triples(input_addition, ('has occurent part', flow_rate.iri))
 
             if item['addition_device'] == True and 'addition_device.type' in item:
-                addition_device = self.cco.ont00000581(f"AdditionDevice#{self.reaction_id}_{item['addition_device.type']}")
-                self.instance_dict['type'].append([addition_device.iri, addition_device.is_instance_of[0].iri])
-                self.instance_dict['participates in'].append([addition_device.iri, input_addition.iri])
-                if 'addition_device.details' in item: 
-                    self.instance_dict['details'].append([addition_device.iri, item['addition_device.details']])
+                addition_device = self._create_instance(self.cco.ont00000581, f"AdditionDevice#{self.reaction_id}_{item['addition_device.type']}", 
+                        [('participates in', input_addition.iri)])
+                if 'addition_device.details' in item:  self._apply_triples(addition_device, item['addition_device.details'])
+                
     
     def _process_temperature(self, component_list, reaction_component=None, context='condition'):
         """Processes temperature information associated with a reaction.
@@ -928,17 +938,15 @@ class ReactionKG:
             raise ValueError(f"If _process_temperature method is used with {context}, reaction_component must be provided.")
 
         self.instance_dict['type'].append([reaction_temperature.iri, reaction_temperature.is_instance_of[0].iri])
-        temperature_measurement = self.mds.AnalyticalResult(f'TemperatureMeasurement#{self.reaction_id}_{context}')
-        self.instance_dict['type'].append([temperature_measurement.iri, temperature_measurement.is_instance_of[0].iri])
-        self.instance_dict['is about'].append([temperature_measurement.iri, reaction_temperature.iri])
 
-        self.instance_dict['has decimal value'].append([temperature_measurement.iri, component_list[f'{prefix}.value']])
-        self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, self.unit_mapping[component_list[f'{prefix}.units']].iri])
-        
+        temperature_measurement = self._create_instance(self.mds.AnalyticalResult, f'TemperatureMeasurement#{self.reaction_id}_{context}',
+                *[('is about', reaction_temperature.iri),
+                ('has decimal value', component_list[f'{prefix}.value']),
+                ('uses measurement unit', self.unit_mapping[component_list[f'{prefix}.units']].iri)]) 
+               
         if f'{prefix}.control.type' in component_list and (context == 'input' or context == 'workup'): 
-            control_tool = self.cco.ont00000581(f'TemperatureControl#{self.reaction_id}_{component_list[f"{prefix}.control.type"]}')
-            self.instance_dict['type'].append([control_tool.iri, control_tool.is_instance_of[0].iri])
-            self.instance_dict['affects'].append([control_tool, reaction_temperature.iri])
+            control_tool = self._create_instance(self.cco.ont00000581, f'TemperatureControl#{self.reaction_id}_{component_list[f"{prefix}.control.type"]}',
+                    ('affects', reaction_temperature.iri))
         
         if context == 'condition':
             self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_temperature.iri])
@@ -997,24 +1005,46 @@ class ReactionKG:
             'ETHYLENE': 'Ethylene',
             'ACETYLENE': 'Acetyle'
         }
+
+        #this is a big one!!!
         for item in self.reaction_conditions: 
             if item['temperature'] == True and 'temperature.setpoint.value' in item and 'temperature.setpoint.units' in item: 
                 self._process_temperature(item, context='condition')
                 
             if item['pressure'] == True and 'pressure.setpoint.value' in item and 'pressure.setpoint.units' in item: 
-                reaction_pressure = self.mds.ReactionPressure(f'ReactionPressure#{self.reaction_id}')
-                self.instance_dict['type'].append([reaction_pressure.iri, reaction_pressure.is_instance_of[0].iri])
-                self.instance_dict['has decimal value'].append([reaction_pressure.iri, item['pressure.setpoint.value']])
-                self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
-                self.instance_dict['uses measurement unit'].append([reaction_pressure.iri, self.unit_mapping[item['pressure.setpoint.units']].iri])
-                self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
+                
+                triples_pressure = [('has decimal value', item['pressure.setpoint.value']),
+                            ('uses measurement unit', self.unit_mapping[item['pressure.setpoint.units']].iri)]
+
+                triples_env = []
                 if 'pressure.control.type' in item: 
-                    self.instance_dict['details'].append([reaction_pressure.iri, item['pressure.control.type']])
+                    triples_pressure.append(('details', item['pressure.control.type']))
+                reaction_pressure(self.mds.ReactionPressure, f'ReactionPressure#{self.reaction_id}', *triples_pressure)
                 if 'pressure.atmosphere.type' in item: 
+                    #
                     atmosphere_type = atmosphere_mapping.get(item['pressure.atmosphere.type'])
                     reaction_atmosphere = self.mds.ReactionAtmosphere(f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
                     self.instance_dict['type'].append([reaction_atmosphere.iri, reaction_atmosphere.is_instance_of[0].iri])
                     self.instance_dict['is made of'].append([self.reaction_environment.iri, reaction_atmosphere.iri])
+
+                    #works just convert these lines
+
+
+
+
+                #reaction_pressure = self.mds.ReactionPressure(f'ReactionPressure#{self.reaction_id}')
+                #self.instance_dict['type'].append([reaction_pressure.iri, reaction_pressure.is_instance_of[0].iri])
+                #self.instance_dict['has decimal value'].append([reaction_pressure.iri, item['pressure.setpoint.value']])
+                #self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
+                #self.instance_dict['uses measurement unit'].append([reaction_pressure.iri, self.unit_mapping[item['pressure.setpoint.units']].iri])
+                #self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
+                #if 'pressure.control.type' in item: 
+                    #self.instance_dict['details'].append([reaction_pressure.iri, item['pressure.control.type']])
+                #if 'pressure.atmosphere.type' in item: 
+                    #atmosphere_type = atmosphere_mapping.get(item['pressure.atmosphere.type'])
+                    #reaction_atmosphere = self.mds.ReactionAtmosphere(f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
+                    #self.instance_dict['type'].append([reaction_atmosphere.iri, reaction_atmosphere.is_instance_of[0].iri])
+                    #self.instance_dict['is made of'].append([self.reaction_environment.iri, reaction_atmosphere.iri])
 
             if item['stirring'] == True and 'stirring.type' in item :
                 stirring_condition = self.obo.CHMO_0002774(f'StirringProcess#{self.reaction_id}')
