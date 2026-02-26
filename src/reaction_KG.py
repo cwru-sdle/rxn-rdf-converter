@@ -1021,88 +1021,67 @@ class ReactionKG:
                     triples_pressure.append(('details', item['pressure.control.type']))
                 reaction_pressure(self.mds.ReactionPressure, f'ReactionPressure#{self.reaction_id}', *triples_pressure)
                 if 'pressure.atmosphere.type' in item: 
-                    #
                     atmosphere_type = atmosphere_mapping.get(item['pressure.atmosphere.type'])
-                    reaction_atmosphere = self.mds.ReactionAtmosphere(f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
-                    self.instance_dict['type'].append([reaction_atmosphere.iri, reaction_atmosphere.is_instance_of[0].iri])
-                    self.instance_dict['is made of'].append([self.reaction_environment.iri, reaction_atmosphere.iri])
+                    reaction_atmosphere = self._create_instance(self.mds.ReactionAtmosphere, f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
+                    self._apply_triples(self.reaction_environment, ('is made of', reaction_atmosphere.iri))
 
-                    #works just convert these lines
-
-
-
-
-                #reaction_pressure = self.mds.ReactionPressure(f'ReactionPressure#{self.reaction_id}')
-                #self.instance_dict['type'].append([reaction_pressure.iri, reaction_pressure.is_instance_of[0].iri])
-                #self.instance_dict['has decimal value'].append([reaction_pressure.iri, item['pressure.setpoint.value']])
-                #self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
-                #self.instance_dict['uses measurement unit'].append([reaction_pressure.iri, self.unit_mapping[item['pressure.setpoint.units']].iri])
-                #self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
-                #if 'pressure.control.type' in item: 
-                    #self.instance_dict['details'].append([reaction_pressure.iri, item['pressure.control.type']])
-                #if 'pressure.atmosphere.type' in item: 
-                    #atmosphere_type = atmosphere_mapping.get(item['pressure.atmosphere.type'])
-                    #reaction_atmosphere = self.mds.ReactionAtmosphere(f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
-                    #self.instance_dict['type'].append([reaction_atmosphere.iri, reaction_atmosphere.is_instance_of[0].iri])
-                    #self.instance_dict['is made of'].append([self.reaction_environment.iri, reaction_atmosphere.iri])
 
             if item['stirring'] == True and 'stirring.type' in item :
-                stirring_condition = self.obo.CHMO_0002774(f'StirringProcess#{self.reaction_id}')
-                self.instance_dict['type'].append([stirring_condition.iri, stirring_condition.is_instance_of[0].iri])
-                self.instance_dict['has process part'].append([self.chemical_reaction.iri, stirring_condition.iri])
+                stirring_condition = self._create_instance(self.obo.CHMO_0002774, f'StirringProcess#{self.reaction_id}')
+                self._apply_triples(self.chemical_reaction.iri, ('has process part', stirring_condition.iri))
+
                 if 'stirring.rate.type' in item:
-                    stirring_rate = self.mds.StirringRate(f'StirringRate#{self.reaction_id}')
-                    self.instance_dict['type'].append([stirring_rate.iri, stirring_rate.is_instance_of[0].iri])
-                    self.instance_dict['has occurent part'].append([stirring_condition.iri, stirring_rate.iri])
-                    self.instance_dict['details'].append([stirring_rate.iri, item['stirring.rate.type']])
+                    stirring_rate = self._create_instance(self.mds.StirringRate, f'StirringRate#{self.reaction_id}',
+                            ('details', item['stirring.rate.type']))
+                    self._apply_triples(stirring_condition, ('has occurent part', stirring_rate.iri))
+
             
             if item['illumination'] == True and 'illumination.type' in item:
-                illumination_conditions = self.mds.Illumination(f'IlluminationProcess#{self.reaction_id}')
-                self.instance_dict['type'].append([illumination_conditions.iri, illumination_conditions.is_instance_of[0].iri])
-                self.instance_dict['has process part'].append([self.chemical_reaction.iri, illumination_conditions.iri])
+                illumination_conditions = self._create_instance(self.mds.Illumination, f'IlluminationProcess#{self.reaction_id}')
+                self._apply_triples(self.chemical_reaction, ('has proccess part', illumination_conditions.iri))
                 if 'illumination.peak_wavelength.value' in item and 'illumination.peak_wavelength.units' in item:
-                    peak_wavelength = self.mds.PeakWavelength(f'PeakWavelength#{self.reaction_id}')
-                    self.instance_dict['type'].append([peak_wavelength.iri, peak_wavelength.is_instance_of[0].iri])
-                    self.instance_dict['has occurent part'].append([illumination_conditions.iri, peak_wavelength.iri])
-                    self.instance_dict['has decimal value'].append([peak_wavelength.iri, item['illumination.peak_wavelength.value']])
-                    self.instance_dict['uses measurement unit'].append([peak_wavelength.iri, item['illumination.peak_wavelength.units']])
+                    peak_wavelength = self._create_instance(self.mds.PeakWavelength, f'PeakWavelength#{self.reaction_id}',('has decimal value', item['illumination.peak_wavelength']))
+                    self._apply_triples(illumination_conditions, ('has occurent part', peak_wavelength.iri))
+
                 #if 'illumination.distance_to_vessel.value' in item and 'illumination.distance_to_vessel.units' in item: 
 
             if item['electrochemistry'] == True and 'electrochemistry.type' in item: 
-                electrochemistry_condition = self.mds.ElectrochemicalReaction(f'ElectrochemicalReaction#{self.reaction_id}')
-                self.instance_dict['type'].append([electrochemistry_condition.iri, electrochemistry_condition.is_instance_of[0].iri])
-                self.instance_dict['has process part'].append([self.chemical_reaction.iri, electrochemistry_condition.iri])
+
+                electrochemistry_condition = self._create_instance(self.mds.ElectrochemicalReaction, f'ElectrochemicalReaction#{self.reaction_id}')
+                self._apply_triples(self.chemical_reaction, ('has proccess part', electrochemistry_condition.iri))
+                triples = []
+
                 if 'electrochemistry.details' in item: 
-                    self.instance_dict['details'].append([electrochemistry_condition.iri, item['electrochemistry.details']])
+                    triples.append(('details', item['electrochemistry.details']))
                 if 'electrochemistry.current.value' in item and 'electrochemistry.current.units' in item:
-                    self.instance_dict['has decimal value'].append([electrochemistry_condition.iri, item['electrochemistry.current.value']])
-                    self.instance_dict['uses measurement unit'].append([electrochemistry_condition.iri, item['electrochemistry.current.units']])
+                    triples.append(('has decimal value', item['electrochemistry.current.value']))
+                    triples.append(('uses measurement unit', item['electrochemistry.current.units']))
                 if 'electrochemistry.voltage.value' in item and 'electrochemistry.voltage.units' in item:
-                    self.instance_dict['has decimal value'].append([electrochemistry_condition.iri, item['electrochemistry.voltage.value']])
-                    self.instance_dict['uses measurement unit'].append([electrochemistry_condition.iri, item['electrochemistry.voltage.units']])
+                    triples.append(('has decimal value', item['electrochemistry.voltage.value']))
+                    triples.append(('uses measurement unit', item['electrochemistry.voltage.units']))
                 if 'electrochemistry.anode_material' in item: 
-                    self.instance_dict['has text value'].append([electrochemistry_condition.iri, item['electrochemistry.anode_material']])
+                    triples.append(('has text value', item['electrochemistry.anode_material']))
                 if 'electrochemistry.cathode_material' in item: 
-                    self.instance_dict['has text value'].append([electrochemistry_condition.iri, item['electrochemistry.cathode_material']])
+                    triples.append(('has text value', item['electrochemistry.cathode_material']))
                 if 'electrochemistry.electrode_separation.value' in item and 'electrochemistry.electrode_separation.units' in item: 
-                    electrode_separation = self.cco.ont00000738(f"ElectrodeSeparation#{self.reaction_id}")
-                    self.instance_dict['type'].append([electrode_separation.iri, electrode_separation.is_instance_of[0].iri])
+                    electrode_separation = self._create_instance(self.cco.ont00000738, f"ElectrodeSeparation#{self.reaction_id}")
+                    triples.append(('has decimal value', item['electrochemistry.electrode_separation.value']))
+                    triples.append(('uses measurement unit', item['electrochemistry.electrode_separation.units']))
+                self._apply_triples(electrochemistry_condition, *triples)
                     #self.instance_dict['inheres in'].append([tube_diameter.iri, flow_tube.iri])
                     #self.instance_dict['has decimal value'].append([tube_diameter.iri, item['flow.tubing.diameter.value']])
                     #self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diamter.units']])
-                
-                    self.instance_dict['has decimal value'].append([electrochemistry_condition.iri, item['electrochemistry.electrode_separation.value']])
-                    self.instance_dict['uses measurement unit'].append([electrochemistry_condition.iri, item['electrochemistry.electrode_separation.units']])
                 #if 'electrochemistry.cell.type' in item:
                 #    self.instance_dict[]
             if item['flow'] == True and 'flow.type' in item: 
-                flow_condition = self.mds.ContinuousFlow(f'FlowConditions#{self.reaction_id}')
-                self.instance_dict['type'].append([flow_condition.iri, flow_condition.is_instance_of[0].iri])
-                self.instance_dict['has process part'].append([self.chemical_reaction.iri, flow_condition.iri])
+                #work on this if
+                flow_condition = self._create_instance(self.mds.ContinuousFlow, f'FlowConditions#{self.reaction_id}')
+                self._apply_triples(self.chemical_reaction, ('has process part', flow_condition.iri))
+                flow_triples = []
                 if 'flow.details' in item: 
-                    self.instance_dict['details'].append([flow_condition.iri, item['flow.details']])
+                    triples.append(('details', item['flow.details']))
                 if 'flow.pump_type' in item: 
-                    self.instance_dict['details'].append([flow_condition.iri, item['flow.pump_type']])
+                    triples.append(('details', item['flow.pump_type']))
                 if 'flow.tubing.type' in item: 
                     tube_mapping = {
                         'UNSPECIFIED': None,
@@ -1118,15 +1097,12 @@ class ReactionKG:
                         'SILICON': 'SiliconTube',
                         'PDMS': 'PolydimethylsiloxaneTube',
                     }
-                    flow_tube = self.cco.ont00000581(f"{tube_mapping[item['flow.tubing.type']]}#{self.reaction_id}")
-                    self.instance_dict['type'].append([flow_tube.iri, flow_tube.is_instance_of[0].iri])
-                    self.instance_dict['details'].append([flow_tube.iri, item['flow.tubing.details']]) if 'flow.tubing.details' in item else None
+                    flow_tube = self._create_instance(self.cco.ont00000581, f"{tube_mapping[item['flow.tubing.type']]}#{self.reaction_id}")
+                    if 'flow.tubing.details' in item: self._apply_triples(flow_tube, ('details', item['flow.tubing.details']))
                     if 'flow.tubing.diameter' in item and 'flow.tubing.diameter.value' in item and 'flow.tubing.diamter.units' in item:
-                        tube_diameter = self.cco.ont00000738(f"TubeDiameter#{self.reaction_id}")
-                        self.instance_dict['type'].append([tube_diameter.iri, tube_diameter.is_instance_of[0].iri])
-                        self.instance_dict['inheres in'].append([tube_diameter.iri, flow_tube.iri])
-                        self.instance_dict['has decimal value'].append([tube_diameter.iri, item['flow.tubing.diameter.value']])
-                        self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diamter.units']])
+                        tube_diameter = self._create_instance(self.cco.ont00000738, f"TubeDiameter#{self.reaction_id}", *[
+                            ('inheres in', flow_tube.iri),('has decimal value', item['flow.tubing.diameter.value']),
+                            ('uses measurement unit', item['flow.tubing.diameter.units'])])
     
     def _process_reaction_notes(self):
         """Processes key reaction notes and characteristics (:attr:`reaction_notes`).
@@ -1137,24 +1113,17 @@ class ReactionKG:
             None: Updates the :attr:`instance_dict` attribute.
         """
         for item in self.reaction_notes:
-            if 'is_heterogeneous' in item: 
-                self.instance_dict['is heterogeneous'].append([self.chemical_reaction.iri, item['is_heterogeneous']])
-            if 'forms_precipitate' in item: 
-                self.instance_dict['forms precipitate'].append([self.chemical_reaction.iri, item['forms_precipitate']])
-            if 'is_exothermic' in item: 
-                self.instance_dict['is exothermic'].append([self.chemical_reaction.iri, item['is_exothermic']])
-            if 'offgasses' in item: 
-                self.instance_dict['off gasses'].append([self.chemical_reaction.iri, item['offgasses']])
-            if 'is_sensitive_to_moisture' in item: 
-                self.instance_dict['is sensitive to moisture'].append([self.chemical_reaction.iri, item['is_sensitive_to_moisture']])
-            if 'is_sensitive_to_oxygen' in item: 
-                self.instance_dict['is sensitive to oxygen'].append([self.chemical_reaction.iri, item['is_sensitive_to_oxygen']])
-            if 'is_sensitive_to_light' in item: 
-                self.instance_dict['is sensitive to light'].append([self.chemical_reaction.iri, item['is_sensitive_to_light']])
-            if 'safety_notes' in item: 
-                self.instance_dict['safety notes'].append([self.chemical_reaction.iri, item['safety_notes']])
-            if 'procedure_details' in item: 
-                self.instance_dict['procedure details'].append([self.chemical_reaction.iri, item['procedure_details']])
+            triples = []
+            if 'is_heterogeneous' in item: triples.append(('is heterogeneous', item['is_heterogeneous']))
+            if 'forms_precipitate' in item: triples.append(('forms precipitate', item['forms_precipitate']))
+            if 'is_exothermic' in item: triples.append(('is exothermic', item['is_exothermic']))
+            if 'offgasses' in item: triples.append(('off gasses', item['offgasses']))
+            if 'is_sensitive_to_moisture' in item: triples.append(('is sensitive to moisture', item['is_sensitive_to_moisture']))
+            if 'is_sensitive_to_oxygen' in item: triples.append(('is sensitive to oxygen', item['is_sensitive_to_oxygen']))
+            if 'is_sensitive_to_light' in item: triples.append(('is sensitive to light', item['is_sensitive_to_light']))
+            if 'safety_notes' in item: triples.append(('safety notes',item['safety_notes']))
+            if 'procedure_details' in item: triples.append(('procedure details',item['procedure_details']))
+            self._apply_triples(self.chemical_reaction, *triples)
 
     def _process_reaction_workups(self):
         """Processes reaction workup steps (:attr:`reaction_workups`).
@@ -1188,15 +1157,13 @@ class ReactionKG:
         }
         for item in self.reaction_workups: 
             workup_type = workup_mapping.get(item['type'])
+            triples = []
             workup_instance = self.mds.ReactionWorkup(f'ReactionWorkup#{self.reaction_id}_{workup_type}_{item["Index"]}')
-            if item['details'] is not None: 
-                self.instance_dict['details'].append([workup_instance.iri, item['details']])
+            if item['details'] is not None: triples.append(('details', item['details']))
             if item['type'] == 'WAIT' and 'duration.value' in item and 'duration.units' in item: 
-                duration_instance = self.obo.BFO_0000202(f'WorkupDuration#{self.reaction_id}_{item["Index"]}')
-                self.instance_dict['type'].append([duration_instance.iri, duration_instance.is_instance_of[0].iri])
-                self.instance_dict['occupies temporal region'].append([workup_instance.iri, duration_instance.iri])
-                self.instance_dict['has datetime value'].append([duration_instance.iri, item['duration.value']])
-                self.instance_dict['uses measurement unit'].append([duration_instance.iri, self.unit_mapping[item['duration.units']].iri])
+                duration_instance = self._create_instance(self.obo.BFO_0000202,f'WorkupDuration#{self.reaction_id}_{item["Index"]}', *[
+                    ('has datetime value', item['duration.value']), ('uses measurement unit',self.unit_mapping[item['duration.units']].iri)])
+                triples.append(('occupies temporal region', duration_instance.iri))
             self.instance_dict['is input of'].append([self.crude_product.iri, workup_instance.iri])
             self.instance_dict['precedes'].append([self.chemical_reaction.iri, workup_instance.iri])
             if (item['type'] == 'ADDITION' or item['type'] ==  'DRY_WITH_MATERIAL' or item['type'] ==  'WASH' or item['type'] == 'SCAVENGING') and item['input'] == True:
@@ -1206,21 +1173,18 @@ class ReactionKG:
             if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'workup.temperature.setpoint.value' in item and 'workup.temperature.setpoint.units' in item : 
                 self._process_temperature(item, context='workup')
             if (item['type'] == 'EXTRACTION' or item['type'] == 'FILTRATION') and 'keep_phase' in item:
-                self.instance_dict['keep phase'].append([workup_instance.iri, item['keep_phase']])
+                triples.append(('keep phase', item['keep_phase']))
             if item['type'] == 'PH_ADJUST' and 'target_ph' in item: 
-                self.instance_dict['details'].append([workup_instance.iri, item['target_ph']])
+                triples.append(('details', item['target_ph']))
             if item['type'] == 'STIRRING' and item['stirring'] == True: 
-                stirring_condition = self.obo.CHMO_0002774(f'StirringProcess#{self.reaction_id}_Workup_{item["Index"]}')
-                self.instance_dict['type'].append([stirring_condition.iri, stirring_condition.is_instance_of[0].iri])
-                self.instance_dict['has process part'].append([workup_instance.iri, stirring_condition.iri])
+                stirring_condition = self._create_instance(self.obo.CHMO_0002774,f'StirringProcess#{self.reaction_id}_Workup_{item["Index"]}')
+                triples.append(('has process part', stirring_condition.iri))
                 if 'stirring.rate.type' in item:
-                    stirring_rate = self.mds.StirringRate(f'StirringRate#{self.reaction_id}')
-                    self.instance_dict['type'].append([stirring_rate.iri, stirring_rate.is_instance_of[0].iri])
-                    self.instance_dict['has occurent part'].append([stirring_condition.iri, stirring_rate.iri])
-                    self.instance_dict['details'].append([stirring_rate.iri, item['stirring.rate.type']])
+                    stirring_rate = self._create_instance(self.mds.StirringRate, f'StirringRate#{self.reaction_id}', ('details', item['stirring.rate.type']))
+                    triples.append(('has occurent part', stirring_rate.iri))
             if (item['type'] == 'FLASH_CHROMATOGRAPHY' or item['type'] == 'OTHER_CHROMATOGRAPHY') and 'is_automated' in item:
-                self.instance_dict['is automated'].append([workup_instance.iri, item['is_automated']])
-                
+                triples.append(('is automated', item['is_automated']))
+            self._apply_triples(workup_instance, *triples)
 
     def _extract_product_measurement(self, outcome_list, product_dict):
         """Processes the product measurements (results from analysis) within reaction outcomes.
@@ -1254,49 +1218,32 @@ class ReactionKG:
                 if i not in product_dict: 
                     continue
                 if f"{product_prefix}[{j}].type" in outcome_list and f"{product_prefix}[{j}].analysis_key" in outcome_list: 
-                    product_measurement = self.mds.AnalyticalResult(f'ProductMeasurement#{self.reaction_id}_{outcome_list[f"{product_prefix}[{j}].analysis_key"]}_Product_{i}_Measurement_{j}')
+                    product_measurement = self._create_instance(self.mds.AnalyticalResult, f'ProductMeasurement#{self.reaction_id}_{outcome_list[f"{product_prefix}[{j}].analysis_key"]}_Product_{i}_Measurement_{j}')
                     measurement_dict[outcome_list[f"{product_prefix}[{j}].analysis_key"]] = product_measurement
                 
                 elif f"{product_prefix}[{j}].type" in outcome_list: 
-                    product_measurement = self.mds.AnalyticalResult(f'ProductMeasurement#{self.reaction_id}_Product_{i}_Measurement_{j}')
-                else: 
-                    product_measurement = None
+                    product_measurement = self._create_instance(self.mds.AnalyticalResult,f'ProductMeasurement#{self.reaction_id}_Product_{i}_Measurement_{j}' )
                 if product_measurement: 
-                    self.instance_dict['type'].append([product_measurement.iri, product_measurement.is_instance_of[0].iri])
-                    self.instance_dict['is about'].append([product_measurement.iri, product_dict[i].iri])
+                    triples = []
+                    triples.append(('is about',product_dict[i].iri)) 
 
                     if f"{product_prefix}[{j}].percentage.value" in outcome_list: 
-                        self.instance_dict['has decimal value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].percentage.value"]])
-                        self.instance_dict['uses measurement unit'].append([product_measurement.iri, self.unit_mapping['PERCENTAGE'].iri])
+                        triples.extend(('has decimal value',outcome_list[f"{product_prefix}[{j}].percentage.value"]), ('uses measurement unit',self.unit_mapping['PERCENTAGE'].iri))  
                     
-                    if f"{product_prefix}[{j}].float_value.value" in outcome_list: 
-                        self.instance_dict['has decimal value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].float_value.value"]])
-
-                    if f"{product_prefix}[{j}].string_value" in outcome_list: 
-                        self.instance_dict['has text value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].string_value"]])
-
+                    if f"{product_prefix}[{j}].float_value.value" in outcome_list: triples.append(('has decimal value',outcome_list[f"{product_prefix}[{j}].float_value.value"])) 
+                    if f"{product_prefix}[{j}].string_value" in outcome_list: triples.append(('has text value',outcome_list[f"{product_prefix}[{j}].string_value"])) 
                     if outcome_list[f"{product_prefix}[{j}].type"] == 'AMOUNT' and f"{product_prefix}[{j}].amount.value" in outcome_list and f"{product_prefix}[{j}].amount.units" in outcome_list: 
-                        amount_added = self.cco.ont00000768('Mass#' + outcome_list['reactionID'] + '_' + f"_Product_{str(i)}_Measurement_{str(j)}")
-                        self.instance_dict['type'].append([amount_added.iri, amount_added.is_instance_of[0].iri])
-                        self.instance_dict['inheres in'].append([amount_added.iri, product_dict[i].iri])
-                        self.instance_dict['is about'].append([product_measurement.iri, amount_added.iri])
-                        self.instance_dict['has decimal value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].amount.value"]])
-                        self.instance_dict['uses measurement unit'].append([product_measurement.iri, self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri])
-
+                        amount_added = self._create_instance(self.cco.ont00000768,'Mass#' + outcome_list['reactionID'] + '_' + f"_Product_{str(i)}_Measurement_{str(j)}", ('inheres in', product_dict[i].iri))
+                        triples.extend(('is about', amount_added.iri), ('has decimal value',outcome_list[f"{product_prefix}[{j}].amount.value"]), ('uses measurement unit',self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri))  
                     if f"{product_prefix}[{j}].retention_time.value" in outcome_list and f"{product_prefix}[{j}].retention_time.units" in outcome_list: 
-                        retention_time = self.mds.RetentionTime('RetentionTime#' + outcome_list['reactionID'] + f"_Product_{str(i)}_Measurement_{str(j)}")
-                        self.instance_dict['type'].append([retention_time.iri, retention_time.is_instance_of[0].iri])
-                        self.instance_dict['is about'].append([retention_time.iri, product_dict[i].iri])
-                        self.instance_dict['is about'].append([product_measurement.iri, retention_time.iri])
-                        self.instance_dict['has datetime value'].append([retention_time.iri, outcome_list[f"{product_prefix}[{j}].retention_time.value"]])
-                        self.instance_dict['uses measurement unit'].append([retention_time.iri, self.unit_mapping[outcome_list[f"{product_prefix}[{j}].retention_time.units"]].iri])
-                    
-                    if f"{product_prefix}[{j}].uses_internal_standard" in outcome_list: 
-                        self.instance_dict['uses internal standard'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].uses_internal_standard"]])
-                    if f"{product_prefix}[{j}].uses_authentic_standard" in outcome_list:
-                        self.instance_dict['uses authentic standard'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].uses_authentic_standard"]])
-                    if f"{product_prefix}[{j}].is_normalized" in outcome_list:
-                        self.instance_dict['is normalized'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].is_normalized"]])
+                        retention_time = self._create_instance(self.mds.RetentionTime,'RetentionTime#' + outcome_list['reactionID'] + f"_Product_{str(i)}_Measurement_{str(j)}", *[
+                            ('is about', product_dict[i].iri), ('has datetime value',outcome_list[f"{product_prefix}[{j}].retention_time.value"]),
+                            ('uses measurement unit',self.unit_mapping[outcome_list[f"{product_prefix}[{j}].retention_time.units"]].iri)]) 
+                        triples.append(('is about', retention_time.iri))
+                    if f"{product_prefix}[{j}].uses_internal_standard" in outcome_list: triples.append(('uses internal standard', outcome_list[f"{product_prefix}[{j}].uses_internal_standard"]))
+                    if f"{product_prefix}[{j}].uses_authentic_standard" in outcome_list: triples.append(('uses authentic standard',outcome_list[f"{product_prefix}[{j}].uses_authentic_standard"]))
+                    if f"{product_prefix}[{j}].is_normalized" in outcome_list: triples.append(('is normalized',outcome_list[f"{product_prefix}[{j}].is_normalized"]))
+                    self._apply_triples(product_measurement, *triples)
         return self, measurement_dict
     
     def _process_reaction_outcomes(self):
@@ -1315,37 +1262,29 @@ class ReactionKG:
 
         for item in self.reaction_outcomes: 
             if item.get('reaction_time') == True and 'reaction_time.value'in item and 'reaction_time.units' in item:
-                reaction_time = self.mds.ReactionTime(f'ReactionTime#{self.reaction_id}')
-                self.instance_dict['type'].append([reaction_time.iri, reaction_time.is_instance_of[0].iri])
-                self.instance_dict['occupies temporal region'].append([self.chemical_reaction.iri, reaction_time.iri])
-                self.instance_dict['has datetime value'].append([reaction_time.iri, item['reaction_time.value']])
-                self.instance_dict['uses measurement unit'].append([reaction_time.iri, self.unit_mapping[item['reaction_time.units']].iri])
-            
+                reaction_time = self._create_instance(self.mds.ReactionTime,f'ReactionTime#{self.reaction_id}', *[
+                    ('has datetime value', item['reaction_time.value']), ('uses measurement unit', self.unit_mapping[item['reaction_time.units']].iri)])
+                self._apply_triples(self.chemical_reaction, ('occupies temporal region', reaction_time.iri))
+
             try: 
                 _, product_dict = self._extract_components(item, context='product')
             except Exception as e: 
                 logger.error(f"Failed to process product components into RDF triples for reaction {self.reaction_id}: {e}")
                 pass
-            
             try:
                 _, measurement_dict = self._extract_product_measurement(item, product_dict)
             except Exception as e:
                 logger.error(f"Failed to process product measurements into RDF triples for reaction {self.reaction_id}: {e}")
                 pass
-
             if item.get('analyses') == True: 
                 pattern = rf'^analyses\["([^"]*)"\]'  
                 analyses_set = self._extract_index_set(item, pattern)
 
                 for analysis in analyses_set:
                     if f'analyses["{analysis}"].type' in item: 
-                        analysis_type = self.mds.AnalyticalTechnique(f'AnalyticalTechnique#{self.reaction_id}_{analysis}')
-                        self.instance_dict['type'].append([analysis_type.iri, analysis_type.is_instance_of[0].iri])
-                        self.instance_dict['details'].append([analysis_type.iri, item[f'analyses["{analysis}"].type']])
-                        #self.instance_dict['has output'].append([analysis_type.iri, measurement_dict[analysis]])
-                    
-                    if f'analyses["{analysis}"].details' in item: 
-                        self.instance_dict['details'].append([analysis_type.iri, item[f'analyses["{analysis}"].details']])
+                        #here---------------------------------------------------------
+                        analysis_type = self._create_instance(self.mds.AnalyticalTechnique, f'AnalyticalTechnique#{self.reaction_id}_{analysis}', ('details',item[f'analyses["{analysis}"].type'])) 
+                    if f'analyses["{analysis}"].details' in item: self._apply_triples(analysis_type, ('details', item[f'analyses["{analysis}"].details']))
                     if f'analyses["{analysis}"].is_of_isolated_species' in item: 
                         self.instance_dict['is of isolated species'].append([analysis_type.iri, item[f'analyses["{analysis}"].is_of_isolated_species']])
                     #if f'analyses["{analysis}"].chmo_id' in item:
