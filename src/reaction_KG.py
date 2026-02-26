@@ -32,10 +32,7 @@ NCIT = Namespace('http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
 QUDT = Namespace('http://qudt.org/schema/qudt/')
 UNIT = Namespace('http://qudt.org/vocab/unit/')
 
-
-
 logger = logging.getLogger(__name__)
-
 
 class ReactionKG: 
     """A class that extracts and processes reaction data to be represented as a reaction knowledge graph. 
@@ -114,26 +111,16 @@ class ReactionKG:
         Returns:
             a created owlready2 instance
         """
-
         instance = ontology_class(instance_id)
 
-        #add type triple
         self.instance_dict['type'].append([instance.iri, instance.is_instance_of[0].iri])
-
-
         for prop_label, obj_value in  triples:
             self.instance_dict[prop_label].append([instance.iri, obj_value])
-
         return instance
 
     def _apply_triples(self, ontology_class, *triples):
-
-
         for prop_label, obj_value in triples:
             self.instance_dict[prop_label].append([ontology_class.iri, obj_value])
-
-
-
     
     def generate_reaction (self): 
         """Parses the reaction protocol buffer and populates the internal data lists. 
@@ -150,30 +137,24 @@ class ReactionKG:
             - :attr:`reaction_workups`
             - :attr:`reaction_provenances`
 
-
         Returns:
             :class:`ReactionKG`: The ReactionKG instance after the above lists have been populated with data from the instance's Protocol Buffer file
         """
 
-        # reaction identifiers 
         for identifier in self.reaction_pb.identifiers:
             identifier_dict = {'reactionID':self.reaction_id}
             identifier_dict.update({item: None for item in list(identifier.DESCRIPTOR.fields_by_name)})
             identifier_dict.update(message_to_row(identifier))
             self.reaction_identifiers.append(identifier_dict)
 
-        # reaction inputs, components, and compound identifiers
         for input in self.reaction_pb.inputs: 
 
             input_string = re.sub(r'\s+', '', str(input.strip()))
-
             reaction_input_dict = {'reactionID':self.reaction_id, 'InputKey':input_string}
-
             reaction_input_dict.update(message_to_row(self.reaction_pb.inputs[input]))
 
             # Get  possible fields 
             fields = list(self.reaction_pb.inputs[input].DESCRIPTOR.fields_by_name)
-
             # fill reaction inputs dict via loop
             try:
                 for s in fields:
@@ -181,14 +162,12 @@ class ReactionKG:
                     reaction_input_dict[s] = True if field_value else None
             except Exception as  e:
                 print("ERROR filling dict ", e)
-
             for ind, component in enumerate(self.reaction_pb.inputs[input].components): 
                 identifier_list, inchi_key = self.generate_compound_identifiers(component.identifiers)
                 if inchi_key:
                     reaction_input_dict[f"components[{ind}].INCHI_KEY"] = inchi_key
                 if component.amount:
                     reaction_input_dict[f"components[{ind}].amount.type"] = component.amount.WhichOneof('kind')
-
             self.reaction_inputs.append(reaction_input_dict)
 
         # reaction setup
@@ -211,7 +190,6 @@ class ReactionKG:
         for i in self.reaction_pb.conditions.DESCRIPTOR.fields_by_name:
             field_value = getattr(self.reaction_pb.conditions, i, None)
             if field_value: conditions_dict[str(i)] = True
-
         self.reaction_conditions.append(conditions_dict)
 
         # reaction notes
@@ -225,7 +203,6 @@ class ReactionKG:
             workups_dict = {'reactionID':self.reaction_id, 'Index':ind}
             workups_dict.update({item:None for item in list(workup.DESCRIPTOR.fields_by_name)})
             workups_dict.update(message_to_row(workup))
-
             if workup.input: 
                 workups_dict['input'] = True
                 for ind, component in enumerate(workup.input.components):
@@ -262,13 +239,11 @@ class ReactionKG:
                 for index, product in enumerate(outcome.products):
                     product_identifier, inchi_key = self.generate_compound_identifiers(product.identifiers)
                     outcome_dict[f"products[{index}].INCHI_KEY"] = inchi_key
-
             self.reaction_outcomes.append(outcome_dict)
 
         provenance_dict = {'reactionID': self.reaction_id}
         provenance_dict.update({item:None for item in list(self.reaction_pb.provenance.DESCRIPTOR.fields_by_name)})
         provenance_dict.update(message_to_row(self.reaction_pb.provenance))
-        
         return self
         
     def generate_compound_identifiers (self, identifiers): 
@@ -277,7 +252,6 @@ class ReactionKG:
         This method converts the ORD Identifiers Protocol Buffer message into a list of dictionaries. If **InChIKey** is not present, 
         it attempts to generate it (and potentially InChI/SMILES) from an existing InChI or SMILES identifier using **RDKit**.
         The generated identifiers are added to the list. The final InChIKey is attached to all identifier dictionaries in the list.
-
 
         Args:
             identifiers(:class:`ord_schema.proto.reaction_pb2.Identifiers`): The ORD Identifiers Protocol Buffer message to be processed into a list of dictionaries.
@@ -290,7 +264,6 @@ class ReactionKG:
 
         identifier_list = []
         desired_type = set()
-        
         for identifier in identifiers:
             identifier_dict = {item:None for item in list(identifier.DESCRIPTOR.fields_by_name)}
             identifier_dict.update(message_to_row(identifier))
@@ -424,12 +397,6 @@ class ReactionKG:
                 - :attr:`chemical_reaction`, :attr:`reaction_mixture, :attr:`reaction_environment`, :attr:`crude_product` (:class:`owlready2.Thing`): Core reaction instances
 
         """
-
-        print(f" -  DEBUG - within _initialize_instance_dict, attempting to load {onto_file_path} ...")
-        
-
-
-
         self.onto = get_ontology(onto_file_path).load()
 
         #get namespaces 
@@ -453,8 +420,6 @@ class ReactionKG:
         self.qudt = qudt
         self.unit = unit
 
-
-        
         # Setup and store units in unit_mapping dictionary to be used in other methods
         self.unit_mapping = {        
         'CELSIUS': self.unit.DEG_C,
@@ -491,10 +456,7 @@ class ReactionKG:
         'SECOND': self.unit.SEC,
 
         'PERCENTAGE': self.unit.PERCENT,
-
         }
-
-
 
         self.prop_metadata_dict = {}
 
@@ -515,16 +477,11 @@ class ReactionKG:
             self.instance_dict[str(prop.label[0])] = []
 
         self.instance_dict['type'] = []
-
-
         self.crude_product = self._create_instance(self.mds.CrudeProduct, 'CrudeProduct#' + self.reaction_id)
         self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction#' + self.reaction_id, ('has output', self.crude_product.iri))
         self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture#' + self.reaction_id, ('is input of', self.chemical_reaction.iri)) 
         self.reaction_environment = self._create_instance(self.mds.ReactionEnvironment, 'ReactionEnvironment#' + self.reaction_id, ('environs', self.chemical_reaction.iri))
 
-
-
-    
     def _extract_index_set(self, item_dict, pattern): 
         """Extract unique indices (either numeric or string keys) from dictionary keys based on regex pattern. 
 
@@ -586,14 +543,11 @@ class ReactionKG:
             #for CUSTOM reaction identifiers, add id and value
             if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
                 self.instance_dict['has text value'].append([item['reactionID'], item['value']]) 
-
             if identifier_class == None:
                 identifier_type = 'Custom'
             else: 
                 identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
-
             if identifier_class: 
-
                 triples = [
                         ('designates', self.chemical_reaction.iri),
                         ('has text value', item['value']),
@@ -602,7 +556,6 @@ class ReactionKG:
                 if item['is_mapped']: triples.append(('is mapped', item['is_mapped']))
 
                 identifier = self._create_instance(identifier_class, f"{identifier_type}{self.reaction_id}", *triples)
-
             
     def _extract_components(self, component_list, process_node=None, context='input'):
         """Private method to process components (reactants, inputs, workup materials, or products).
@@ -635,7 +588,6 @@ class ReactionKG:
         """
 
         product_dict = {}
-
         if context == 'input': 
             pattern = rf'^components\[(\d+)\]'
             prefix = 'components'
@@ -792,7 +744,6 @@ class ReactionKG:
         ind_list = self._extract_index_set(component_list, pattern)
         if not ind_list: 
             return
-
         if context == 'input' or context == 'workup': 
             identifier_id_base = f'{self.reaction_id}_{component_list["InputKey"]}_component_{i}'
         elif context == 'product': 
@@ -829,7 +780,6 @@ class ReactionKG:
                     else:
                         identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
                     if identifier_class:
-
                         triples = [
                                 ('designates', reaction_component.iri),
                                 ('has text value', component_list[f"{prefix}[{i}].identifiers[{j}].value"]),
@@ -838,7 +788,6 @@ class ReactionKG:
                             triples.append(('details', component_list[f"{prefix}[{i}].identifiers[{j}].details"]))
                         if f"{prefix}[{i}].identifiers[{j}].is_mapped" in component_list: 
                             triples.append(('is mapped', component_list[f"{prefix}[{i}].identifiers[{j}].is_mapped"]))
-
                         identifier = self._create_instance(identifier_class, f"{identifier_type}#{identifier_id_base}_identifier_{j}", *triples)
                         
             except Exception as e: 
@@ -858,7 +807,6 @@ class ReactionKG:
         """
         
         for item in self.reaction_inputs:
-
             input_addition = self._create_instance(self.mds.InputAddition, f'InputAddition#{self.reaction_id}_{item["InputKey"]}', 
                     ('has output', self.reaction_mixture.iri))
             self._apply_triples(self.chemical_reaction, ('has process part', input_addition.iri))
@@ -897,7 +845,6 @@ class ReactionKG:
                         [('participates in', input_addition.iri)])
                 if 'addition_device.details' in item:  self._apply_triples(addition_device, item['addition_device.details'])
                 
-    
     def _process_temperature(self, component_list, reaction_component=None, context='condition'):
         """Processes temperature information associated with a reaction.
 
@@ -922,12 +869,10 @@ class ReactionKG:
         if context == 'condition' or context == 'workup': 
             prefix = 'temperature.setpoint'
             pattern = rf'^temperature\.measurements\[(\d+)\]'
-            
             if context == 'workup': 
                 reaction_temperature = self.cco.ont00000441(f'WorkupTemperature#{self.reaction_id}')
             elif context == 'condition':
                 reaction_temperature = self.mds.ReactionTemperature(f'ReactionTemperature#{self.reaction_id}')
-        
         elif context == 'input':
             reaction_temperature = self.cco.ont00000441(f'AdditionTemperature#{self.reaction_id}')
             prefix = 'addition_temperature'
@@ -1025,7 +970,6 @@ class ReactionKG:
                     reaction_atmosphere = self._create_instance(self.mds.ReactionAtmosphere, f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
                     self._apply_triples(self.reaction_environment, ('is made of', reaction_atmosphere.iri))
 
-
             if item['stirring'] == True and 'stirring.type' in item :
                 stirring_condition = self._create_instance(self.obo.CHMO_0002774, f'StirringProcess#{self.reaction_id}')
                 self._apply_triples(self.chemical_reaction.iri, ('has process part', stirring_condition.iri))
@@ -1034,7 +978,6 @@ class ReactionKG:
                     stirring_rate = self._create_instance(self.mds.StirringRate, f'StirringRate#{self.reaction_id}',
                             ('details', item['stirring.rate.type']))
                     self._apply_triples(stirring_condition, ('has occurent part', stirring_rate.iri))
-
             
             if item['illumination'] == True and 'illumination.type' in item:
                 illumination_conditions = self._create_instance(self.mds.Illumination, f'IlluminationProcess#{self.reaction_id}')
@@ -1042,7 +985,6 @@ class ReactionKG:
                 if 'illumination.peak_wavelength.value' in item and 'illumination.peak_wavelength.units' in item:
                     peak_wavelength = self._create_instance(self.mds.PeakWavelength, f'PeakWavelength#{self.reaction_id}',('has decimal value', item['illumination.peak_wavelength']))
                     self._apply_triples(illumination_conditions, ('has occurent part', peak_wavelength.iri))
-
                 #if 'illumination.distance_to_vessel.value' in item and 'illumination.distance_to_vessel.units' in item: 
 
             if item['electrochemistry'] == True and 'electrochemistry.type' in item: 
@@ -1074,7 +1016,6 @@ class ReactionKG:
                 #if 'electrochemistry.cell.type' in item:
                 #    self.instance_dict[]
             if item['flow'] == True and 'flow.type' in item: 
-                #work on this if
                 flow_condition = self._create_instance(self.mds.ContinuousFlow, f'FlowConditions#{self.reaction_id}')
                 self._apply_triples(self.chemical_reaction, ('has process part', flow_condition.iri))
                 flow_triples = []
@@ -1229,7 +1170,6 @@ class ReactionKG:
 
                     if f"{product_prefix}[{j}].percentage.value" in outcome_list: 
                         triples.extend(('has decimal value',outcome_list[f"{product_prefix}[{j}].percentage.value"]), ('uses measurement unit',self.unit_mapping['PERCENTAGE'].iri))  
-                    
                     if f"{product_prefix}[{j}].float_value.value" in outcome_list: triples.append(('has decimal value',outcome_list[f"{product_prefix}[{j}].float_value.value"])) 
                     if f"{product_prefix}[{j}].string_value" in outcome_list: triples.append(('has text value',outcome_list[f"{product_prefix}[{j}].string_value"])) 
                     if outcome_list[f"{product_prefix}[{j}].type"] == 'AMOUNT' and f"{product_prefix}[{j}].amount.value" in outcome_list and f"{product_prefix}[{j}].amount.units" in outcome_list: 
@@ -1282,7 +1222,6 @@ class ReactionKG:
 
                 for analysis in analyses_set:
                     if f'analyses["{analysis}"].type' in item: 
-                        #here---------------------------------------------------------
                         analysis_type = self._create_instance(self.mds.AnalyticalTechnique, f'AnalyticalTechnique#{self.reaction_id}_{analysis}', ('details',item[f'analyses["{analysis}"].type'])) 
                     if f'analyses["{analysis}"].details' in item: self._apply_triples(analysis_type, ('details', item[f'analyses["{analysis}"].details']))
                     if f'analyses["{analysis}"].is_of_isolated_species' in item: 
@@ -1323,7 +1262,6 @@ class ReactionKG:
             reaction_setup = self.mds.ReactionSetup(f'ReactionSetup#{self.reaction_id}')
             self.instance_dict['precedes'].append([reaction_setup.iri, self.chemical_reaction.iri])
         
-
     def generate_data_graph(self, dataset_id, save_file_path): 
         """Generates the final RDF data graph and serializes it to a file.
 
