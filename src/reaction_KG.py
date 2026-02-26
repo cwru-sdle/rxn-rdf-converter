@@ -1019,7 +1019,7 @@ class ReactionKG:
                 triples_env = []
                 if 'pressure.control.type' in item: 
                     triples_pressure.append(('details', item['pressure.control.type']))
-                reaction_pressure(self.mds.ReactionPressure, f'ReactionPressure#{self.reaction_id}', *triples_pressure)
+                reaction_pressure = self._create_instance(self.mds.ReactionPressure, f'ReactionPressure#{self.reaction_id}', *triples_pressure)
                 if 'pressure.atmosphere.type' in item: 
                     atmosphere_type = atmosphere_mapping.get(item['pressure.atmosphere.type'])
                     reaction_atmosphere = self._create_instance(self.mds.ReactionAtmosphere, f"ReactionAtmosphere#{self.reaction_id}_{atmosphere_type}")
