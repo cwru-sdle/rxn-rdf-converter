@@ -14,6 +14,7 @@ from rdflib import Graph, RDF, RDFS, OWL, Namespace, Literal, URIRef
 from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
 import logging
 import csv
+from urllib.parse import quote
 
 # =================================================================
 #               NAMESPACE DEFINITIONS
@@ -148,12 +149,15 @@ class ReactionKG:
             self.reaction_identifiers.append(identifier_dict)
 
         for input in self.reaction_pb.inputs: 
+            #print(input.strip())
+            #print(f"DEBUG raw input key: {repr(input)}")
+            input_string = quote(re.sub(r'\s+', '', str(input.strip())), safe='-._~')
+            #print(input_string)
 
-            input_string = re.sub(r'\s+', '', str(input.strip()))
             reaction_input_dict = {'reactionID':self.reaction_id, 'InputKey':input_string}
             reaction_input_dict.update(message_to_row(self.reaction_pb.inputs[input]))
 
-            # Get  possible fields 
+            # Get possible fields 
             fields = list(self.reaction_pb.inputs[input].DESCRIPTOR.fields_by_name)
             # fill reaction inputs dict via loop
             try:
@@ -539,8 +543,14 @@ class ReactionKG:
             
         for item in self.reaction_identifiers: 
             identifier_class = identifier_mapping.get(item['type'])
-
-            #for CUSTOM reaction identifiers, add id and value
+            
+            # get identifier value
+            identifier_value = item['value']
+            
+            # encode to create safe id
+            safe_value = quote(identifier_value, safe='')
+            instance_id = f"{item['type']}#{safe_value}"
+            
             if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
                 self.instance_dict['has text value'].append([item['reactionID'], item['value']]) 
             if identifier_class == None:
@@ -555,8 +565,8 @@ class ReactionKG:
                 if item['details']: triples.append(('details', item['details']))
                 if item['is_mapped']: triples.append(('is mapped', item['is_mapped']))
 
-                identifier = self._create_instance(identifier_class, f"{identifier_type}{self.reaction_id}", *triples)
-            
+                identifier = self._create_instance(identifier_class, instance_id, *triples)
+    
     def _extract_components(self, component_list, process_node=None, context='input'):
         """Private method to process components (reactants, inputs, workup materials, or products).
         
@@ -601,21 +611,31 @@ class ReactionKG:
             raise ValueError(f"Invalid context: {context}. Must be 'input', 'workup', or 'product'")
 
         if (context == 'input' or context == 'workup') and process_node is None: 
-            raise ValueError(f"A process node (input addition process or workup process) is required for components in 'input' and 'workup'")
+            raise ValueError(f"A process node is required for components in 'input' and 'workup'")
         
         index_list = self._extract_index_set(component_list, pattern)
         
         for i in index_list:
             if (context == 'input' or context == 'workup'): 
-                if f"{prefix}[{i}].INCHI_KEY" in component_list: 
-                    reaction_component = self.mds.Component(f'Component#{self.reaction_id}_{component_list["InputKey"]}_{component_list[f"{prefix}[{i}].INCHI_KEY"]}')
+                if f"{prefix}[{i}].INCHI_KEY" in component_list:
+                    inchi_key = component_list[f"{prefix}[{i}].INCHI_KEY"]
+                    # Use the InChIKey as the component ID
+                    safe_id = quote(inchi_key, safe='')
+                    component_id = f"Component#{safe_id}"
+                    reaction_component = self.mds.Component(component_id)
                 else:
-                    reaction_component = self.mds.Component(f'Component#{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                    # Fallback if no InChIKey
+                    component_id = f'Component#{self.reaction_id}_{component_list["InputKey"]}_component_{i}'
+                    reaction_component = self.mds.Component(component_id)
             elif context == 'product':
-                if f"{prefix}[{i}].INCHI_KEY" in component_list: 
-                    reaction_component = self.mds.Product(f'Product#{self.reaction_id}_{component_list[f"{prefix}[{i}].INCHI_KEY"]}')
+                if f"{prefix}[{i}].INCHI_KEY" in component_list:
+                    inchi_key = component_list[f"{prefix}[{i}].INCHI_KEY"]
+                    safe_id = quote(inchi_key, safe='')
+                    product_id = f"Product#{safe_id}"
+                    reaction_component = self.mds.Product(product_id)
                 else: 
-                    reaction_component = self.mds.Product(f'Product#{self.reaction_id}_Outcome_{component_list["Index"]}_Product_{i}')
+                    product_id = f'Product#{self.reaction_id}_Outcome_{component_list["Index"]}_Product_{i}'
+                    reaction_component = self.mds.Product(product_id)
                 product_dict[i] = reaction_component
             
             self.instance_dict['type'].append([reaction_component.iri, reaction_component.is_instance_of[0].iri])
@@ -744,10 +764,6 @@ class ReactionKG:
         ind_list = self._extract_index_set(component_list, pattern)
         if not ind_list: 
             return
-        if context == 'input' or context == 'workup': 
-            identifier_id_base = f'{self.reaction_id}_{component_list["InputKey"]}_component_{i}'
-        elif context == 'product': 
-            identifier_id_base = f'{self.reaction_id}_Outcome_{component_list["Index"]}_Product_{i}'
 
         identifier_mapping = {
             'UNSPECIFIED': self.cco.ont00000649,
@@ -775,21 +791,27 @@ class ReactionKG:
                 if f"{prefix}[{i}].identifiers[{j}].type" in component_list and f"{prefix}[{i}].identifiers[{j}].value" in component_list:
                     identifier_type_string = component_list[f"{prefix}[{i}].identifiers[{j}].type"]
                     identifier_class = identifier_mapping.get(component_list[f"{prefix}[{i}].identifiers[{j}].type"])
-                    if identifier_type_string in['UNSPECIFIED', 'CUSTOM']:
+                    # get identifier value
+                    identifier_value = component_list[f"{prefix}[{i}].identifiers[{j}].value"]
+                    safe_value = quote(identifier_value, safe='')
+                    instance_id = f"{identifier_type_string}#{safe_value}"
+                    
+                    if identifier_type_string in ['UNSPECIFIED', 'CUSTOM']:
                         identifier_type = 'Custom'
                     else:
                         identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
                     if identifier_class:
                         triples = [
-                                ('designates', reaction_component.iri),
-                                ('has text value', component_list[f"{prefix}[{i}].identifiers[{j}].value"]),
+                            ('designates', reaction_component.iri),
+                            ('has text value', identifier_value),
                         ]
                         if f"{prefix}[{i}].identifiers[{j}].details" in component_list: 
                             triples.append(('details', component_list[f"{prefix}[{i}].identifiers[{j}].details"]))
                         if f"{prefix}[{i}].identifiers[{j}].is_mapped" in component_list: 
                             triples.append(('is mapped', component_list[f"{prefix}[{i}].identifiers[{j}].is_mapped"]))
-                        identifier = self._create_instance(identifier_class, f"{identifier_type}#{identifier_id_base}_identifier_{j}", *triples)
                         
+                        # Create instance with new ID
+                        identifier = self._create_instance(identifier_class, instance_id, *triples)
             except Exception as e: 
                 logger.error(f"Failed to process identifier {j} for {prefix} {i} in reaction {self.reaction_id}: {e}")
                 continue
@@ -807,6 +829,7 @@ class ReactionKG:
         """
         
         for item in self.reaction_inputs:
+            #print(f"DEBUG InputKey: {repr(item['InputKey'])}")
             input_addition = self._create_instance(self.mds.InputAddition, f'InputAddition#{self.reaction_id}_{item["InputKey"]}', 
                     ('has output', self.reaction_mixture.iri))
             self._apply_triples(self.chemical_reaction, ('has process part', input_addition.iri))
@@ -1169,12 +1192,12 @@ class ReactionKG:
                     triples.append(('is about',product_dict[i].iri)) 
 
                     if f"{product_prefix}[{j}].percentage.value" in outcome_list: 
-                        triples.extend(('has decimal value',outcome_list[f"{product_prefix}[{j}].percentage.value"]), ('uses measurement unit',self.unit_mapping['PERCENTAGE'].iri))  
+                        triples.extend([('has decimal value',outcome_list[f"{product_prefix}[{j}].percentage.value"]), ('uses measurement unit',self.unit_mapping['PERCENTAGE'].iri)])  
                     if f"{product_prefix}[{j}].float_value.value" in outcome_list: triples.append(('has decimal value',outcome_list[f"{product_prefix}[{j}].float_value.value"])) 
                     if f"{product_prefix}[{j}].string_value" in outcome_list: triples.append(('has text value',outcome_list[f"{product_prefix}[{j}].string_value"])) 
                     if outcome_list[f"{product_prefix}[{j}].type"] == 'AMOUNT' and f"{product_prefix}[{j}].amount.value" in outcome_list and f"{product_prefix}[{j}].amount.units" in outcome_list: 
                         amount_added = self._create_instance(self.cco.ont00000768,'Mass#' + outcome_list['reactionID'] + '_' + f"_Product_{str(i)}_Measurement_{str(j)}", ('inheres in', product_dict[i].iri))
-                        triples.extend(('is about', amount_added.iri), ('has decimal value',outcome_list[f"{product_prefix}[{j}].amount.value"]), ('uses measurement unit',self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri))  
+                        triples.extend([('is about', amount_added.iri), ('has decimal value',outcome_list[f"{product_prefix}[{j}].amount.value"]), ('uses measurement unit',self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri)])  
                     if f"{product_prefix}[{j}].retention_time.value" in outcome_list and f"{product_prefix}[{j}].retention_time.units" in outcome_list: 
                         retention_time = self._create_instance(self.mds.RetentionTime,'RetentionTime#' + outcome_list['reactionID'] + f"_Product_{str(i)}_Measurement_{str(j)}", *[
                             ('is about', product_dict[i].iri), ('has datetime value',outcome_list[f"{product_prefix}[{j}].retention_time.value"]),
@@ -1309,7 +1332,6 @@ class ReactionKG:
                         subj_uri = URIRef(item[0])
                         pred_uri = URIRef(prop_metadata[0])
                         self.graph.add((subj_uri, pred_uri, Literal(item[1])))
-            
             if self.fmt == "turtle": 
                 new_path = os.path.join(save_file_path, f"mds_dataset-{dataset_id}_reaction-{self.reaction_id}.ttl")
                 self.graph.serialize(new_path, format=self.fmt)
