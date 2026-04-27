@@ -14,6 +14,16 @@ MDS-Onto enables reaction data to be linked and integrated with data from source
 The package is capable of batch processing datasets or only one dataset. 
 
 *********
+Authors
+*********
+* Quynh D. Tran
+* Holly Schreiber
+* Brandon Lee
+* Owen Schessler
+* Laura S. Bruckman
+* Roger H. French
+
+*********
 Motivation
 *********
 
