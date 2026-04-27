@@ -7,6 +7,17 @@ The ``rxn_rdf_converter`` is a Python package which aims to process reaction dat
 This package facilitates the transformation of raw experimental data into structured RDF triples (Turtle or JSON-LD format), making the data semantically searchable, linkable, and machine-readable for advanced data analysis and machine learning applications in chemistry and materials science.
 
 ---
+
+## Authors 
+
+Quynh D. Tran
+Holly Schreiber
+Brandon Lee
+Owen Schessler
+Laura S. Bruckman
+Roger H. French
+
+
 ## Motivation
 
 We built this package to streamline the data integration of reaction/synthesis data into one centralized database with formulation, manufacturing, and degradation.

@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.abspath('../../src/'))
 
 project = 'Reaction RDF Converter'
 copyright = '2025, CWRU-SDLE'
-author = 'Quynh D. Tran, Holly Schreiber, Owen Schessler, Laura S. Bruckman, Roger H. French'
+author = 'Quynh D. Tran, Holly Schreiber, Brandon Lee, Owen Schessler, Laura S. Bruckman, Roger H. French'
 release = '0.1.1'
 
 # -- General configuration ---------------------------------------------------
