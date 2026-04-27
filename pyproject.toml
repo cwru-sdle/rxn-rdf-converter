@@ -10,12 +10,12 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "MIT"}
 authors = [
-  { name = "Quynh D. Tran", email = "qdt@case.edu" },
-  { name = "Holly Schreiber", email = "hls92@case.edu" },
-  { name = "Brandon Lee", email = "bkl46@case.edu" },
-  { name = "Owen Schessler", email = "ops10@case.edu" },
-  { name = "Laura S. Bruckman", email = "lsh41@case.edu" },
-  { name = "Roger H. French", email = "rxf131@case.edu" }
+  {name = "Quynh D. Tran", email = "qdt@case.edu" },
+  {name = "Holly Schreiber", email = "hls92@case.edu" },
+  {name = "Brandon Lee", email = "bkl46@case.edu" },
+  {name = "Owen Schessler", email = "ops10@case.edu" },
+  {name = "Laura S. Bruckman", email = "lsh41@case.edu" },
+  {name = "Roger H. French", email = "rxf131@case.edu" }
 ]
 # dynamic = ["version"]
 keywords = [
