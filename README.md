@@ -10,17 +10,12 @@ This package facilitates the transformation of raw experimental data into struct
 
 ## Authors 
 
-Quynh D. Tran
-
-Holly Schreiber
-
-Brandon Lee
-
-Owen Schessler
-
-Laura S. Bruckman
-
-Roger H. French
+* Quynh D. Tran
+* Holly Schreiber
+* Brandon Lee
+* Owen Schessler
+* Laura S. Bruckman
+* Roger H. French
 
 
 ## Motivation
