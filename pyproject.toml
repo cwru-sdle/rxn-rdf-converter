@@ -70,4 +70,9 @@ all = [
 
 [project.scripts]
 # executable_name = "package_name.module_name:function_name"
-rxn_rdf_converter = "rxn_rdf_converter.cli:main"
+rxn_rdf_converter = "cli:main"
+
+
+
+
+
