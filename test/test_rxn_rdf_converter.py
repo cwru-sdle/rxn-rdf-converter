@@ -132,8 +132,7 @@ class TestRxnRdfConverter(unittest.TestCase):
 
         # Creates a list of the 50 protocol buffer reactions to test from
         # the random reaction numbers
-        protocol_buffer_test_reactions = create_list_of_protocol_buffer_test_reactions(random_reaction_nums)
-        self.protocol_buffer_test_reactions = protocol_buffer_test_reactions
+        self.protocol_buffer_test_reactions = create_list_of_protocol_buffer_test_reactions(random_reaction_nums) 
 
     def test_generate_reaction_basic_properties(self):
         """
