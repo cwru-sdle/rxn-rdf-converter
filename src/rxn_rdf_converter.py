@@ -581,7 +581,10 @@ class ReactionKG:
         self.instance_dict = {}
         
         for prop in self.onto.properties():
-            self.instance_dict[str(prop.label[0])] = []
+            if prop.label:
+                self.instance_dict[str(prop.label[0])] = []
+            else:
+                print(f"{prop} has no label")
         self.instance_dict['type'] = []
 
         self.chemical_reaction = self.mds.ChemicalReaction('ChemicalReaction#' + self.reaction_id)
