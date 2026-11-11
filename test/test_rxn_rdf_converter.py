@@ -1,4 +1,3 @@
-# %%
 # =================================================================
 #               IMPORT REQUIREMENTS
 # =================================================================
@@ -12,6 +11,7 @@ import random
 import unittest
 import pytest
 import tempfile
+from pathlib import Path
 # =================================================================
 #               SETUP LOGGING ERRORS
 # =================================================================
@@ -31,24 +31,10 @@ logger = logging.getLogger(__name__)
 #               INITIATE FILE PATH
 # =================================================================
 
-def setup_file_path():
-    """ Set up the file paths """
-    path = '/mnt/vstor/CSE_MSE_RXF131/staging/mds3/KG-ChemRxn/OpenReactionDB/ord-data/data' # path of dataset 
-    savepath = '/mnt/vstor/CSE_MSE_RXF131/staging/mds3/KG-ChemRxn/Extracted_ORD_Data'
-    mds_file_path = '/mnt/vstor/CSE_MSE_RXF131/staging/mds3/KG-ChemRxn/chemOntologies/mdsChemRxn(v.0.3.0.7).owl'
-
-    file_list = []
-    for root, dirs, files in os.walk(path):
-        for name in files: 
-            if name.startswith('ord_dataset'):
-                file_path = os.path.join(root, name)
-                file_list.append(file_path)
-    
-    return path, savepath, mds_file_path, file_list
-
-# Set up path: 
-path, savepath, mds_file_path, file_list = setup_file_path()
-logger.info(f"Found {len(file_list)} data files")
+# Find MDS_Onto.owl
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = SCRIPT_DIR.parent
+mds_file_path = PROJECT_DIR / 'MDS_Onto.owl'
 
 # Choose a dataset to test the reactions from
 dataset = load_message("test/ord_dataset-00005539a1e04c809a9a78647bea649c.pb.gz", dataset_pb2.Dataset,)
@@ -155,7 +141,6 @@ class TestRxnRdfConverter(unittest.TestCase):
                     if iv:
                         assert semi.reaction_identifiers[0].get("value") == iv
 
-
     def test_generate_compound_identifiers_on_real_components(self):
         """
         For each reaction, exercise generate_compound_identifiers() on real components where available.
@@ -194,7 +179,6 @@ class TestRxnRdfConverter(unittest.TestCase):
                                         # Either inchi_key is non-empty string or None (rare); assert type when present
                                         if inchi_key:
                                             assert isinstance(inchi_key, str) and len(inchi_key) > 0
-
 
     def test_initialize_instance_dict_and_core_instances(self):
         """
@@ -239,7 +223,6 @@ class TestRxnRdfConverter(unittest.TestCase):
                 assert semi.reaction_environment.iri in type_iris
                 assert semi.crude_product.iri in type_iris
 
-
     def test_extract_index_set_behavior(self):
         """
         Test _extract_index_set with numeric, string, mixed keys.
@@ -265,7 +248,6 @@ class TestRxnRdfConverter(unittest.TestCase):
             # no matches
             nomatch = {"x": 1}
             assert semi._extract_index_set(nomatch, r"^components\[(\d+)\]") == []
-
 
     def test_process_reaction_identifiers_real(self):
         """
@@ -294,7 +276,6 @@ class TestRxnRdfConverter(unittest.TestCase):
                 val = ident.get("value")
                 if val:
                     assert any(val == tv for _, tv in semi.instance_dict.get("has text value", []))
-
 
     def test_extract_components_and_roles_and_amounts(self):
         """
@@ -326,7 +307,6 @@ class TestRxnRdfConverter(unittest.TestCase):
                 # Accept either presence or absence depending on real data; but if components existed, at least one of those lists may be non-empty
                 # So we don't assert strict presence, but ensure no exceptions occurred and instance_dict exists
                 assert isinstance(semi.instance_dict, dict)
-
 
     def test_extract_component_amount_specific_value(self):
         """
@@ -371,7 +351,6 @@ class TestRxnRdfConverter(unittest.TestCase):
             unit_list = semi.instance_dict.get("uses measurement unit", [])
             assert any("MilliGM" in str(u[1]) or "MilliGM" in str(u) for u in unit_list) or unit_list == []
 
-
     def test_extract_compound_identifiers_and_details(self):
         """
         Test _extract_compound_identifiers by building a component_list that contains identifiers
@@ -415,7 +394,6 @@ class TestRxnRdfConverter(unittest.TestCase):
 
             details = [v for _, v in semi.instance_dict.get("details", [])]
             assert any("ethanol-smiles" in d for d in details)
-
 
     def test_process_reaction_inputs_and_generate_graph(self):
         """
@@ -516,7 +494,6 @@ class TestRxnRdfConverter(unittest.TestCase):
             #if any_temp:
             #    assert any(semi.instance_dict.get("has decimal value", []))
 
-
     def test_process_reaction_notes_and_workups_and_outcomes(self):
         """
         Run the methods that process notes, workups, and outcomes and ensure no exceptions occur and
@@ -598,5 +575,3 @@ try:
     test50RandomReactions()
 except Exception as e:
     print(e)
-
-# %%
