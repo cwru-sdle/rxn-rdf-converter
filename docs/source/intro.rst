@@ -11,7 +11,9 @@ The package is meant to be a user-friendly tool for easily converting reaction d
 
 MDS-Onto enables reaction data to be linked and integrated with data from sources in Manufacturing, Formulation, Degradation, Biomedical, etc. 
 
-The package is capable of batch processing datasets or only one dataset. 
+The latest MDS-Onto version (v.0.3.1.68) is used in this package and the corresponding manuscript (https://cwrusdle.bitbucket.io/). 
+
+The package is capable of batch processing multiple ord datasets and only one dataset. 
 
 *********
 Authors
@@ -29,7 +31,7 @@ Motivation
 
 We built this package to streamline the data integration of reaction/synthesis data into one centralized database with formulation, manufacturing, and degradation.
 
-The bottleneck of mapping reaction data to an ontology can be tedious and error-prone. Thus, this package hopefully will provide an automated tool to reduce the time needed to integrate data. 
+The bottleneck of mapping reaction data to an ontology can be tedious and error-prone. Thus, this package will provide an automated tool to reduce the time needed to integrate data. 
 
 *********
 Limitation

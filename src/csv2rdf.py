@@ -1,15 +1,12 @@
 import pandas as pd
 import os
-import re
-import ord_schema
 from ord_schema.message_helpers import load_message, write_message, message_to_row
 from ord_schema.proto import dataset_pb2, reaction_pb2
 from rxn_rdf_converter import ReactionKG
 
-dataset_path = '/mnt/vstor/CSE_MSE_RXF131/staging/mds3/KG-ChemRxn/OpenReactionDB/ord-data/data'
-owl_onto = '/home/qdt/CSE_MSE_RXF131/staging/mds3/KG-ChemRxn/chemOntologies/mdsChemRxn(v.0.3.0.7).owl'
-#'/mnt/vstor/CSE_MSE_RXF131/cradle-members/mds3/qdt/git/cwrusdle.bitbucket.io/files/MDS_Onto-v0.3.1.14.owl'
-output_dir = '/mnt/vstor/CSE_MSE_RXF131/staging/mds3/KG-ChemRxn'
+dataset_path = 'Path/to/ord-dataset'
+owl_onto = 'Path/to/mds-onto.owl'
+output_dir = 'Path/to/output_directory'
 file_list = []
 for root, dirs, files in os.walk(dataset_path):
     for name in files: 
@@ -24,7 +21,7 @@ reaction_data = ReactionKG(reaction, 'turtle').generate_reaction().generate_inst
                 
 identifier_df = pd.DataFrame(columns=['reactionID', 'type', 'value', 'is_mapped'])
 setup_df = pd.DataFrame(columns=['reactionID', 'setup.environment'])
-compound_df = pd.DataFrame(columns=['reactionID', 'INCHI_KEY', 'reaction_role' 'identifier.type', 'identifier.value','amount.type', 'amount.value', 'amount.unit'])
+compound_df = pd.DataFrame(columns=['reactionID', 'INCHI_KEY', 'reaction_role', 'identifier.type', 'identifier.value','amount.type', 'amount.value', 'amount.unit'])
 input_df = pd.DataFrame(columns=['reactionID', 'addition_order', 
         'addition_time.value', 'addition_time.units', 
         'addition_speed.type', 

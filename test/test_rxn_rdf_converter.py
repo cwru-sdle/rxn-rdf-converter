@@ -2,18 +2,10 @@
 # =================================================================
 #               IMPORT REQUIREMENTS
 # =================================================================
-import ord_schema
-from ord_schema.message_helpers import load_message, write_message, message_to_row
-from ord_schema.proto import dataset_pb2, reaction_pb2
+from ord_schema.message_helpers import load_message
+from ord_schema.proto import dataset_pb2
 import os
-from rdkit import Chem
 import re
-from owlready2 import get_namespace, get_ontology, Thing
-import glob
-import rdflib
-from rdflib import Graph, RDF, RDFS, OWL, Namespace, Literal, URIRef
-from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
-from datetime import datetime
 from src import rxn_rdf_converter
 import logging
 import random
