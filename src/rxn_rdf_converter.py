@@ -2,18 +2,18 @@
 # =================================================================
 #               IMPORT REQUIREMENTS
 # =================================================================
-import ord_schema
-from ord_schema.message_helpers import load_message, write_message, message_to_row
+#import ord_schema
+from ord_schema.message_helpers import load_message, message_to_row #write_message,
 from ord_schema.proto import dataset_pb2, reaction_pb2
 import os
 from rdkit import Chem
 import re
-from owlready2 import get_namespace, get_ontology, Thing
-import rdflib
-from rdflib import Graph, RDF, RDFS, OWL, Namespace, Literal, URIRef
-from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
+from owlready2 import get_ontology#, Thing, get_namespace
+#import rdflib
+from rdflib import Graph, Namespace, Literal, URIRef #, RDF, RDFS, OWL
+#from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
 import logging
-import csv
+#import csv
 from src.reaction_KG import ReactionKG
 
 # =================================================================
