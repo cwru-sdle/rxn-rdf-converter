@@ -6,6 +6,8 @@ The ``rxn_rdf_converter`` is a Python package which aims to process reaction dat
 
 This package facilitates the transformation of raw experimental data into structured RDF triples (Turtle or JSON-LD format), making the data semantically searchable, linkable, and machine-readable for advanced data analysis and machine learning applications in chemistry and materials science.
 
+The latest MDS-Onto version (v.0.3.1.68) is used in this package and the corresponding manuscript (https://cwrusdle.bitbucket.io/). 
+The MDS-Onto.owl file can be found in the repository. 
 ---
 
 ## Authors 
