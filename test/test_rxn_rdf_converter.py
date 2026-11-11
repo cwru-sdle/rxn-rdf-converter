@@ -34,7 +34,7 @@ logger = logging.getLogger(__name__)
 # Find MDS_Onto.owl
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = SCRIPT_DIR.parent
-mds_file_path = PROJECT_DIR / 'MDS_Onto.owl'
+mds_file_path = str(PROJECT_DIR / 'MDS_Onto.owl')
 
 # Choose a dataset to test the reactions from
 dataset = load_message("test/ord_dataset-00005539a1e04c809a9a78647bea649c.pb.gz", dataset_pb2.Dataset,)

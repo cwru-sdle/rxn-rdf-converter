@@ -14,7 +14,7 @@ from rdflib import Graph, Namespace, Literal, URIRef #, RDF, RDFS, OWL
 #from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
 import logging
 #import csv
-#from src.reaction_KG import ReactionKG
+from src.reaction_KG import ReactionKG
 
 # =================================================================
 #               NAMESPACE DEFINITIONS
