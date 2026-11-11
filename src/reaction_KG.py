@@ -9,7 +9,7 @@ from ord_schema.message_helpers import message_to_row # load_message, write_mess
 import os
 from rdkit import Chem
 import re
-from owlready2 import get_ontology#, Thing, get_namespace, 
+from owlready2 import get_ontology, get_namespace #, Thing, , 
 #import rdflib
 from rdflib import Graph, Namespace, Literal, URIRef #RDF, RDFS, OWL, 
 #from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
@@ -29,7 +29,7 @@ AFQ = Namespace('http://purl.allotrope.org/ontologies/quality#')
 AFM = Namespace('http://purl.allotrope.org/ontologies/material#')
 OBO = Namespace('http://purl.obolibrary.org/obo/')
 CCO = Namespace('https://www.commoncoreontologies.org/')
-MDS = Namespace('https://cwrusdle.bitbucket.io/mds/')
+MDS = Namespace('https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#')
 NCIT = Namespace('http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
 QUDT = Namespace('http://qudt.org/schema/qudt/')
 UNIT = Namespace('http://qudt.org/vocab/unit/')
@@ -412,7 +412,7 @@ class ReactionKG:
         self.onto.get_namespace('http://purl.allotrope.org/ontologies/material#')
         self.onto.get_namespace('http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
         cco = self.onto.get_namespace('https://www.commoncoreontologies.org/')
-        mds = self.onto.get_namespace('https://cwrusdle.bitbucket.io/mds/')
+        mds = self.onto.get_namespace('https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#')
         qudt = self.onto.get_namespace('http://qudt.org/schema/qudt/')
         rdf = self.onto.get_namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#type')
         obo = self.onto.get_namespace('http://purl.obolibrary.org/obo/')
