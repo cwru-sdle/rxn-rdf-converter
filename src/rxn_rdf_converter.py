@@ -39,7 +39,24 @@ logger = logging.getLogger(__name__)
 # =================================================================
 #               CLASS & METHOD CONSTRUCTION
 # =================================================================
-        
+class SpaceInsensitiveDict(dict):
+    """Dictionary that automatically strips spaces from string keys."""
+    @staticmethod
+    def _clean(key):
+        return key.replace(" ", "") if isinstance(key, str) else key
+
+    def __getitem__(self, key):
+        return super().__getitem__(self._clean(key))
+
+    def __setitem__(self, key, value):
+        super().__setitem__(self._clean(key), value)
+
+    def get(self, key, default=None):
+        return super().get(self._clean(key), default)
+
+    def __contains__(self, key):
+        return super().__contains__(self._clean(key))
+
 class DatasetProcessor: 
     """
     A class to process an Open Reaction Database (ORD) dataset
@@ -568,7 +585,7 @@ class ReactionKG:
 
         }
 
-        self.prop_metadata_dict = {}
+        self.prop_metadata_dict = SpaceInsensitiveDict()
 
         for prop in self.onto.object_properties():
             if prop.label: 
@@ -581,7 +598,7 @@ class ReactionKG:
                 self.prop_metadata_dict[str(prop.label[0])] = (prop.iri, 'Datatype Property')
         self.prop_metadata_dict['type'] = ('http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'Object Property')
         
-        self.instance_dict = {}
+        self.instance_dict = SpaceInsensitiveDict()
         
         for prop in self.onto.properties():
             if prop.label:
@@ -1193,7 +1210,7 @@ class ReactionKG:
             if 'is_heterogeneous' in item: 
                 self.instance_dict['is heterogeneous'].append([self.chemical_reaction.iri, item['is_heterogeneous']])
             if 'forms_precipitate' in item: 
-                self.instance_dict['forms precipitate'].append([self.chemical_reaction.iri, item['forms_precipitate']])
+                self.instance_dict['forms Precipitate'].append([self.chemical_reaction.iri, item['forms_precipitate']])
             if 'is_exothermic' in item: 
                 self.instance_dict['is exothermic'].append([self.chemical_reaction.iri, item['is_exothermic']])
             if 'offgasses' in item: 
@@ -1374,6 +1391,7 @@ class ReactionKG:
                 self.instance_dict['has datetime value'].append([reaction_time.iri, item['reaction_time.value']])
                 self.instance_dict['uses measurement unit'].append([reaction_time.iri, self.unit_mapping[item['reaction_time.units']].iri])
             
+            product_dict = {}
             try: 
                 _, product_dict = self._extract_components(item, context='product')
             except Exception as e: 
@@ -1437,6 +1455,14 @@ class ReactionKG:
             reaction_setup = self.mds.ReactionSetup(f'ReactionSetup#{self.reaction_id}')
             self.instance_dict['precedes'].append([reaction_setup.iri, self.chemical_reaction.iri])
         
+    def _strip_key_spaces(self):
+        """Remove spaces from all object property labels in (keys) in instant_dict and prop_metadata_dict."""
+        self.instance_dict = {
+            k.replace(" ", ""): v for k, v in self.instance_dict.items()
+        }
+        self.prop_metadata_dict = {
+            k.replace(" ", ""): v for k, v in self.prop_metadata_dict.items()
+        }
 
     def generate_data_graph(self, dataset_id, save_file_path): 
         """Generates the final RDF data graph and serializes it to a file.

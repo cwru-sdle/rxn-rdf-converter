@@ -1,0 +1,710 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/mds/",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_component_0",
+      "cco:ont00001769": 0.4000000059604645,
+      "cco:ont00001863": {
+        "@id": "unit:MicroMOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_IFIHYLCUKYCKRH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_component_0",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_component_1",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_AFZZYIJIWUTJFO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_component_0",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionType33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ReactionType",
+      "cco:ont00001765": "Suzuki-Miyaura cross-coupling",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ChemicalReaction#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_component_1",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "mds:additionOrder": 1
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/ReactantArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_XCMDLKBCELZQNW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_component_1_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CCc1cc(CC)cc(CC)c1",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_WJYMPXJVHNDZHD-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_component_0",
+      "cco:ont00001769": 0.02500000037252903,
+      "cco:ont00001863": {
+        "@id": "unit:MicroMOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_YJVFFLUZDVXJQI-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_WJYMPXJVHNDZHD-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_component_1_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "O",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReactionSetup#33316eb3b64a44e1a20f2f6bddf857f8",
+      "obo:BFO_0000063": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ChemicalReaction#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_component_1_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "O",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_Outcome_0_Product_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C=C1)=C(C2=CC=C(N=CC=C3)C3=C2)C4=C1N(C5OCCCC5)N=C4",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Product#33316eb3b64a44e1a20f2f6bddf857f8_FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_component_1",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_WJYMPXJVHNDZHD-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_2_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C)(C)c1ccc(cc1)c2ccc(cc2)C(C)(C)C",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_CDKCEZNPAYWORX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_component_0",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroMOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_UIIMBOGNXHQVGW-UHFFFAOYSA-M"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReactionTime#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ReactionTime",
+      "cco:ont00001767": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MIN"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "mds:additionOrder": 1,
+      "obo:BFO_0000117": [
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/AdditionSpeed#33316eb3b64a44e1a20f2f6bddf857f8"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/FlowRate#33316eb3b64a44e1a20f2f6bddf857f8"
+        }
+      ]
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ChemicalReaction#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001777": [
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/FlowConditions#33316eb3b64a44e1a20f2f6bddf857f8"
+        }
+      ],
+      "cco:ont00001986": [
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/CrudeProduct#33316eb3b64a44e1a20f2f6bddf857f8"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/Product#33316eb3b64a44e1a20f2f6bddf857f8_FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "None",
+      "mds:safetyNotes": "None",
+      "obo:BFO_0000199": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionTime#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_component_1_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CCC1=CC(CC)=CC=C1",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_AFZZYIJIWUTJFO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Product#33316eb3b64a44e1a20f2f6bddf857f8_FDTIMQRDPFSSCS-UHFFFAOYSA-N",
+      "@type": "mds:Product",
+      "mds:isDesiredProduct": true
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "mds:additionOrder": 1
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_1_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CN(C)C=O",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_component_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "BrC1=CC=C2N=CC=CC2=C1",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_IFIHYLCUKYCKRH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_component_1",
+      "cco:ont00001769": 49.5,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_component_1",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_WJYMPXJVHNDZHD-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_2",
+      "cco:ont00001769": 0.4000000059604645,
+      "cco:ont00001863": {
+        "@id": "unit:MicroMOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_CDKCEZNPAYWORX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_component_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "Cc1ccccc1",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/CatalystArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_component_0",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_YJVFFLUZDVXJQI-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_component_0",
+      "cco:ont00001769": 445.5,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_component_1",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "Cc1ccc2n(C3CCCCO3)ncc2c1B4OC(C)(C)C(C)(C)O4",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_XCMDLKBCELZQNW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_component_1",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_AFZZYIJIWUTJFO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_component_1",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InternalStandardArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_2",
+      "@type": "mds:InternalStandardArtifactFunction",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_CDKCEZNPAYWORX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/FlowConditions#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ContinuousFlow"
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReactionEnvironment#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ChemicalReaction#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "obo:BFO_0000196": [
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/ReactionTemperature#33316eb3b64a44e1a20f2f6bddf857f8"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/mds/ReactionPressure#33316eb3b64a44e1a20f2f6bddf857f8"
+        }
+      ]
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_IFIHYLCUKYCKRH-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide"
+      },
+      "mds:isLimiting": true,
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_XCMDLKBCELZQNW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent"
+      },
+      "mds:isLimiting": true,
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/CrudeProduct#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_XLYOFNOQVPJJNP-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ProductMeasurement#33316eb3b64a44e1a20f2f6bddf857f8_Agilent 1200 Infinity HPLC systems_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 8.0600004196167,
+      "cco:ont00001808": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Product#33316eb3b64a44e1a20f2f6bddf857f8_FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
+      },
+      "mds:isNormalized": true,
+      "mds:usesAuthenticStandard": false,
+      "mds:usesInternalStandard": true
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_ZMXDDKWLCZADIW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/TemperatureMeasurement#33316eb3b64a44e1a20f2f6bddf857f8_condition",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 100.0,
+      "cco:ont00001808": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionTemperature#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:DEG_C"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_ZMXDDKWLCZADIW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/AnalyticalTechnique#33316eb3b64a44e1a20f2f6bddf857f8_Agilent 1200 Infinity HPLC systems",
+      "@type": "mds:AnalyticalTechnique",
+      "cco:ont00001765": "Agilent",
+      "mds:details": [
+        "LCMS",
+        "HPLC S4\nconditions uses a 0.1% AcOH/NH4COOH/Water based gradient over 1.4 minutes running from 5-95% MeCN using a Waters Acquity UPLC BEH C18 30 x 2.1 mm column at 80 °C with a flow rate of 2.5ml/min and a detection wavelength of 210 360nm"
+      ]
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReagentArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_component_0",
+      "@type": "mds:ReagentArtifactFunction",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_UIIMBOGNXHQVGW-UHFFFAOYSA-M"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/FlowRate#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:FlowRate",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "MILLILITER_PER_MINUTE"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/AdditionDevice#33316eb3b64a44e1a20f2f6bddf857f8_SYRINGE",
+      "@type": "cco:ont00000581",
+      "mds:details": "HPLC Pump",
+      "obo:BFO_0000056": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_1",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ProductArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Product#33316eb3b64a44e1a20f2f6bddf857f8_FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "mds:additionOrder": 1
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "mds:additionOrder": 1
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      },
+      "mds:additionOrder": 1
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/AdditionSpeed#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:AdditionSpeed",
+      "cco:ont00001765": "FAST"
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_0",
+      "cco:ont00001769": 0.4000000059604645,
+      "cco:ont00001863": {
+        "@id": "unit:MicroMOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_XCMDLKBCELZQNW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_CDKCEZNPAYWORX-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ChemicalReaction#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_YXFVVABEGXRONW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReactionTemperature#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ReactionTemperature"
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_component_0",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_LigandinSolvent_YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_XLYOFNOQVPJJNP-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/ReactantArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_IFIHYLCUKYCKRH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide_AFZZYIJIWUTJFO-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_ArylHalide"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_YJVFFLUZDVXJQI-UHFFFAOYSA-L",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_UIIMBOGNXHQVGW-UHFFFAOYSA-M",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/InputAddition#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/ReactionMixture#33316eb3b64a44e1a20f2f6bddf857f8"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunctionArtifactFunction#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_component_1",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BoronateinSolvent_ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_component_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(=O)[O-].CC(=O)[O-].[Pd+2]",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_CatalystinSolvent_YJVFFLUZDVXJQI-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_component_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(=O)(O)[O-].[Na+]",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_BaseinSolvent_UIIMBOGNXHQVGW-UHFFFAOYSA-M"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/ReactionPressure#33316eb3b64a44e1a20f2f6bddf857f8",
+      "@type": "mds:ReactionPressure",
+      "cco:ont00001769": 100.0,
+      "cco:ont00001863": {
+        "@id": "unit:BAR"
+      },
+      "mds:details": "PRESSURIZED"
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/mds/SMILES#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_component_0_identifier_0",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CN(C)C=O",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/mds/Component#33316eb3b64a44e1a20f2f6bddf857f8_Solvent_1_ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    }
+  ]
+}
