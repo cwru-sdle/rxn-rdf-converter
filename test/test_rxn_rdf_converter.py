@@ -275,7 +275,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             for ident in semi.reaction_identifiers:
                 val = ident.get("value")
                 if val:
-                    assert any(val == tv for _, tv in semi.instance_dict.get("has text value", []))
+                    assert any(val == tv for _, tv in semi.instance_dict.get("hastextvalue", []))
 
     def test_extract_components_and_roles_and_amounts(self):
         """
@@ -302,8 +302,8 @@ class TestRxnRdfConverter(unittest.TestCase):
             # There should be some 'type' entries for components if inputs had components
             if semi.reaction_inputs:
                 # If any input had components flag true, expect 'member part of' entries or 'is input of'
-                got_member_part = semi.instance_dict.get("member part of", [])
-                got_is_input_of = semi.instance_dict.get("is input of", [])
+                got_member_part = semi.instance_dict.get("memberpartof", [])
+                got_is_input_of = semi.instance_dict.get("isinputof", [])
                 # Accept either presence or absence depending on real data; but if components existed, at least one of those lists may be non-empty
                 # So we don't assert strict presence, but ensure no exceptions occurred and instance_dict exists
                 assert isinstance(semi.instance_dict, dict)
@@ -346,9 +346,9 @@ class TestRxnRdfConverter(unittest.TestCase):
             semi._extract_component_amount(component_list, reaction_component, i=0, context='input')
 
             # verify decimal value recorded
-            assert any(25.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            assert any(25.0 == v for _, v in semi.instance_dict.get("hasdecimalvalue", []))
             # verify measurement unit mapping used
-            unit_list = semi.instance_dict.get("uses measurement unit", [])
+            unit_list = semi.instance_dict.get("usesmeasurementunit", [])
             assert any("MilliGM" in str(u[1]) or "MilliGM" in str(u) for u in unit_list) or unit_list == []
 
     def test_extract_compound_identifiers_and_details(self):
@@ -388,7 +388,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             semi._extract_compound_identifiers(component_list, 0, "input", "components", reaction_component)
 
             # check values recorded
-            values = [v for _, v in semi.instance_dict.get("has text value", [])]
+            values = [v for _, v in semi.instance_dict.get("hastextvalue", [])]
             assert "CCO" in values
             assert "custom-id" in values
 
@@ -449,7 +449,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             }
             # call
             semi._process_temperature(cond, context='condition')
-            assert any(60.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            assert any(60.0 == v for _, v in semi.instance_dict.get("hasdecimalvalue", []))
 
             # input context requires reaction_component
             # create fake component and call
@@ -460,7 +460,7 @@ class TestRxnRdfConverter(unittest.TestCase):
                 "addition_temperature.control.type": "thermostat"
             }
             semi._process_temperature(add_temp, reaction_component=reaction_component, context='input')
-            assert any(-5.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            assert any(-5.0 == v for _, v in semi.instance_dict.get("hasdecimalvalue", []))
 
 
     def test_process_reaction_conditions_full(self):

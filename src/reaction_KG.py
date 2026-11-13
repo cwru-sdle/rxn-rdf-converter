@@ -36,6 +36,24 @@ UNIT = Namespace('http://qudt.org/vocab/unit/')
 
 logger = logging.getLogger(__name__)
 
+class SpaceInsensitiveDict(dict):
+    """Dictionary that automatically strips spaces from string keys."""
+    @staticmethod
+    def _clean(key):
+        return key.replace(" ", "") if isinstance(key, str) else key
+
+    def __getitem__(self, key):
+        return super().__getitem__(self._clean(key))
+
+    def __setitem__(self, key, value):
+        super().__setitem__(self._clean(key), value)
+
+    def get(self, key, default=None):
+        return super().get(self._clean(key), default)
+
+    def __contains__(self, key):
+        return super().__contains__(self._clean(key))
+
 class ReactionKG: 
     """A class that extracts and processes reaction data to be represented as a reaction knowledge graph. 
     It processes reaction data based on the ord schema (in Google Protocol Buffers format) into
@@ -463,7 +481,7 @@ class ReactionKG:
         'PERCENTAGE': self.unit.PERCENT,
         }
 
-        self.prop_metadata_dict = {}
+        self.prop_metadata_dict = SpaceInsensitiveDict()
 
         for prop in self.onto.object_properties():
             if prop.label: 
@@ -476,7 +494,7 @@ class ReactionKG:
                 self.prop_metadata_dict[str(prop.label[0])] = (prop.iri, 'Datatype Property')
         self.prop_metadata_dict['type'] = ('http://www.w3.org/1999/02/22-rdf-syntax-ns#type', 'Object Property')
         
-        self.instance_dict = {}
+        self.instance_dict = SpaceInsensitiveDict()
     
         for prop in self.onto.properties():
             self.instance_dict[str(prop.label[0])] = []
@@ -1230,6 +1248,7 @@ class ReactionKG:
                     ('has datetime value', item['reaction_time.value']), ('uses measurement unit', self.unit_mapping[item['reaction_time.units']].iri)])
                 self._apply_triples(self.chemical_reaction, ('occupies temporal region', reaction_time.iri))
 
+            product_dict = {}
             try: 
                 _, product_dict = self._extract_components(item, context='product')
             except Exception as e: 
@@ -1285,7 +1304,16 @@ class ReactionKG:
         for item in self.reaction_setup: 
             reaction_setup = self.mds.ReactionSetup(f'ReactionSetup#{self.reaction_id}')
             self.instance_dict['precedes'].append([reaction_setup.iri, self.chemical_reaction.iri])
-        
+
+    def _strip_key_spaces(self):
+        """Removes spaces from all keys in instance_dict and prop_metadata_dict."""
+        self.instance_dict = {
+            k.replace(" ", ""): v for k, v in self.instance_dict.items()
+        }
+        self.prop_metadata_dict = {
+            k.replace(" ", ""): v for k, v in self.prop_metadata_dict.items()
+        }
+
     def generate_data_graph(self, dataset_id, save_file_path): 
         """Generates the final RDF data graph and serializes it to a file.
 
