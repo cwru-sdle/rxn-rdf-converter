@@ -19878,7 +19878,7 @@
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
     <rdfs:domain rdf:resource="https://www.commoncoreontologies.org/ont00000253"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
-    <rdfs:label xml:lang="en">has decimal value</rdfs:label>
+    <rdfs:label xml:lang="en">hasdecimalvalue</rdfs:label>
     <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated>
     <skos:changeNote xml:lang="en">Deprecated without direct replacement because the property is overly generic and does not add semantic content beyond the use of an xsd:decimal typed literal. Modelers should instead use a more specific datatype property whose meaning explains what the decimal value measures, quantifies, estimates, rates, or otherwise represents.</skos:changeNote>
     <skos:definition xml:lang="en">A data property that has as its range a decimal value.</skos:definition>
