@@ -35,7 +35,7 @@ mds:Ontology a owl:Ontology ;
     dcmi:description "MDS-Onto is a domain (low) level ontology that describes terms in Materials Data Science." ;
     dcmi:license <https://creativecommons.org/licenses/by-sa/4.0/> ;
     dcmi:title "MDS-Onto" ;
-    owl:versionInfo "0.3.1.68" .
+    owl:versionInfo "0.3.1.69" .
 
 cco:ont00001754 a owl:AnnotationProperty ;
     rdfs:label "definitionsource"@en ;
@@ -29299,6 +29299,24 @@ mds:hasDataType a owl:DatatypeProperty ;
     rdfs:domain mds:DataFile ;
     rdfs:range xsd:string ;
     skos:definition "The kind of data held by a data file, e.g., 'time series'."@en .
+
+
+mds:details a owl:DatatypeProperty ;
+    rdfs:label "details"@en ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf cco:ont00001765 ;
+    skos:altLabel "Details"@en ;
+    skos:definition "details is a text value datatype property for adding details about a process (e.g. an experiment or a characterization) or a material entity (e.g. a sample). ".
+
+###  https://www.commoncoreontologies.org/ont00001769
+<https://www.commoncoreontologies.org/ont00001769> rdf:type owl:DatatypeProperty ;
+                                                   rdfs:domain <https://www.commoncoreontologies.org/ont00000253> ;
+                                                   rdfs:range xsd:decimal ;
+                                                   rdfs:label "has decimal value"@en ;
+                                                   owl:deprecated "true"^^xsd:boolean ;
+                                                   <http://www.w3.org/2004/02/skos/core#changeNote> "Deprecated without direct replacement because the property is overly generic and does not add semantic content beyond the use of an xsd:decimal typed literal. Modelers should instead use a more specific datatype property whose meaning explains what the decimal value measures, quantifies, estimates, rates, or otherwise represents."@en ;
+                                                   <http://www.w3.org/2004/02/skos/core#definition> "A data property that has as its range a decimal value."@en ;
+                                                   <https://www.commoncoreontologies.org/ont00001760> "https://www.commoncoreontologies.org/InformationEntityOntology"^^xsd:anyURI .    
 
 mds:hasDepthOfCutPerPass a owl:DatatypeProperty ;
     rdfs:label "hasDepthOfCutPerPass" ;
