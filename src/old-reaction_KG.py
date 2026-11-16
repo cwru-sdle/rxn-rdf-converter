@@ -8,7 +8,7 @@ from ord_schema.proto import dataset_pb2, reaction_pb2
 import os
 from rdkit import Chem
 import re
-from owlready2 import get_ontology, get_namespace #, Thing, 
+from owlready2 import get_ontology, Thing, get_namespace  
 #import rdflib
 from rdflib import Graph, Namespace, Literal, URIRef #, RDF, RDFS, OWL
 #from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
@@ -36,9 +36,6 @@ UNIT = Namespace('http://qudt.org/vocab/unit/')
 # Set up logging
 logger = logging.getLogger(__name__)
 
-# =================================================================
-#               CLASS & METHOD CONSTRUCTION
-# =================================================================
 class SpaceInsensitiveDict(dict):
     """Dictionary that automatically strips spaces from string keys."""
     @staticmethod
@@ -56,122 +53,7 @@ class SpaceInsensitiveDict(dict):
 
     def __contains__(self, key):
         return super().__contains__(self._clean(key))
-
-class DatasetProcessor: 
-    """
-    A class to process an Open Reaction Database (ORD) dataset
-
-    Attributes: 
-        dataset (:class:`dataset_pb.Dataset`): The loaded ORD dataset protocol buffer object. 
-        dataset_id (str): The unique ID of the dataset, extracted from the full dataset ID.
-        output_dir (str): The directory path where the processed reaction data will be saved.
-        owl_onto (str): The file path to the MDS-Onto OWL ontology file 
-        error_log_directory (str): The directory where dataset-specific log files are created.
-        fmt (str): Format of the file containing the reaction's final data graph (e.g., "turtle" is the default)
-        dataset_logger (logging.Logger): The logger configured specifically for this dataset.
-        handler (logging.FileHandler): The file handler for the dataset logger. 
-
-    """
-    def __init__ (self, dataset_pb, dataset_file_path, owl_onto_file_path, output_directory, error_log_directory, fmt="turtle"):
-        """Constructor method.
-
-        Initializes the processor, loads the dataset, sets up directory paths, and creates a dataset-specific logger.
-
-        Args: 
-            dataset_pb (module): The module containing the ORD protocol buffer definitions (e.g. `ord_schema.proto.dataset_pb`).
-            dataset_file_path (str): The file path to the ORD dataset file (e.g., a `.pb` or `.pb.gz` file).
-            owl_onto_file_path (str): The file path to the MDS-Onto OWL ontology file used as the semantic model.
-            output_directory (str): The root directory where processed data folders will be created to store dataset JSON-LD or Turtle files.
-            error_log_directory (str): The directory where error log files for each dataset will be stored.
-            fmt (str, optional): Format for the file containing the reaction's final data graph. Defaults to "turtle".
-        """
-        print(f"attempting to load_message({dataset_file_path}, dataset_pb.DataSet_")
-        self.dataset = load_message(dataset_file_path, dataset_pb.Dataset,)
-        self.dataset_id = re.split('-', self.dataset.dataset_id)[1]
-        dataset_folder = os.path.basename(os.path.dirname(dataset_file_path))
-        os.makedirs(os.path.join(output_directory, dataset_folder), exist_ok=True)
-        self.output_dir = os.path.join(output_directory, dataset_folder)
-        self.owl_onto = owl_onto_file_path
-        self.error_log_directory = error_log_directory
-        self.fmt = fmt
-
-        # Create dataset-specific logger
-        self.dataset_logger, self.log_handler = self._create_dataset_logger()
-
-        # Log initialization
-        self.dataset_logger.info(f"DatasetProcessor initiated for dataset: {self.dataset_id}")
-        self.dataset_logger.info(f"Dataset file: {dataset_file_path}")
-        self.dataset_logger.info(f"Output Directory: {self.output_dir}")
-        self.dataset_logger.info(f"Format: {fmt}")
-    
-    def _create_dataset_logger(self):
-        """Create simple logger for each dataset
         
-        The logger's name and log file are dynamically based on :attr:`self.dataset_id`.
-
-        Returns: 
-            tuple[logging.Logger, logging.FileHandler]: a tuple containing the configured logger and the file hander.
-            - dataset_logger: the configured logger object, named dynamically based on self.dataset_id, used to record messages (Type: logging.Logger)
-            - handler: a file handler object that directs log records to the specific file path (log_file). (Type: logging.FileHandler)
-
-        """
-
-        log_file = f'{self.error_log_directory}/dataset_{self.dataset_id}.log'
-        logger_name = f'dataset_{self.dataset_id}'
-
-        # Create logger
-        dataset_logger = logging.getLogger(logger_name)
-        dataset_logger.setLevel(logging.INFO)
-        dataset_logger.handlers.clear() # clear existing handlers
-
-        # Create file handler
-        handler = logging.FileHandler(log_file)
-        formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-        handler.setFormatter(formatter)
-        dataset_logger.addHandler(handler)
-
-        return dataset_logger, handler
-    
-    def extract_reaction(self, dataset_reaction_list=None):
-        """A method to process reactions by instantiating the ReactionKG class. 
-        
-        Iterates over all reactions in the dataset, attempts to process each one individually, and logs successful or failed attempts.
-
-        Args:
-            dataset_reaction_list (list, optional): A list to which the reaction IDs and their 
-                corresponding dataset IDs for all successfully processed reactions will be appended. 
-                Defaults to an empty list (`[]`).
-        Returns: 
-            tuple: A tuple containing: 
-                - self: The instance of the DatasetProcessor class. (Type: DatasetProcessor)
-                - reaction_error (list): A list of individual reactions and the error(s) that occurred during processing, where each element is a list like `[reaction_id, error_message]`. (Type: list)
-                - dataset_reaction_list (list): The list containing `[dataset_id, reaction_id]` pairs for successfully processed reactions. (Type: list)
-        """
-
-        if dataset_reaction_list is None: 
-            dataset_reaction_list = []
-
-        reaction_error = []
-        logger.info(f"Found {len(self.dataset.reactions)} reactions in {self.dataset_id}")
-
-        for ind, reaction in enumerate(self.dataset.reactions): 
-            try: 
-                self.dataset_logger.info(f"Processing reaction {ind}/{len(self.dataset.reactions)}: {reaction.reaction_id}")
-
-                reaction_data = ReactionKG(reaction, self.fmt).generate_reaction().generate_instances(self.owl_onto).generate_data_graph(self.dataset_id, self.output_dir)
-                dataset_reaction_list.append([self.dataset_id, reaction.reaction_id])
-
-                self.dataset_logger.info(f"Successfully processed reaction: {reaction.reaction_id}")
-                
-            except Exception as e: 
-                reaction_error.append([reaction.reaction_id, str(e)])
-                self.dataset_logger.error(f"Error processing reaction {reaction.reaction_id}: {e}")
-                continue
-        
-        self.dataset_logger.info(f"Dataset {self.dataset_id} processing completed")
-        
-        return self, reaction_error, dataset_reaction_list
-
 class ReactionKG: 
     """A class that extracts and processes reaction data to be represented as a reaction knowledge graph. 
     It processes reaction data based on the ord schema (in Google Protocol Buffers format) into
@@ -562,43 +444,47 @@ class ReactionKG:
         self.unit = unit
         
         # Setup and store units in unit_mapping dictionary to be used in other methods
-        self.unit_mapping = {        
-        'CELSIUS': self.unit.DEG_C,
-        'FAHRENHEIT': self.unit.DEG_F,
-        'KELVIN': self.unit.K,
-
-        'KILOGRAM': self.unit.KiloGM,
-        'GRAM': self.unit.GM,
-        'MILLIGRAM': self.unit.MilliGM,
-        'MICROGRAM': self.unit.MicroGM,
-
-        'MOLE': self.unit.MOL,
-        'MILLIMOLE' : self.unit.MilliMOL,
-        'MICROMOLE': self.unit.MicroMOL,
-        'NANOMOLE': self.unit.NanoMOL,
-
-        'LITER': self.unit.L,
-        'MILLILITER': self.unit.MilliL,
-        'MICROLITER': self.unit.MicroL,
-        'NANOLITER': self.unit.NanoL,
-
-        'BAR': self.unit.BAR,
-        'ATMOSPHERE': self.unit.ATM,
-        'PSI': self.unit.PSI,
-        'KPSI': f'{self.unit}KiloLB_F-PER-IN2',
-        'PASCAL': self.unit.PA,
-        'KILOPASCAL': self.unit.KiloPA,
-        'TORR': self.unit.TORR,
-        'MM_HG': self.unit.MilliM_HG,
-
-        'DAY': self.unit.DAY,
-        'HOUR': self.unit.HR,
-        'MINUTE': self.unit.MIN,
-        'SECOND': self.unit.SEC,
-
-        'PERCENTAGE': self.unit.PERCENT,
-
+        qudt_units = {
+            'CELSIUS': 'DEG_C',
+            'FAHRENHEIT': 'DEG_F',
+            'KELVIN': 'K',
+            'KILOGRAM': 'KiloGM',
+            'GRAM': 'GM',
+            'MILLIGRAM': 'MilliGM',
+            'MICROGRAM': 'MicroGM',
+            'MOLE': 'MOL',
+            'MILLIMOLE': 'MilliMOL',
+            'MICROMOLE': 'MicroMOL',
+            'NANOMOLE': 'NanoMOL',
+            'LITER': 'L',
+            'MILLILITER': 'MilliL',
+            'MICROLITER': 'MicroL',
+            'NANOLITER': 'NanoL',
+            'BAR': 'BAR',
+            'ATMOSPHERE': 'ATM',
+            'PSI': 'PSI',
+            'KPSI': 'KiloLB_F-PER-IN2',
+            'PASCAL': 'PA',
+            'KILOPASCAL': 'KiloPA',
+            'TORR': 'TORR',
+            'MM_HG': 'MilliM_HG',
+            'DAY': 'DAY',
+            'HOUR': 'HR',
+            'MINUTE': 'MIN',
+            'SECOND': 'SEC',
+            'PERCENTAGE': 'PERCENT',
         }
+
+        self.unit_mapping = {}
+        for ord_unit, qudt_suffix in qudt_units.items():
+            entity = getattr(self.unit, qudt_suffix, None)
+            if entity is None:
+                with self.unit:
+                    entity = Thing(qudt_suffix)
+                # Instantiate a QUDT Unit individual if not pre-declared in MDS_Onto.owl
+                #entity = self.qudt.Unit(f'http://qudt.org/vocab/unit/{qudt_suffix}')
+            self.unit_mapping[ord_unit] = entity
+
 
         self.prop_metadata_dict = SpaceInsensitiveDict()
 
@@ -697,6 +583,7 @@ class ReactionKG:
                 identifier_type = 'Custom'
             else: 
                 identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
+            
             if identifier_class: 
                 identifier = identifier_class(f"{identifier_type}{self.reaction_id}")
                 self.instance_dict['type'].append([identifier.iri, identifier.is_instance_of[0].iri])
@@ -706,7 +593,10 @@ class ReactionKG:
                     self.instance_dict['details'].append([identifier.iri, item['details']])
                 if item['is_mapped']:
                     self.instance_dict['is mapped'].append([identifier.iri, item['is_mapped']])
-            
+            else: 
+                self.instance_dict['has text value'].append(
+                    [self.chemical_reaction.iri, item['value']]
+                )
     def _extract_components(self, component_list, process_node=None, context='input'):
         """Private method to process components (reactants, inputs, workup materials, or products).
         
@@ -870,7 +760,10 @@ class ReactionKG:
             if amount_added and f"{prefix}amount.{amount_type}.value" in component_list and f"{prefix}amount.{amount_type}.units" in component_list: 
                 self.instance_dict['inheres in'].append([amount_added.iri, reaction_component.iri])
                 self.instance_dict['has decimal value'].append([amount_added.iri, component_list[f"{prefix}amount.{amount_type}.value"]])
-                self.instance_dict['uses measurement unit'].append([amount_added.iri, self.unit_mapping[component_list[f"{prefix}amount.{amount_type}.units"]].iri])
+                unit_key = component_list[f"{prefix}amount.{amount_type}.units"]
+                unit_entity = self.unit_mapping.get(unit_key)
+                if unit_entity:
+                    self.instance_dict['uses measurement unit'].append([amount_added.iri, unit_entity.iri])
 
     def _extract_compound_identifiers(self, component_list, i, context, prefix, reaction_component):
         """Extracts and processes compound identifiers for components (inputs, workups, or products).
@@ -980,14 +873,18 @@ class ReactionKG:
                 self.instance_dict['type'].append([addition_duration.iri, addition_duration.is_instance_of[0].iri])
                 self.instance_dict['occupies temporal region'].append([input_addition.iri, addition_duration.iri])
                 self.instance_dict['has datetime value'].append([addition_duration.iri, item['addition_duration.value']])
-                self.instance_dict['uses measurement unit'].append([addition_duration.iri, self.unit_mapping[item['addition_duration.units']].iri])
+                unit_entity = self.unit_mapping[item['addition_duration.units']]
+                if unit_entity is not None:
+                    self.instance_dict['uses measurement unit'].append([addition_duration.iri, unit_entity.iri])
             
             if item['addition_time'] == True and 'addition_time.value' in item and 'addition_time.units' in item:
                 addition_time = self.obo.BFO_0000202(f'AdditionTime#{self.reaction_id}')
                 self.instance_dict['type'].append([addition_time.iri, addition_time.is_instance_of[0].iri])
                 self.instance_dict['occupies temporal region'].append([input_addition.iri, addition_time.iri])
                 self.instance_dict['has datetime value'].append([addition_time.iri, item['addition_time.value']])
-                self.instance_dict['uses measurement unit'].append([addition_time.iri, self.unit_mapping[item['addition_time.units']].iri])
+                unit_entity = self.unit_mapping[item['addition_time.units']]
+                if unit_entity is not None:
+                    self.instance_dict['uses measurement unit'].append([addition_time.iri, unit_entity.iri])
 
             if item['flow_rate'] == True and 'flow_rate.value' in item and 'flow_rate.units' in item:
                 flow_rate = self.mds.FlowRate(f'FlowRate#{self.reaction_id}')
@@ -1046,9 +943,10 @@ class ReactionKG:
         temperature_measurement = self.mds.AnalyticalResult(f'TemperatureMeasurement#{self.reaction_id}_{context}')
         self.instance_dict['type'].append([temperature_measurement.iri, temperature_measurement.is_instance_of[0].iri])
         self.instance_dict['is about'].append([temperature_measurement.iri, reaction_temperature.iri])
-
         self.instance_dict['has decimal value'].append([temperature_measurement.iri, component_list[f'{prefix}.value']])
-        self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, self.unit_mapping[component_list[f'{prefix}.units']].iri])
+        unit_entity = self.unit_mapping[component_list[f'{prefix}.units']]
+        if unit_entity is not None:
+            self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, unit_entity.iri])
         
         if f'{prefix}.control.type' in component_list and (context == 'input' or context == 'workup'): 
             control_tool = self.cco.ont00000581(f'TemperatureControl#{self.reaction_id}_{component_list[f"{prefix}.control.type"]}')
@@ -1081,11 +979,15 @@ class ReactionKG:
                     self.instance_dict['details'].append([temperature_measurement.iri, component_list[details_key]])
                 if temp_key in component_list and f"{prefix}[{i}].temperature.units" in component_list: 
                     self.instance_dict['has decimal value'].append([temperature_measurement.iri, component_list[temp_key]])
-                    self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, self.unit_mapping[component_list[f"{prefix}[{i}].temperature.units"]].iri])
+                    unit_entity = self.unit_mapping[component_list[f"{prefix}[{i}].temperature.units"]]
+                    if unit_entity is not None:
+                        self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, unit_entity.iri])
                 if time_key in component_list and f"{prefix}[{i}].time.units" in component_list: 
                     time_measurement = self.obo.BFO_0000148(f"TemperatureMeasurementTime#{self.reaction_id}_{context}_{i}")
                     self.instance_dict['has datetime value'].append([time_measurement.iri, component_list[time_key]])
-                    self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, self.unit_mapping[component_list[f"{prefix}[{i}].time.units"]].iri])
+                    unit_entity = self.unit_mapping[component_list[f"{prefix}[{i}].time.units"]]
+                    if unit_entity is not None:
+                        self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, unit_entity.iri])
                 
     def _process_reaction_conditions(self):
         """Processes reaction conditions (:attr:`reaction_conditions`).
@@ -1121,7 +1023,9 @@ class ReactionKG:
                 self.instance_dict['type'].append([reaction_pressure.iri, reaction_pressure.is_instance_of[0].iri])
                 self.instance_dict['has decimal value'].append([reaction_pressure.iri, item['pressure.setpoint.value']])
                 self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
-                self.instance_dict['uses measurement unit'].append([reaction_pressure.iri, self.unit_mapping[item['pressure.setpoint.units']].iri])
+                unit_entity = self.unit_mapping[item['pressure.setpoint.units']]
+                if unit_entity is not None:
+                    self.instance_dict['uses measurement unit'].append([reaction_pressure.iri, unit_entity.iri])
                 self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_pressure.iri])
                 if 'pressure.control.type' in item: 
                     self.instance_dict['details'].append([reaction_pressure.iri, item['pressure.control.type']])
@@ -1281,7 +1185,9 @@ class ReactionKG:
                 self.instance_dict['type'].append([duration_instance.iri, duration_instance.is_instance_of[0].iri])
                 self.instance_dict['occupies temporal region'].append([workup_instance.iri, duration_instance.iri])
                 self.instance_dict['has datetime value'].append([duration_instance.iri, item['duration.value']])
-                self.instance_dict['uses measurement unit'].append([duration_instance.iri, self.unit_mapping[item['duration.units']].iri])
+                unit_entity = self.unit_mapping[item['duration.units']]
+                if unit_entity is not None:
+                    self.instance_dict['uses measurement unit'].append([duration_instance.iri, unit_entity.iri])
             self.instance_dict['is input of'].append([self.crude_product.iri, workup_instance.iri])
             self.instance_dict['precedes'].append([self.chemical_reaction.iri, workup_instance.iri])
             if (item['type'] == 'ADDITION' or item['type'] ==  'DRY_WITH_MATERIAL' or item['type'] ==  'WASH' or item['type'] == 'SCAVENGING') and item['input'] == True:
@@ -1352,7 +1258,9 @@ class ReactionKG:
 
                     if f"{product_prefix}[{j}].percentage.value" in outcome_list: 
                         self.instance_dict['has decimal value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].percentage.value"]])
-                        self.instance_dict['uses measurement unit'].append([product_measurement.iri, self.unit_mapping['PERCENTAGE'].iri])
+                        unit_entity = self.unit_mapping['PERCENTAGE']
+                        if unit_entity is not None:
+                            self.instance_dict['uses measurement unit'].append([product_measurement.iri, unit_entity.iri])
                     
                     if f"{product_prefix}[{j}].float_value.value" in outcome_list: 
                         self.instance_dict['has decimal value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].float_value.value"]])
@@ -1366,7 +1274,9 @@ class ReactionKG:
                         self.instance_dict['inheres in'].append([amount_added.iri, product_dict[i].iri])
                         self.instance_dict['is about'].append([product_measurement.iri, amount_added.iri])
                         self.instance_dict['has decimal value'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].amount.value"]])
-                        self.instance_dict['uses measurement unit'].append([product_measurement.iri, self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri])
+                        unit_entity = self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]]
+                        if unit_entity is not None:
+                            self.instance_dict['uses measurement unit'].append([product_measurement.iri, unit_entity.iri])
 
                     if f"{product_prefix}[{j}].retention_time.value" in outcome_list and f"{product_prefix}[{j}].retention_time.units" in outcome_list: 
                         retention_time = self.mds.RetentionTime('RetentionTime#' + outcome_list['reactionID'] + f"_Product_{str(i)}_Measurement_{str(j)}")
@@ -1374,7 +1284,9 @@ class ReactionKG:
                         self.instance_dict['is about'].append([retention_time.iri, product_dict[i].iri])
                         self.instance_dict['is about'].append([product_measurement.iri, retention_time.iri])
                         self.instance_dict['has datetime value'].append([retention_time.iri, outcome_list[f"{product_prefix}[{j}].retention_time.value"]])
-                        self.instance_dict['uses measurement unit'].append([retention_time.iri, self.unit_mapping[outcome_list[f"{product_prefix}[{j}].retention_time.units"]].iri])
+                        unit_entity = self.unit_mapping[outcome_list[f"{product_prefix}[{j}].retention_time.units"]]
+                        if unit_entity is not None:
+                            self.instance_dict['uses measurement unit'].append([retention_time.iri, unit_entity.iri])
                     
                     if f"{product_prefix}[{j}].uses_internal_standard" in outcome_list: 
                         self.instance_dict['uses internal standard'].append([product_measurement.iri, outcome_list[f"{product_prefix}[{j}].uses_internal_standard"]])
@@ -1404,7 +1316,9 @@ class ReactionKG:
                 self.instance_dict['type'].append([reaction_time.iri, reaction_time.is_instance_of[0].iri])
                 self.instance_dict['occupies temporal region'].append([self.chemical_reaction.iri, reaction_time.iri])
                 self.instance_dict['has datetime value'].append([reaction_time.iri, item['reaction_time.value']])
-                self.instance_dict['uses measurement unit'].append([reaction_time.iri, self.unit_mapping[item['reaction_time.units']].iri])
+                unit_entity = self.unit_mapping[item['reaction_time.units']]
+                if unit_entity is not None:
+                    self.instance_dict['uses measurement unit'].append([reaction_time.iri, unit_entity.iri])
             
             product_dict = {}
             try: 
@@ -1541,5 +1455,3 @@ class ReactionKG:
         except Exception as e: 
             logger.error(f"Failed to save graph for reaction {self.reaction_id}: {e}")
             return None
-
-

@@ -2,19 +2,13 @@
 # =================================================================
 #               IMPORT REQUIREMENTS
 # =================================================================
-#import ord_schema
-#from ord_schema import message_helpers
-from ord_schema.message_helpers import message_to_row # load_message, write_message, 
-#from ord_schema.proto import dataset_pb2, reaction_pb2
+from ord_schema.message_helpers import message_to_row 
 import os
 from rdkit import Chem
 import re
-from owlready2 import get_ontology, get_namespace #, Thing, , 
-#import rdflib
-from rdflib import Graph, Namespace, Literal, URIRef #RDF, RDFS, OWL, 
-#from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
+from owlready2 import get_ontology, Thing
+from rdflib import Graph, Namespace, Literal, URIRef  
 import logging
-#import csv
 from urllib.parse import quote
 
 # =================================================================
@@ -345,7 +339,6 @@ class ReactionKG:
         try: 
             self._initialize_instance_dict(onto_file_path)
         except Exception as e: 
-            raise ValueError(e)
             logger.error(f"Failed to initialize dictionaries of instances for reaction {self.reaction_id}: {e}")
             pass
         
@@ -459,42 +452,46 @@ class ReactionKG:
         self.unit = unit
 
         # Setup and store units in unit_mapping dictionary to be used in other methods
-        self.unit_mapping = {        
-        'CELSIUS': self.unit.DEG_C,
-        'FAHRENHEIT': self.unit.DEG_F,
-        'KELVIN': self.unit.K,
-
-        'KILOGRAM': self.unit.KiloGM,
-        'GRAM': self.unit.GM,
-        'MILLIGRAM': self.unit.MilliGM,
-        'MICROGRAM': self.unit.MicroGM,
-
-        'MOLE': self.unit.MOL,
-        'MILLIMOLE' : self.unit.MilliMOL,
-        'MICROMOLE': self.unit.MicroMOL,
-        'NANOMOLE': self.unit.NanoMOL,
-
-        'LITER': self.unit.L,
-        'MILLILITER': self.unit.MilliL,
-        'MICROLITER': self.unit.MicroL,
-        'NANOLITER': self.unit.NanoL,
-
-        'BAR': self.unit.BAR,
-        'ATMOSPHERE': self.unit.ATM,
-        'PSI': self.unit.PSI,
-        'KPSI': f'{self.unit}KiloLB_F-PER-IN2',
-        'PASCAL': self.unit.PA,
-        'KILOPASCAL': self.unit.KiloPA,
-        'TORR': self.unit.TORR,
-        'MM_HG': self.unit.MilliM_HG,
-
-        'DAY': self.unit.DAY,
-        'HOUR': self.unit.HR,
-        'MINUTE': self.unit.MIN,
-        'SECOND': self.unit.SEC,
-
-        'PERCENTAGE': self.unit.PERCENT,
+        qudt_units = {
+            'CELSIUS': 'DEG_C',
+            'FAHRENHEIT': 'DEG_F',
+            'KELVIN': 'K',
+            'KILOGRAM': 'KiloGM',
+            'GRAM': 'GM',
+            'MILLIGRAM': 'MilliGM',
+            'MICROGRAM': 'MicroGM',
+            'MOLE': 'MOL',
+            'MILLIMOLE': 'MilliMOL',
+            'MICROMOLE': 'MicroMOL',
+            'NANOMOLE': 'NanoMOL',
+            'LITER': 'L',
+            'MILLILITER': 'MilliL',
+            'MICROLITER': 'MicroL',
+            'NANOLITER': 'NanoL',
+            'BAR': 'BAR',
+            'ATMOSPHERE': 'ATM',
+            'PSI': 'PSI',
+            'KPSI': 'KiloLB_F-PER-IN2',
+            'PASCAL': 'PA',
+            'KILOPASCAL': 'KiloPA',
+            'TORR': 'TORR',
+            'MM_HG': 'MilliM_HG',
+            'DAY': 'DAY',
+            'HOUR': 'HR',
+            'MINUTE': 'MIN',
+            'SECOND': 'SEC',
+            'PERCENTAGE': 'PERCENT',
         }
+
+        self.unit_mapping = {}
+        for ord_unit, qudt_suffix in qudt_units.items():
+            entity = getattr(self.unit, qudt_suffix, None)
+            if entity is None:
+                with self.unit:
+                    entity = Thing(qudt_suffix)
+                # Instantiate a QUDT Unit individual if not pre-declared in MDS_Onto.owl
+                #entity = self.qudt.Unit(f'http://qudt.org/vocab/unit/{qudt_suffix}')
+            self.unit_mapping[ord_unit] = entity
 
         self.prop_metadata_dict = SpaceInsensitiveDict()
 
@@ -512,7 +509,8 @@ class ReactionKG:
         self.instance_dict = SpaceInsensitiveDict()
     
         for prop in self.onto.properties():
-            self.instance_dict[str(prop.label[0])] = []
+            if prop.label:
+                self.instance_dict[str(prop.label[0])] = []
 
         self.instance_dict['type'] = []
         self.crude_product = self._create_instance(self.mds.CrudeProduct, 'CrudeProduct#' + self.reaction_id)
@@ -585,21 +583,28 @@ class ReactionKG:
             safe_value = quote(identifier_value, safe='')
             instance_id = f"{item['type']}#{safe_value}"
             
-            if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
-                self.instance_dict['has text value'].append([item['reactionID'], item['value']]) 
+            #if(item['type'] in ('UNSPECIFIED', 'CUSTOM')): 
+            #    self.instance_dict['has text value'].append([item['reactionID'], item['value']]) 
             if identifier_class == None:
                 identifier_type = 'Custom'
             else: 
                 identifier_type = re.sub(r'\s+', '', str(identifier_class.label[0]))
-            if identifier_class: 
+
+            if identifier_class:
                 triples = [
-                        ('designates', self.chemical_reaction.iri),
-                        ('has text value', item['value']),
+                    ('designates', self.chemical_reaction.iri),
+                    ('has text value', item['value']),
                 ]
-                if item['details']: triples.append(('details', item['details']))
-                if item['is_mapped']: triples.append(('is mapped', item['is_mapped']))
+                if item.get('details'):
+                    triples.append(('details', item['details']))
+                if item.get('is_mapped'):
+                    triples.append(('is mapped', item['is_mapped']))
 
                 identifier = self._create_instance(identifier_class, instance_id, *triples)
+            else:
+                self.instance_dict['has text value'].append(
+                    [self.chemical_reaction.iri, item['value']]
+                )
     
     def _extract_components(self, component_list, process_node=None, context='input'):
         """Private method to process components (reactants, inputs, workup materials, or products).
@@ -773,7 +778,10 @@ class ReactionKG:
             if amount_added and f"{prefix}amount.{amount_type}.value" in component_list and f"{prefix}amount.{amount_type}.units" in component_list: 
                 self.instance_dict['inheres in'].append([amount_added.iri, reaction_component.iri])
                 self.instance_dict['has decimal value'].append([amount_added.iri, component_list[f"{prefix}amount.{amount_type}.value"]])
-                self.instance_dict['uses measurement unit'].append([amount_added.iri, self.unit_mapping[component_list[f"{prefix}amount.{amount_type}.units"]].iri])
+                unit_key = component_list[f"{prefix}amount.{amount_type}.units"]
+                unit_entity = self.unit_mapping.get(unit_key)
+                if unit_entity:
+                    self.instance_dict['uses measurement unit'].append([amount_added.iri, unit_entity.iri])
 
     def _extract_compound_identifiers(self, component_list, i, context, prefix, reaction_component):
         """Extracts and processes compound identifiers for components (inputs, workups, or products).
@@ -892,7 +900,7 @@ class ReactionKG:
                 self._apply_triples(input_addition, ('occupies temporal region',addition_time.iri))
                     
             if item['flow_rate'] == True and 'flow_rate.value' in item and 'flow_rate.units' in item:
-                flow_rate = self._create_instance(self.mds.FLowRate, f'FlowRate#{self.reaction_id}', 
+                flow_rate = self._create_instance(self.mds.FlowRate, f'FlowRate#{self.reaction_id}', 
                         [('has decimal value', item['flow_rate.value']),
                         ('uses measurement unit', item['flow_rate.units'])])
                 self._apply_triples(input_addition, ('has occurent part', flow_rate.iri))
@@ -900,7 +908,7 @@ class ReactionKG:
             if item['addition_device'] == True and 'addition_device.type' in item:
                 addition_device = self._create_instance(self.cco.ont00000581, f"AdditionDevice#{self.reaction_id}_{item['addition_device.type']}", 
                         [('participates in', input_addition.iri)])
-                if 'addition_device.details' in item:  self._apply_triples(addition_device, item['addition_device.details'])
+                if 'addition_device.details' in item:  self._apply_triples(addition_device, ('details', item['addition_device.details']))
                 
     def _process_temperature(self, component_list, reaction_component=None, context='condition'):
         """Processes temperature information associated with a reaction.
@@ -1029,7 +1037,7 @@ class ReactionKG:
 
             if item['stirring'] == True and 'stirring.type' in item :
                 stirring_condition = self._create_instance(self.obo.CHMO_0002774, f'StirringProcess#{self.reaction_id}')
-                self._apply_triples(self.chemical_reaction.iri, ('has process part', stirring_condition.iri))
+                self._apply_triples(self.chemical_reaction, ('has process part', stirring_condition.iri))
 
                 if 'stirring.rate.type' in item:
                     stirring_rate = self._create_instance(self.mds.StirringRate, f'StirringRate#{self.reaction_id}',
@@ -1038,16 +1046,16 @@ class ReactionKG:
             
             if item['illumination'] == True and 'illumination.type' in item:
                 illumination_conditions = self._create_instance(self.mds.Illumination, f'IlluminationProcess#{self.reaction_id}')
-                self._apply_triples(self.chemical_reaction, ('has proccess part', illumination_conditions.iri))
+                self._apply_triples(self.chemical_reaction, ('has process part', illumination_conditions.iri))
                 if 'illumination.peak_wavelength.value' in item and 'illumination.peak_wavelength.units' in item:
-                    peak_wavelength = self._create_instance(self.mds.PeakWavelength, f'PeakWavelength#{self.reaction_id}',('has decimal value', item['illumination.peak_wavelength']))
+                    peak_wavelength = self._create_instance(self.mds.PeakWavelength, f'PeakWavelength#{self.reaction_id}',('has decimal value', item['illumination.peak_wavelength.value']))
                     self._apply_triples(illumination_conditions, ('has occurent part', peak_wavelength.iri))
                 #if 'illumination.distance_to_vessel.value' in item and 'illumination.distance_to_vessel.units' in item: 
 
             if item['electrochemistry'] == True and 'electrochemistry.type' in item: 
 
                 electrochemistry_condition = self._create_instance(self.mds.ElectrochemicalReaction, f'ElectrochemicalReaction#{self.reaction_id}')
-                self._apply_triples(self.chemical_reaction, ('has proccess part', electrochemistry_condition.iri))
+                self._apply_triples(self.chemical_reaction, ('has process part', electrochemistry_condition.iri))
                 triples = []
 
                 if 'electrochemistry.details' in item: 
@@ -1077,9 +1085,9 @@ class ReactionKG:
                 self._apply_triples(self.chemical_reaction, ('has process part', flow_condition.iri))
                 flow_triples = []
                 if 'flow.details' in item: 
-                    triples.append(('details', item['flow.details']))
+                    flow_triples.append(('details', item['flow.details']))
                 if 'flow.pump_type' in item: 
-                    triples.append(('details', item['flow.pump_type']))
+                    flow_triples.append(('details', item['flow.pump_type']))
                 if 'flow.tubing.type' in item: 
                     tube_mapping = {
                         'UNSPECIFIED': None,
@@ -1101,6 +1109,7 @@ class ReactionKG:
                         tube_diameter = self._create_instance(self.cco.ont00000738, f"TubeDiameter#{self.reaction_id}", *[
                             ('inheres in', flow_tube.iri),('has decimal value', item['flow.tubing.diameter.value']),
                             ('uses measurement unit', item['flow.tubing.diameter.units'])])
+                self._apply_triples(flow_condition, *flow_triples)
     
     def _process_reaction_notes(self):
         """Processes key reaction notes and characteristics (:attr:`reaction_notes`).
@@ -1113,7 +1122,7 @@ class ReactionKG:
         for item in self.reaction_notes:
             triples = []
             if 'is_heterogeneous' in item: triples.append(('is heterogeneous', item['is_heterogeneous']))
-            if 'forms_precipitate' in item: triples.append(('forms precipitate', item['forms_precipitate']))
+            if 'forms_precipitate' in item: triples.append(('forms Precipitate', item['forms_precipitate']))
             if 'is_exothermic' in item: triples.append(('is exothermic', item['is_exothermic']))
             if 'offgasses' in item: triples.append(('off gasses', item['offgasses']))
             if 'is_sensitive_to_moisture' in item: triples.append(('is sensitive to moisture', item['is_sensitive_to_moisture']))
@@ -1376,6 +1385,7 @@ class ReactionKG:
                         subj_uri = URIRef(item[0])
                         pred_uri = URIRef(prop_metadata[0])
                         self.graph.add((subj_uri, pred_uri, Literal(item[1])))
+
             if self.fmt == "turtle": 
                 new_path = os.path.join(save_file_path, f"mds_dataset-{dataset_id}_reaction-{self.reaction_id}.ttl")
                 self.graph.serialize(new_path, format=self.fmt)
