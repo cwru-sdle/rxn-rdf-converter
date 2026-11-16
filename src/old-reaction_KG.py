@@ -36,6 +36,24 @@ UNIT = Namespace('http://qudt.org/vocab/unit/')
 # Set up logging
 logger = logging.getLogger(__name__)
 
+class SpaceInsensitiveDict(dict):
+    """Dictionary that automatically strips spaces from string keys."""
+    @staticmethod
+    def _clean(key):
+        return key.replace(" ", "") if isinstance(key, str) else key
+
+    def __getitem__(self, key):
+        return super().__getitem__(self._clean(key))
+
+    def __setitem__(self, key, value):
+        super().__setitem__(self._clean(key), value)
+
+    def get(self, key, default=None):
+        return super().get(self._clean(key), default)
+
+    def __contains__(self, key):
+        return super().__contains__(self._clean(key))
+        
 class ReactionKG: 
     """A class that extracts and processes reaction data to be represented as a reaction knowledge graph. 
     It processes reaction data based on the ord schema (in Google Protocol Buffers format) into
