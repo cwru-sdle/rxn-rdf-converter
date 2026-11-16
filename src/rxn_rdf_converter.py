@@ -455,7 +455,10 @@ class ReactionKG:
             pass
         
         try:  
-            self._process_reaction_identifiers() if self.reaction_identifiers else None
+            if self.reaction_identifiers: 
+                self._process_reaction_identifiers()  
+            else: 
+                logger.info(f"There is no reaction identifier for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction identifiers into RDF triples for reaction {self.reaction_id}: {e}")
             pass
@@ -463,6 +466,8 @@ class ReactionKG:
         try: 
             if self.reaction_inputs: 
                 self._process_reaction_inputs()
+            else: 
+                logger.info(f"There is no reaction input for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction inputs into RDF triples for reaction {self.reaction_id}: {e}")
             pass   
@@ -470,6 +475,8 @@ class ReactionKG:
         try:
             if self.reaction_conditions:
                 self._process_reaction_conditions()
+            else: 
+                logger.info(f"There is no reaction condition for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction conditions into RDF triples for reaction {self.reaction_id}: {e}")
             pass
@@ -477,6 +484,8 @@ class ReactionKG:
         try: 
             if self.reaction_notes:
                 self._process_reaction_notes()
+            else: 
+                logger.info(f"There is no reaction note for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction notes into RDF triples for reaction {self.reaction_id}: {e}")
             pass
@@ -484,6 +493,8 @@ class ReactionKG:
         try: 
             if self.reaction_workups:
                 self._process_reaction_workups()
+            else: 
+                logger.info(f"There is no reaction workup for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction workups into RDF triples for reaction {self.reaction_id}: {e}")
             pass
@@ -491,6 +502,8 @@ class ReactionKG:
         try: 
             if self.reaction_outcomes: 
                 self._process_reaction_outcomes()
+            else: 
+                logger.info(f"There is no reaction outcome for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction outcomes into RDF triples for reaction {self.reaction_id}: {e}")
             pass
@@ -498,6 +511,8 @@ class ReactionKG:
         try: 
             if self.reaction_setup:
                 self._process_reaction_setup()
+            else: 
+                logger.info(f"There is no reaction setup for {self.reaction_id}")
         except Exception as e: 
             logger.error(f"Failed to process reaction identifiers into RDF triples for reaction {self.reaction_id}: {e}")
             pass
