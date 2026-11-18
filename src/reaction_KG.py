@@ -1092,16 +1092,16 @@ class ReactionKG:
                     tube_mapping = {
                         'UNSPECIFIED': None,
                         'CUSTOM': None,
-                        'STEEL': 'SteelTube',
-                        'COPPER': 'CopperTube',
-                        'PFA': 'PerfluoroalkoxyTube',
-                        'FEP': 'FluorinatedEthylenePropyleneTube',
-                        'TEFLONAF': 'TeflonAmorphousFluoropolymersTube', 
-                        'PTFE': 'PolytetrafluoroethyleneTube',
-                        'GLASS': 'GlassTube',
-                        'QUARTZ': 'QuartzTube',
-                        'SILICON': 'SiliconTube',
-                        'PDMS': 'PolydimethylsiloxaneTube',
+                        'STEEL': self.mds.SteelTube,
+                        'COPPER': self.mds.CopperTube,
+                        'PFA': self.mds.PerfluoroalkoxyTube,
+                        'FEP': self.mds.FluorinatedEthylenePropyleneTube,
+                        'TEFLONAF': self.mds.TeflonAmorphousFluoropolymersTube, 
+                        'PTFE': self.mds.PolytetrafluoroethyleneTube,
+                        'GLASS': self.mds.GlassTube,
+                        'QUARTZ': self.mds.QuartzTube,
+                        'SILICON': self.mds.SiliconTube,
+                        'PDMS': self.mds.PolydimethylsiloxaneTube,
                     }
                     flow_tube = self._create_instance(self.cco.ont00000581, f"{tube_mapping[item['flow.tubing.type']]}#{self.reaction_id}")
                     if 'flow.tubing.details' in item: self._apply_triples(flow_tube, ('details', item['flow.tubing.details']))
@@ -1147,25 +1147,28 @@ class ReactionKG:
             'ADDITION': 'Addition',
             'ALIQUOT': 'Aliquot',
             'TEMPERATURE': 'Temperature',
-            'CONCENTRATION': 'Concentration',
-            'EXTRACTION': 'Extraction',
-            'FILTRATION': 'Filtration',
-            'WASH': 'Wash',
-            'DRY_IN_VACUUM': 'DryInVacuum',
-            'DRY_WITH_MATERIAL': 'DryWithMaterial',
-            'FLASH_CHROMATOGRAPHY': 'FlashChromatography',
-            'OTHER_CHROMATOGRAPHY': 'OtherChromatography',
-            'SCAVENGING': 'Scavenging',
+            'CONCENTRATION': self.obo.CHMO_0002771,
+            'EXTRACTION': self.obo.CHMO_0001577,
+            'FILTRATION': self.obo.CHMO_0001640,
+            'WASH': self.obo.OBI_0302888,
+            'DRY_IN_VACUUM': self.obo.CHMO_0001557,
+            'DRY_WITH_MATERIAL': self.mds.DryWithMaterial,
+            'FLASH_CHROMATOGRAPHY': self.obo.CHMO_0001004,
+            'OTHER_CHROMATOGRAPHY': self.obo.CHMO_0001000,
+            'SCAVENGING': self.mds.Scavenging,
             'WAIT': 'Wait',
-            'STIRRING': 'Stirring',
-            'PH_ADJUST': 'pHAdjust',
-            'DISSOLUTION': 'Dissolution',
-            'DISTILLATION': 'Distillation'
+            'STIRRING': self.obo.CHMO_0002774,
+            'PH_ADJUST': self.mds.pHAdjust,
+            'DISSOLUTION': self.mds.Dissolution,
+            'DISTILLATION': self.obo.CHMO_0001532,
         }
         for item in self.reaction_workups: 
-            workup_type = workup_mapping.get(item['type'])
+            #workup_type = workup_mapping.get(item['type'])
+            workup_type = item['type']
             triples = []
             workup_instance = self.mds.ReactionWorkup(f'ReactionWorkup#{self.reaction_id}_{workup_type}_{item["Index"]}')
+            # if getattr(workup_type, 'label'):
+                # 
             if item['details'] is not None: triples.append(('details', item['details']))
             if item['type'] == 'WAIT' and 'duration.value' in item and 'duration.units' in item: 
                 duration_instance = self._create_instance(self.obo.BFO_0000202,f'WorkupDuration#{self.reaction_id}_{item["Index"]}', *[
@@ -1265,7 +1268,34 @@ class ReactionKG:
         Notes:
             Exceptions during internal processing steps are logged and skipped.
         """
-
+        analyses_mapping = {
+                'UNSPECIFIED': None,
+                'CUSTOM': None,
+                'LC': self.obo.CHMO_0001004, # = 2;  // Liquid chromatography, including HPLC and UPLC.
+                'GC': self.obo.CHMO_0001002, # = 3;  // Gas chromatography.
+                'IR': self.obo.CHMO_0000630, #= 4;  // Infrared spectroscopy, including ReactIR.
+                'NMR_1H': self.obo.CHMO_0000593, #= 5;  // 1H NMR spectroscopy.
+                'NMR_13C': self.obo.CHMO_0000595, # = 6;  // 13C NMR spectroscopy.
+                'NMR_OTHER': self.obo.CHMO_0000613, # = 7;  // Specify type and details in "details".
+                'MP': "MeltingPointCharacterization", # = 8;  // Melting point characterization.
+                'UV': self.obo.CHMO_0001253, # = 9;  // Ultraviolet spectroscopy.
+                'TLC': self.obo.CHMO_0001007, # = 10;  // Thin-layer chromatography.
+                'MS': self.obo.CHMO_0000470, # = 11;  // Mass spectrometry.
+                'HRMS': self.obo.CHMO_0000498, # = 12;  // High resolution mass spectrometry.
+                'MSMS': self.obo.CHMO_0002004, # = 13;  // Two-dimensional mass spectrometry.
+                'WEIGHT': self.cco.ont00000633,# = 14;  // Weight of an isolated compound.
+                'LCMS': self.obo.CHMO_0000524, #= 15;  // Combined LC/MS.
+                'GCMS': self.obo.CHMO_0000497, # = 16;  // Combined GC/MS.
+                'ELSD': self.obo.CHMO_0001718, # = 17;  // Evaporative light scattering detector.
+                'CD': self.obo.CHMO_0000323, #= 18;  // Circular Dichroism.
+                'SFC': self.obo.CHMO_0001003, # = 19;  // Supercritical fluid chromatography.
+                'EPR': self.obo.CHMO_0000328, # = 20;  // Electron paramagnetic resonance spectroscopy.
+                'XRD': self.obo.CHMO_0000156, # = 21;  // X-ray diffraction, including single-crystal XRD.
+                'RAMAN': self.obo.CHMO_0000656, # = 22;  // Raman spectroscopy.
+                'ED': self.obo.CHMO_0000142, # = 23;  // Electron diffraction, including MicroED.
+                'OPTICAL_ROTATION': 'Optical Rotation', # = 24;  // optical rotation.
+                'CAD': 'Charged Aerosol Dector', # = 25;  // Charged Aerosol Detector.
+            }
         for item in self.reaction_outcomes: 
             if item.get('reaction_time') == True and 'reaction_time.value'in item and 'reaction_time.units' in item:
                 reaction_time = self._create_instance(self.mds.ReactionTime,f'ReactionTime#{self.reaction_id}', *[
