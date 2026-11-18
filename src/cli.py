@@ -9,13 +9,12 @@ import rdflib
 from rdflib import Graph, RDF, RDFS, OWL, Namespace, Literal, URIRef
 from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
 from datetime import datetime
-import rxn_rdf_converter 
+import dataset_processor
 import logging
 import csv
 import argparse
 import sys
-from rdkit import Chem
-from owlready2 import get_namespace, get_ontology, Thing 
+
 
 # =================================================================
 #               SETUP LOGGING ERRORS
@@ -86,7 +85,7 @@ def process_all_datasets(file_list, save_path, onto_file_path, error_log_directo
         try: 
             logger.info(f"Processing dataset: {dataset}")
             
-            dataset_processor = rxn_rdf_converter.DatasetProcessor(
+            dataset = dataset_processor.DatasetProcessor(
                     dataset_pb=dataset_pb2,
                     dataset_file_path=dataset,
                     owl_onto_file_path=onto_file_path,
@@ -95,7 +94,7 @@ def process_all_datasets(file_list, save_path, onto_file_path, error_log_directo
                     fmt='json-ld'
                 )
             
-            _, reaction_error, dataset_reaction_list = dataset_processor.extract_reaction(dataset_reaction_list)
+            _, reaction_error, dataset_reaction_list = dataset.extract_reaction(dataset_reaction_list)
 
             logger.info(f"Successfully completed dataset {dataset}")
         except Exception as e: 
@@ -113,7 +112,7 @@ def process_single_dataset(dataset_file_path, save_path, onto_file_path, error_l
     try: 
         logger.info(f"Processing single dataset: {dataset_file_path}")
 
-        dataset_1 = rxn_rdf_converter.DatasetProcessor(
+        dataset_1 = dataset_processor.DatasetProcessor(
             dataset_pb=dataset_pb2,
             dataset_file_path=dataset_file_path,
             owl_onto_file_path=onto_file_path,
