@@ -1,0 +1,404 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#CC%28C%29%28C%29%5BO-%5D.%5BK%2B%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C)(C)[O-].[K+]",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#LPNYRYFBWFDTMA-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_metalandligand",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionEnvironment#25b2f8bfafe540368db659a4bd1935bf",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ChemicalReaction#25b2f8bfafe540368db659a4bd1935bf"
+      },
+      "obo:BFO_0000196": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionTemperature#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_Solvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_amine",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#LPNYRYFBWFDTMA-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_Base"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_arylhalide",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#25b2f8bfafe540368db659a4bd1935bf_amine_component_0",
+      "cco:ont00001769": 0.0008040000102482736,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YNAVUWVOSKDBBP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Product#IAAITAGXZWCRTQ-UHFFFAOYSA-N",
+      "@type": "mds:Product",
+      "mds:isDesiredProduct": true
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#CC1%3DCC%3DCC%3DC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC1=CC=CC=C1",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#C1%3DCC%3DC%28C%3DC1%29%2FC%3DC%2FC%28%3DO%29%2FC%3DC%2FC2%3DCC%3DCC%3DC2.C1%3DCC%3DC%28C%3DC1%29%2FC%3DC%2FC%28%3DO%29%2FC%3DC%2FC2%3DCC%3DCC%3DC2.C1%3DCC%3DC%28C%3DC1%29%2FC%3DC%2FC%28%3DO%29%2FC%3DC%2FC2%3DCC%3DCC%3DC2.%5BPd%5D.%5BPd%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.C1=CC=C(C=C1)/C=C/C(=O)/C=C/C2=CC=CC=C2.[Pd].[Pd]",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#CYPYTURSJDMMMP-WVCUSYJESA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#25b2f8bfafe540368db659a4bd1935bf_Base_component_0",
+      "cco:ont00001769": 0.0009399999980814755,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#LPNYRYFBWFDTMA-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Volume#25b2f8bfafe540368db659a4bd1935bf_Solvent_component_0",
+      "cco:ont00001769": 0.003000000026077032,
+      "cco:ont00001863": {
+        "@id": "unit:L"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#CC1%3DCC%28%3DCC%28%3DC1NC%28%3DO%29CC2CCCC2%29C%29Br",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC1=CC(=CC(=C1NC(=O)CC2CCCC2)C)Br",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#GLBDFDMKCASXQQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/CatalystArtifactFunction#25b2f8bfafe540368db659a4bd1935bf_metalandligand_component_1",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#CYPYTURSJDMMMP-WVCUSYJESA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/ReactantArtifactFunction#25b2f8bfafe540368db659a4bd1935bf_arylhalide_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#GLBDFDMKCASXQQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/CatalystArtifactFunction#25b2f8bfafe540368db659a4bd1935bf_metalandligand_component_0",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#ZEMZPXWZVTUONV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionSetup#25b2f8bfafe540368db659a4bd1935bf",
+      "obo:BFO_0000063": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ChemicalReaction#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#REACTION_TYPE#1.3.1%20%5BN-arylation%20with%20Ar-X%5D%20Bromo%20Buchwald-Hartwig%20amination",
+      "@type": "mds:ReactionType",
+      "cco:ont00001765": "1.3.1 [N-arylation with Ar-X] Bromo Buchwald-Hartwig amination",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ChemicalReaction#25b2f8bfafe540368db659a4bd1935bf"
+      },
+      "mds:details": "reaction type"
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/ReactantArtifactFunction#25b2f8bfafe540368db659a4bd1935bf_amine_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YNAVUWVOSKDBBP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YNAVUWVOSKDBBP-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_amine"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#25b2f8bfafe540368db659a4bd1935bf_arylhalide_component_0",
+      "cco:ont00001769": 0.0006699999794363976,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#GLBDFDMKCASXQQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_Base",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#25b2f8bfafe540368db659a4bd1935bf_metalandligand_component_0",
+      "cco:ont00001769": 0.00006859999848529696,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#ZEMZPXWZVTUONV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#GLBDFDMKCASXQQ-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_arylhalide"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/SolventArtifactFunction#25b2f8bfafe540368db659a4bd1935bf_Solvent_component_0",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#ZEMZPXWZVTUONV-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_metalandligand"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#CYPYTURSJDMMMP-WVCUSYJESA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_metalandligand"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://www.commoncoreontologies.org/Moles#25b2f8bfafe540368db659a4bd1935bf_metalandligand_component_1",
+      "cco:ont00001769": 0.00003389999983482994,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#CYPYTURSJDMMMP-WVCUSYJESA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#TemperatureMeasurement#25b2f8bfafe540368db659a4bd1935bf_condition",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 80.0,
+      "cco:ont00001808": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionTemperature#25b2f8bfafe540368db659a4bd1935bf"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:DEG_C"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ProductMeasurement#25b2f8bfafe540368db659a4bd1935bf_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 13.210000038146973,
+      "cco:ont00001808": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Product#IAAITAGXZWCRTQ-UHFFFAOYSA-N"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#CC1%3DCC%28%3DCC%28%3DC1NC%28%3DO%29CC2CCCC2%29C%29N3CCOCC3",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC1=CC(=CC(=C1NC(=O)CC2CCCC2)C)N3CCOCC3",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Product#IAAITAGXZWCRTQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#CN%28C%29C1%3DCC%3DCC%3DC1C2%3DCC%3DCC%3DC2P%28C3CCCCC3%29C4CCCCC4",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CN(C)C1=CC=CC=C1C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#ZEMZPXWZVTUONV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ChemicalReaction#25b2f8bfafe540368db659a4bd1935bf",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001765": "269",
+      "cco:ont00001777": [
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_metalandligand"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_amine"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_Solvent"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_arylhalide"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_Base"
+        }
+      ],
+      "cco:ont00001986": [
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#CrudeProduct#25b2f8bfafe540368db659a4bd1935bf"
+        },
+        {
+          "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Product#IAAITAGXZWCRTQ-UHFFFAOYSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "Exemplar cmpd from, though employing slightly different Buchwald-Hartwig coupling conditions.  Tris(dibenzylidenacetone)dipalladium(0) (31 mg, 0.03 mmol) and 2'-(dicyclohexylphosphino)-N,N-dimethylbiphenyl-2-amine (27 mg, 0.07 mmol) were stirred in anhydrous toluene (3 mL) for 15 minutes under an argon (g) sparge. To the stirring soluntion was added the N-(4-bromo-2,6-dimethylphenyl)-2-cyclopentylacetamide (208 mg, 0.67 mmol) and morpholine (0.070 mL, 0.80 mmol) neat, followed by the potassium tert-butoxide (1M in THF) (0.94 mL, 0.94 mmol) via syringe. he mixture was then heated in a sealed vessel to 80 °C for 18hrs before cooling to ambint temperature. The mixture was filtered thru a 0.7uM GMF. The resultant crude solution was subject to flash chromatorgraphy (SiO2 \\- 12 g; gradient elution: 100% hexanes for 1 minute then 0% - 85% EtOAc/Hexane over 14 minutes at 30 mL/min) via detection with UV light at 254nm. The appropriate fractions were then stirred over decolorizing carbon (Norit neutral), filtered thru Celite and concentrated to afford the 2-cyclopentyl-N-(2,6-dimethyl-4-morpholinophenyl)acetamide (47.0 mg, 22.17 %) as a white solid in 90% purity by 1H NMR (CDCl3), though TLC and LCMS reveal one peak. The resultant solid was subject to flash chromatorgraphy (basic alumina - 24 g; gradient elution: 5% EtOAc/Hexane for 1.5 minutes then 5% - 100% EtOAc/Hexane over 11 minutes at 30 mL/min) via detection with UV light at 254nm to afford 2-cyclopentyl-N-(2,6-dimethyl-4-morpholinophenyl)acetamide (28.0 mg, 13.21 %) again what appears to be ~80% purity by 1H NMR (CDCl3), though TLC and LCMS reveal one peak. Aliqout was provided to for SFC analysis wherein all conditions examined reveal only one peak (attached). 1H NMR analysis in DMSO reveals one cmpd. Forming rotamers in CDCl3 with difference exagerated in the morpholino -CH2-N-CH2- protons.  ",
+      "mds:safetyNotes": "None"
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionTemperature#25b2f8bfafe540368db659a4bd1935bf",
+      "@type": "mds:ReactionTemperature"
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YXFVVABEGXRONW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#InputAddition#25b2f8bfafe540368db659a4bd1935bf_Solvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Product#25b2f8bfafe540368db659a4bd1935bf_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Product#IAAITAGXZWCRTQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#CrudeProduct#25b2f8bfafe540368db659a4bd1935bf",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#SMILES#C1COCCN1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C1COCCN1",
+      "cco:ont00001916": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#Component#YNAVUWVOSKDBBP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ReactionMixture#25b2f8bfafe540368db659a4bd1935bf",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#ChemicalReaction#25b2f8bfafe540368db659a4bd1935bf"
+      }
+    }
+  ]
+}

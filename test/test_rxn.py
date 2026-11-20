@@ -38,7 +38,6 @@ dataset = load_message(
     dataset_pb2.Dataset,
 )
 
-
 def generate_random_reaction_set(num_test_reactions):
     num_total_reactions = len(dataset.reactions)
     print(f"There are {num_total_reactions} reactions in the file list")
