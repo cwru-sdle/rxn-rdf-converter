@@ -23,7 +23,7 @@ Install from source
 
 .. code-block:: bash
 
-   git clone https://github.com/quynhdtran17/rxn-rdf-converter 
+   git clone https://github.com/cwru-sdle/rxn-rdf-converter 
    cd rxn_rdf_converter
    pip install -e .
 
@@ -32,6 +32,6 @@ Development Installation
 
 .. code-block:: bash
 
-   git clone https://github.com/quynhdtran17/rxn-rdf-converter.git
+   git clone https://github.com/cwru-sdle/rxn-rdf-converter.git
    cd rxn_rdf_converter
    pip install -e ".[dev,docs]"
