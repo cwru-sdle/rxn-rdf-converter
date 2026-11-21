@@ -7,11 +7,12 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from ord_schema.message_helpers import load_message, write_message
+from ord_schema.message_helpers import load_message
+from ord_schema.datasets import save_dataset
 from ord_schema.proto import dataset_pb2
 
-from src.reaction_KG import ReactionKG
-from src.dataset_processor import DatasetProcessor  # Adjust module name if needed
+from src.rxn_rdf_converter.dataset_processor import DatasetProcessor  # Adjust module name if needed
+from src.rxn_rdf_converter.reaction_KG import ReactionKG
 
 logging.basicConfig(
     level=logging.INFO,
@@ -27,7 +28,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_DIR = SCRIPT_DIR.parent
 MDS_FILE_PATH = str(PROJECT_DIR / "MDS_Onto.owl")
 DATASET_FILE_PATH = str(
-    PROJECT_DIR / "test" / "ord_dataset-00005539a1e04c809a9a78647bea649c.pb.gz"
+    PROJECT_DIR / "ord-data-examples" / "ord_dataset-00005539a1e04c809a9a78647bea649c.pb.gz"
 )
 
 dataset = load_message(DATASET_FILE_PATH, dataset_pb2.Dataset)
@@ -295,7 +296,7 @@ class TestDatasetProcessor(unittest.TestCase):
             mini_ds.reactions.append(rxn)
 
         ds_path = os.path.join(folder_path, "mini_dataset.pb.gz")
-        write_message(mini_ds, ds_path)
+        save_dataset(mini_ds, ds_path)
         return ds_path
 
     def test_initialization_and_logger_creation(self):

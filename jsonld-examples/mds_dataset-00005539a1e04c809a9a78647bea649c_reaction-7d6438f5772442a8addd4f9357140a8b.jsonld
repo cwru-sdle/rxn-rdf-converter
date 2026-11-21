@@ -1,0 +1,404 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "mds:ChemicalReaction.7d6438f5772442a8addd4f9357140a8b",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001765": "859",
+      "cco:ont00001777": [
+        {
+          "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_Base"
+        },
+        {
+          "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_Solvent"
+        },
+        {
+          "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_metalandligand"
+        },
+        {
+          "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_arylhalide"
+        },
+        {
+          "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_amine"
+        }
+      ],
+      "cco:ont00001986": [
+        {
+          "@id": "mds:CrudeProduct.7d6438f5772442a8addd4f9357140a8b"
+        },
+        {
+          "@id": "mds:Product.DJWNFMMYIQIDBH-UHFFFAOYSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "RuPhos (32.7 mg, 0.07 mmol) and palladium (II) acetate (15.75 mg, 0.07 mmol) were suspended in toluene (1 mL) at ambient temperature. The mixture was degassed and purged with nitrogen several times and warmed to 50°C for 20 mins.  In a separate vessel were mixed 1-chloro-2-methoxybenzene (100 mg, 0.70 mmol), tert-butyl piperazine-1-carboxylate (131 mg, 0.70 mmol), sodium tertbutoxide (101 mg, 1.05 mmol) and toluene (2 mL). The suspension was degassed and purged with nitrogen then warmed to 50°C.  The solution of catalyst was added to the reaction vessel and the resulting mixture was degassed and purged with nitrogen. The reaction was heated to 110°C (ext T) under nitrogen for 6 hours then allowed to cool to ambient temperature overnight.  The reaction mixture was filtered and concentrated and the crude material purified by flash silica chromatography, elution gradient 20 to 60% EtOAc in heptane. Pure fractions were evaporated to dryness to afford tert-butyl 4-(2-methoxyphenyl)piperazine-1-carboxylate (23.00 mg, 11.22 %) as a colourless dry film.  Yield not good....if this route followed maybe try different catalyst - pepsi?  ",
+      "mds:safetyNotes": "None"
+    },
+    {
+      "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_Base",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:Component.CWXPZXBSDSIRCS-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_amine"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:ProductMeasurement.7d6438f5772442a8addd4f9357140a8b_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 11.220000267028809,
+      "cco:ont00001808": {
+        "@id": "mds:Product.DJWNFMMYIQIDBH-UHFFFAOYSA-N"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.7d6438f5772442a8addd4f9357140a8b_amine_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.CWXPZXBSDSIRCS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_metalandligand"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:Component.YXFVVABEGXRONW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_Solvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_amine",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "cco:CatalystArtifactFunction.7d6438f5772442a8addd4f9357140a8b_metalandligand_component_0",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.MXFYYFVVIIWKFE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC%28C%29%28C%29OC%28%3DO%29N1CCN%28CC1%29C2%3DCC%3DCC%3DC2OC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C)(C)OC(=O)N1CCN(CC1)C2=CC=CC=C2OC",
+      "cco:ont00001916": {
+        "@id": "mds:Product.DJWNFMMYIQIDBH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.7d6438f5772442a8addd4f9357140a8b_amine_component_0",
+      "cco:ont00001769": 0.0007009999826550484,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.CWXPZXBSDSIRCS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:CrudeProduct.7d6438f5772442a8addd4f9357140a8b",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "cco:CatalystArtifactFunction.7d6438f5772442a8addd4f9357140a8b_metalandligand_component_1",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.MXFYYFVVIIWKFE-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_metalandligand"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC%28%3DO%29O.CC%28%3DO%29O.%5BPd%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(=O)O.CC(=O)O.[Pd]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.7d6438f5772442a8addd4f9357140a8b_arylhalide_component_0",
+      "cco:ont00001769": 0.0007009999826550484,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.QGRPVMLBTFGQDQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC1%3DCC%3DCC%3DC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC1=CC=CC=C1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.QGRPVMLBTFGQDQ-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_arylhalide"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC%28C%29OC1%3DC%28C%28%3DCC%3DC1%29OC%28C%29C%29C2%3DCC%3DCC%3DC2P%28C3CCCCC3%29C4CCCCC4",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C)OC1=C(C(=CC=C1)OC(C)C)C2=CC=CC=C2P(C3CCCCC3)C4CCCCC4",
+      "cco:ont00001916": {
+        "@id": "mds:Component.MXFYYFVVIIWKFE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.7d6438f5772442a8addd4f9357140a8b",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:REACTION_TYPE.1.3.2%20%5BN-arylation%20with%20Ar-X%5D%20Chloro%20Buchwald-Hartwig%20amination",
+      "@type": "mds:ReactionType",
+      "cco:ont00001765": "1.3.2 [N-arylation with Ar-X] Chloro Buchwald-Hartwig amination",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.7d6438f5772442a8addd4f9357140a8b"
+      },
+      "mds:details": "reaction type"
+    },
+    {
+      "@id": "cco:Moles.7d6438f5772442a8addd4f9357140a8b_Base_component_0",
+      "cco:ont00001769": 0.0010499999625608325,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.MFRIHAYPQRLWNB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_Solvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:TemperatureMeasurement.7d6438f5772442a8addd4f9357140a8b_condition",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 100.0,
+      "cco:ont00001808": {
+        "@id": "mds:ReactionTemperature.7d6438f5772442a8addd4f9357140a8b"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:DEG_C"
+      }
+    },
+    {
+      "@id": "cco:Volume.7d6438f5772442a8addd4f9357140a8b_Solvent_component_0",
+      "cco:ont00001769": 0.003000000026077032,
+      "cco:ont00001863": {
+        "@id": "unit:L"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.7d6438f5772442a8addd4f9357140a8b_metalandligand_component_0",
+      "cco:ont00001769": 7.01000026310794e-05,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.MXFYYFVVIIWKFE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.7d6438f5772442a8addd4f9357140a8b_Solvent_component_0",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.YXFVVABEGXRONW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.7d6438f5772442a8addd4f9357140a8b_metalandligand_component_1",
+      "cco:ont00001769": 7.01000026310794e-05,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC%28C%29%28C%29OC%28%3DO%29N1CCNCC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C)(C)OC(=O)N1CCNCC1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.CWXPZXBSDSIRCS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.MFRIHAYPQRLWNB-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_Base"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.7d6438f5772442a8addd4f9357140a8b",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.7d6438f5772442a8addd4f9357140a8b"
+      },
+      "obo:BFO_0000196": {
+        "@id": "mds:ReactionTemperature.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:ReactionTemperature.7d6438f5772442a8addd4f9357140a8b",
+      "@type": "mds:ReactionTemperature"
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.7d6438f5772442a8addd4f9357140a8b_arylhalide_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.QGRPVMLBTFGQDQ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_metalandligand",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC%28C%29%28C%29%5BO-%5D.%5BNa%2B%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C)(C)[O-].[Na+]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.MFRIHAYPQRLWNB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.7d6438f5772442a8addd4f9357140a8b_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.DJWNFMMYIQIDBH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.DJWNFMMYIQIDBH-UHFFFAOYSA-N",
+      "@type": "mds:Product",
+      "mds:isDesiredProduct": true
+    },
+    {
+      "@id": "mds:InputAddition.7d6438f5772442a8addd4f9357140a8b_arylhalide",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.7d6438f5772442a8addd4f9357140a8b"
+      }
+    },
+    {
+      "@id": "mds:SMILES.COC1%3DCC%3DCC%3DC1Cl",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "COC1=CC=CC=C1Cl",
+      "cco:ont00001916": {
+        "@id": "mds:Component.QGRPVMLBTFGQDQ-UHFFFAOYSA-N"
+      }
+    }
+  ]
+}
