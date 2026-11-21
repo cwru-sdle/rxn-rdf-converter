@@ -1,0 +1,742 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_FILTRATION_8",
+      "mds:details": "filtered",
+      "mds:keepPhase": "None"
+    },
+    {
+      "@id": "mds:SMILES.CC1%28C%28NC2%3DCC%3DCC%28%3DC12%29%5BN%2B%5D%28%3DO%29%5BO-%5D%29%3DO%29CC%28%3DO%29OCC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC1(C(NC2=CC=CC(=C12)[N+](=O)[O-])=O)CC(=O)OCC",
+      "cco:ont00001916": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CUSTOM_10",
+      "mds:details": "The crude product was purified by silica gel chromatography"
+    },
+    {
+      "@id": "mds:NAME.DMF",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "DMF",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m6_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC6H14%2Fc1-3-5-6-4-2%2Fh3-6H2%2C1-2H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C6H14/c1-3-5-6-4-2/h3-6H2,1-2H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.VLKZOEOYAKHREP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_EXTRACTION_5",
+      "mds:details": "The mixture was extracted with EtOAc (3×300 mL)",
+      "mds:keepPhase": "None"
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_2",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "cco:Mass.9b3085fda02a4f2e9393b9fa9e813ab9_m5_component_0",
+      "cco:ont00001769": 1.2400000095367432,
+      "cco:ont00001863": {
+        "@id": "unit:GM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9_Workup_0",
+      "@type": "obo:CHMO_0002774"
+    },
+    {
+      "@id": "mds:ReactionTime.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "@type": "mds:ReactionTime",
+      "cco:ont00001767": 30.0,
+      "cco:ont00001863": {
+        "@id": "unit:MIN"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m6",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FNa.H%2Fq%2B1%3B-1",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/Na.H/q+1;-1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_3",
+      "cco:ont00001777": {
+        "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9_Workup_3"
+      },
+      "mds:details": "The reaction mixture was stirred for 1 h"
+    },
+    {
+      "@id": "cco:Mass.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_0",
+      "cco:ont00001769": 5.25,
+      "cco:ont00001863": {
+        "@id": "unit:GM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_6",
+      "mds:details": "the combined organic extracts were washed with brine (100 mL)"
+    },
+    {
+      "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9_Workup_1",
+      "@type": "obo:CHMO_0002774"
+    },
+    {
+      "@id": "mds:NAME.%28%C2%B1%29-ethyl%20%283-methyl-4-nitro-2-oxo-2%2C3-dihydro-1H-indol-3-yl%29acetate",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "(±)-ethyl (3-methyl-4-nitro-2-oxo-2,3-dihydro-1H-indol-3-yl)acetate",
+      "cco:ont00001916": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.Na2SO4",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "Na2SO4",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PMZURENOXWZQFD-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC4H7BrO2%2Fc1-2-7-4%286%293-5%2Fh2-3H2%2C1H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C4H7BrO2/c1-2-7-4(6)3-5/h2-3H2,1H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_1",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_11",
+      "mds:details": "eluting with a gradient of hexane"
+    },
+    {
+      "@id": "mds:NAME.4-nitro-1%2C3-dihydro-2H-indol-2-one",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "4-nitro-1,3-dihydro-2H-indol-2-one",
+      "cco:ont00001916": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FClH.Na.H2O%2Fh1H%3B%3B1H2%2Fq%3B%2B1%3B%2Fp-1",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/ClH.Na.H2O/h1H;;1H2/q;+1;/p-1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.HPALAKNZSZLMCH-UHFFFAOYSA-M"
+      }
+    },
+    {
+      "@id": "mds:REACTION_CXSMILES.%5BCH3%3A1%5D%5BC%3A2%5D1%28%5BCH2%3A15%5D%5BC%3A16%5D%28%5BO%3A18%5D%5BCH2%3A19%5D%5BCH3%3A20%5D%29%3D%5BO%3A17%5D%29%5BC%3A10%5D2%5BC%3A5%5D%28%3D%5BCH%3A6%5D%5BCH%3A7%5D%3D%5BCH%3A8%5D%5BC%3A9%5D%3D2%5BN%2B%3A11%5D%28%5BO-%3A13%5D%29%3D%5BO%3A12%5D%29%5BNH%3A4%5D%5BC%3A3%5D1%3D%5BO%3A14%5D.%5BH-%5D.%5BNa%2B%5D.BrC%5BC%3A25%5D%28%5BO%3A27%5D%5BCH2%3A28%5D%5BCH3%3A29%5D%29%3D%5BO%3A26%5D%3ECN%28C%3DO%29C%3E%5BN%2B%3A11%5D%28%5BC%3A9%5D1%5BCH%3A8%5D%3D%5BCH%3A7%5D%5BCH%3A6%5D%3D%5BC%3A5%5D2%5BC%3A10%5D%3D1%5BC%3A2%5D%28%5BCH2%3A1%5D%5BC%3A25%5D%28%5BO%3A27%5D%5BCH2%3A28%5D%5BCH3%3A29%5D%29%3D%5BO%3A26%5D%29%28%5BCH2%3A15%5D%5BC%3A16%5D%28%5BO%3A18%5D%5BCH2%3A19%5D%5BCH3%3A20%5D%29%3D%5BO%3A17%5D%29%5BC%3A3%5D%28%3D%5BO%3A14%5D%29%5BNH%3A4%5D2%29%28%5BO-%3A13%5D%29%3D%5BO%3A12%5D%20%7Cf%3A1.2%7C",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "[CH3:1][C:2]1([CH2:15][C:16]([O:18][CH2:19][CH3:20])=[O:17])[C:10]2[C:5](=[CH:6][CH:7]=[CH:8][C:9]=2[N+:11]([O-:13])=[O:12])[NH:4][C:3]1=[O:14].[H-].[Na+].BrC[C:25]([O:27][CH2:28][CH3:29])=[O:26]>CN(C=O)C>[N+:11]([C:9]1[CH:8]=[CH:7][CH:6]=[C:5]2[C:10]=1[C:2]([CH2:1][C:25]([O:27][CH2:28][CH3:29])=[O:26])([CH2:15][C:16]([O:18][CH2:19][CH3:20])=[O:17])[C:3](=[O:14])[NH:4]2)([O-:13])=[O:12] |f:1.2|",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.9b3085fda02a4f2e9393b9fa9e813ab9"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "mds:Component.VLKZOEOYAKHREP-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_11"
+      }
+    },
+    {
+      "@id": "cco:Volume.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_3",
+      "cco:ont00001769": 200.0,
+      "cco:ont00001863": {
+        "@id": "unit:MilliL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CUSTOM_4",
+      "mds:details": "quenched with saturated aqueous NH4Cl (125 mL) and H2O (500 mL)"
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WAIT_2",
+      "mds:details": "was continued for 1 h",
+      "obo:BFO_0000199": {
+        "@id": "obo:WorkupDuration.9b3085fda02a4f2e9393b9fa9e813ab9_2"
+      }
+    },
+    {
+      "@id": "mds:NAME.title%20compound",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "title compound",
+      "cco:ont00001916": {
+        "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.Intermediate%2016",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "Intermediate 16",
+      "cco:ont00001916": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC16H18N2O7%2Fc1-3-24-12%2819%298-16%289-13%2820%2925-4-2%2914-10%2817-15%2816%2921%296-5-7-11%2814%2918%2822%2923%2Fh5-7H%2C3-4%2C8-9H2%2C1-2H3%2C%28H%2C17%2C21%29",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C16H18N2O7/c1-3-24-12(19)8-16(9-13(20)25-4-2)14-10(17-15(16)21)6-5-7-11(14)18(22)23/h5-7H,3-4,8-9H2,1-2H3,(H,17,21)",
+      "cco:ont00001916": {
+        "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2F2Na.H2O4S%2Fc%3B%3B1-5%282%2C3%294%2Fh%3B%3B%28H2%2C1%2C2%2C3%2C4%29%2Fq2%2A%2B1%3B%2Fp-2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/2Na.H2O4S/c;;1-5(2,3)4/h;;(H2,1,2,3,4)/q2*+1;/p-2",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PMZURENOXWZQFD-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m5",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CCCCCC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CCCCCC",
+      "cco:ont00001916": {
+        "@id": "mds:Component.VLKZOEOYAKHREP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": [
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m4"
+        },
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m6"
+        }
+      ],
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "cco:Volume.9b3085fda02a4f2e9393b9fa9e813ab9_m4_component_0",
+      "cco:ont00001769": 3.5999999046325684,
+      "cco:ont00001863": {
+        "@id": "unit:MilliL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_1",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:NAME.sodium%20hydride",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "sodium hydride",
+      "cco:ont00001916": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_0",
+      "cco:ont00001777": {
+        "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9_Workup_0"
+      },
+      "mds:details": "the mixture was stirred at 0° C. for 1 h"
+    },
+    {
+      "@id": "mds:NAME.brine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "brine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.HPALAKNZSZLMCH-UHFFFAOYSA-M"
+      }
+    },
+    {
+      "@id": "mds:SMILES.%5BN%2B%5D%28%3DO%29%28%5BO-%5D%29C1%3DC2C%28C%28NC2%3DCC%3DC1%29%3DO%29%28CC%28%3DO%29OCC%29CC%28%3DO%29OCC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "[N+](=O)([O-])C1=C2C(C(NC2=CC=C1)=O)(CC(=O)OCC)CC(=O)OCC",
+      "cco:ont00001916": {
+        "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.%5BCl-%5D.%5BNa%2B%5D.O",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "[Cl-].[Na+].O",
+      "cco:ont00001916": {
+        "@id": "mds:Component.HPALAKNZSZLMCH-UHFFFAOYSA-M"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC13H14N2O5%2Fc1-3-20-10%2816%297-13%282%2911-8%2814-12%2813%2917%295-4-6-9%2811%2915%2818%2919%2Fh4-6H%2C3%2C7H2%2C1-2H3%2C%28H%2C14%2C17%29",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C13H14N2O5/c1-3-20-10(16)7-13(2)11-8(14-12(13)17)5-4-6-9(11)15(18)19/h4-6H,3,7H2,1-2H3,(H,14,17)",
+      "cco:ont00001916": {
+        "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_3",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.Ethyl%20bromoacetate",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "Ethyl bromoacetate",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.%5BO-%5DS%28%3DO%29%28%3DO%29%5BO-%5D.%5BNa%2B%5D.%5BNa%2B%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "[O-]S(=O)(=O)[O-].[Na+].[Na+]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PMZURENOXWZQFD-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N",
+      "@type": "mds:Product"
+    },
+    {
+      "@id": "mds:Component.ZMXDDKWLCZADIW-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:SMILES.BrCC%28%3DO%29OCC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "BrCC(=O)OCC",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.%5BH-%5D.%5BNa%2B%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "[H-].[Na+]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "obo:WorkupDuration.9b3085fda02a4f2e9393b9fa9e813ab9_2",
+      "@type": "obo:BFO_0000202",
+      "cco:ont00001767": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:HR"
+      }
+    },
+    {
+      "@id": "mds:Product.9b3085fda02a4f2e9393b9fa9e813ab9_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.Diethyl%202%2C2%E2%80%B2-%284-nitro-2-oxo-2%2C3-dihydro-1H-indol-3%2C3-diyl%29diacetate",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "Diethyl 2,2′-(4-nitro-2-oxo-2,3-dihydro-1H-indol-3,3-diyl)diacetate",
+      "cco:ont00001916": {
+        "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC3H7NO%2Fc1-4%282%293-5%2Fh3H%2C1-2H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C3H7NO/c1-4(2)3-5/h3H,1-2H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_DRY_WITH_MATERIAL_7",
+      "mds:details": "dried over Na2SO4"
+    },
+    {
+      "@id": "mds:Component.PMZURENOXWZQFD-UHFFFAOYSA-L",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_DRY_WITH_MATERIAL_7"
+      }
+    },
+    {
+      "@id": "mds:ChemicalReaction.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001777": [
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m4"
+        },
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m6"
+        },
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3"
+        },
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m5"
+        },
+        {
+          "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9"
+        }
+      ],
+      "cco:ont00001986": [
+        {
+          "@id": "mds:CrudeProduct.9b3085fda02a4f2e9393b9fa9e813ab9"
+        },
+        {
+          "@id": "mds:Product.VLEMFISHFZUUNH-UHFFFAOYSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "To a stirred solution of 4-nitro-1,3-dihydro-2H-indol-2-one (5.25 g, 29.5 mmol, described in Intermediate 16) in DMF (200 mL) at 0° C. was added sodium hydride (60% dispersion in mineral oil; 1.24 g, 30.9 mmol) and the resulting mixture was stirred for 30 min. Ethyl bromoacetate (3.60 mL, 32.4 mmol) was added dropwise and the mixture was stirred at 0° C. for 1 h. A further equivalent of sodium hydride (60% dispersion in mineral oil; 1.24 g, 30.9 mmol) was added, stirring was continued for 1 h, then ethyl bromoacetate (3.00 mL, 27.1 mmol) was added dropwise. The reaction mixture was stirred for 1 h, then quenched with saturated aqueous NH4Cl (125 mL) and H2O (500 mL). The mixture was extracted with EtOAc (3×300 mL) and the combined organic extracts were washed with brine (100 mL), then dried over Na2SO4, filtered, and concentrated in vacuo. The crude product was purified by silica gel chromatography, eluting with a gradient of hexane:EtOAc—100:0 to 50:50, to give the title compound. MS: m/z=351 (M+1).",
+      "mds:safetyNotes": "None",
+      "obo:BFO_0000063": [
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_0"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_1"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WAIT_2"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_3"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CUSTOM_4"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_EXTRACTION_5"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_6"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_DRY_WITH_MATERIAL_7"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_FILTRATION_8"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CONCENTRATION_9"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CUSTOM_10"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_11"
+        }
+      ],
+      "obo:BFO_0000199": {
+        "@id": "mds:ReactionTime.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m4_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.HPALAKNZSZLMCH-UHFFFAOYSA-M",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_6"
+      }
+    },
+    {
+      "@id": "mds:Component.SWMILICNHZNLGP-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "cco:Mass.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3_component_2",
+      "cco:ont00001769": 1.2400000095367432,
+      "cco:ont00001863": {
+        "@id": "unit:GM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Volume.9b3085fda02a4f2e9393b9fa9e813ab9_m6_component_0",
+      "cco:ont00001769": 3.0,
+      "cco:ont00001863": {
+        "@id": "unit:MilliL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.ethyl%20bromoacetate",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "ethyl bromoacetate",
+      "cco:ont00001916": {
+        "@id": "mds:Component.PQJJJMRNHATNKG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:CrudeProduct.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "@type": "mds:CrudeProduct",
+      "cco:ont00001841": [
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_0"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_1"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WAIT_2"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_3"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CUSTOM_4"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_EXTRACTION_5"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_6"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_DRY_WITH_MATERIAL_7"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_FILTRATION_8"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CONCENTRATION_9"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CUSTOM_10"
+        },
+        {
+          "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_WASH_11"
+        }
+      ]
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_CONCENTRATION_9",
+      "mds:details": "concentrated in vacuo"
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.9b3085fda02a4f2e9393b9fa9e813ab9_m5_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "@type": "obo:CHMO_0002774"
+    },
+    {
+      "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m4",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:Component.BZKBCQXYZZXSCO-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": [
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m1_m2_m7_m3"
+        },
+        {
+          "@id": "mds:InputAddition.9b3085fda02a4f2e9393b9fa9e813ab9_m5"
+        }
+      ],
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CN%28C%29C%3DO",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CN(C)C=O",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ZMXDDKWLCZADIW-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.9b3085fda02a4f2e9393b9fa9e813ab9",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.9b3085fda02a4f2e9393b9fa9e813ab9"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.9b3085fda02a4f2e9393b9fa9e813ab9_STIRRING_1",
+      "cco:ont00001777": {
+        "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9_Workup_1"
+      },
+      "mds:details": "stirring"
+    },
+    {
+      "@id": "obo:StirringProcess.9b3085fda02a4f2e9393b9fa9e813ab9_Workup_3",
+      "@type": "obo:CHMO_0002774"
+    },
+    {
+      "@id": "mds:NAME.hexane",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "hexane",
+      "cco:ont00001916": {
+        "@id": "mds:Component.VLKZOEOYAKHREP-UHFFFAOYSA-N"
+      }
+    }
+  ]
+}
