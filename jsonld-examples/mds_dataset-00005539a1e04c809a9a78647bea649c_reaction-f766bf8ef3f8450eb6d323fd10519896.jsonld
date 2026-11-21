@@ -42,35 +42,10 @@
   },
   "@graph": [
     {
-      "@id": "mds:Product.f766bf8ef3f8450eb6d323fd10519896_Outcome_0_Product_0",
-      "@type": "mds:Product",
-      "obo:BFO_0000197": {
-        "@id": "mds:Product.DIHWTKQEQVRSQI-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_Solvent",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
-      }
-    },
-    {
-      "@id": "mds:ProductMeasurement.f766bf8ef3f8450eb6d323fd10519896_Product_0_Measurement_0",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001769": 39.06999969482422,
-      "cco:ont00001808": {
-        "@id": "mds:Product.DIHWTKQEQVRSQI-UHFFFAOYSA-N"
-      },
-      "cco:ont00001863": {
-        "@id": "unit:PERCENT"
-      }
-    },
-    {
-      "@id": "mds:Component.FJDQFPXHSGXQBY-UHFFFAOYSA-L",
+      "@id": "mds:Component.VEBOWXZBIOQECE-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
-        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_Base"
+        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_amine"
       },
       "obo:BFO_0000129": {
         "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
@@ -86,78 +61,10 @@
       "mds:details": "reaction type"
     },
     {
-      "@id": "mds:SMILES.CONC%28%3DO%29C1%3DCC%3DCC%3DC1N",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CONC(=O)C1=CC=CC=C1N",
-      "cco:ont00001916": {
-        "@id": "mds:Component.VEBOWXZBIOQECE-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionSetup.f766bf8ef3f8450eb6d323fd10519896",
-      "obo:BFO_0000063": {
-        "@id": "mds:ChemicalReaction.f766bf8ef3f8450eb6d323fd10519896"
-      }
-    },
-    {
-      "@id": "mds:CrudeProduct.f766bf8ef3f8450eb6d323fd10519896",
-      "@type": "mds:CrudeProduct"
-    },
-    {
-      "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_arylhalide"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
-      }
-    },
-    {
-      "@id": "cco:Volume.f766bf8ef3f8450eb6d323fd10519896_Solvent_component_0",
-      "cco:ont00001769": 0.9129999876022339,
-      "cco:ont00001863": {
-        "@id": "unit:L"
-      },
+      "@id": "mds:Product.f766bf8ef3f8450eb6d323fd10519896_Outcome_0_Product_0",
+      "@type": "mds:Product",
       "obo:BFO_0000197": {
-        "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896",
-      "@type": "mds:ReactionMixture",
-      "cco:ont00001841": {
-        "@id": "mds:ChemicalReaction.f766bf8ef3f8450eb6d323fd10519896"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C%28%3DO%29%28%5BO-%5D%29%5BO-%5D.%5BCs%2B%5D.%5BCs%2B%5D",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C(=O)([O-])[O-].[Cs+].[Cs+]",
-      "cco:ont00001916": {
-        "@id": "mds:Component.FJDQFPXHSGXQBY-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "cco:CatalystArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_1",
-      "@type": "cco:ont00000267",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C1%3DC%28C%28%3DCN%3DC1Cl%29Cl%29I",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C1=C(C(=CN=C1Cl)Cl)I",
-      "cco:ont00001916": {
-        "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:SolventArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_Solvent_component_0",
-      "@type": "cco:ont00001160",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N"
+        "@id": "mds:Product.DIHWTKQEQVRSQI-UHFFFAOYSA-N"
       }
     },
     {
@@ -165,6 +72,40 @@
       "@type": "mds:InputAddition",
       "cco:ont00001986": {
         "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_amine",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_metalandligand"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_Solvent"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "cco:CatalystArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_0",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N"
       }
     },
     {
@@ -178,51 +119,24 @@
       }
     },
     {
-      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_0",
-      "cco:ont00001769": 0.020500000566244125,
-      "cco:ont00001863": {
-        "@id": "unit:MOL"
+      "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_metalandligand"
       },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N"
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
       }
     },
     {
-      "@id": "cco:ReactantArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_arylhalide_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N"
-      }
+      "@id": "mds:CrudeProduct.f766bf8ef3f8450eb6d323fd10519896",
+      "@type": "mds:CrudeProduct"
     },
     {
-      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_arylhalide_component_0",
-      "cco:ont00001769": 0.27399998903274536,
-      "cco:ont00001863": {
-        "@id": "unit:MOL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_1",
-      "cco:ont00001769": 0.013700000010430813,
-      "cco:ont00001863": {
-        "@id": "unit:MOL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:TemperatureMeasurement.f766bf8ef3f8450eb6d323fd10519896_condition",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001769": 100.0,
-      "cco:ont00001808": {
-        "@id": "mds:ReactionTemperature.f766bf8ef3f8450eb6d323fd10519896"
-      },
-      "cco:ont00001863": {
-        "@id": "unit:DEG_C"
+      "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_Solvent",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
       }
     },
     {
@@ -233,35 +147,24 @@
       }
     },
     {
-      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_Base_component_0",
-      "cco:ont00001769": 0.32899999618530273,
+      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_0",
+      "cco:ont00001769": 0.020500000566244125,
       "cco:ont00001863": {
         "@id": "unit:MOL"
       },
       "obo:BFO_0000197": {
-        "@id": "mds:Component.FJDQFPXHSGXQBY-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "mds:ReactionTemperature.f766bf8ef3f8450eb6d323fd10519896",
-      "@type": "mds:ReactionTemperature"
-    },
-    {
-      "@id": "mds:SMILES.CC1%28C2%3DC%28C%28%3DCC%3DC2%29P%28C3%3DCC%3DCC%3DC3%29C4%3DCC%3DCC%3DC4%29OC5%3DC1C%3DCC%3DC5P%28C6%3DCC%3DCC%3DC6%29C7%3DCC%3DCC%3DC7%29C",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CC1(C2=C(C(=CC=C2)P(C3=CC=CC=C3)C4=CC=CC=C4)OC5=C1C=CC=C5P(C6=CC=CC=C6)C7=CC=CC=C7)C",
-      "cco:ont00001916": {
         "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_metalandligand"
+      "@id": "mds:ProductMeasurement.f766bf8ef3f8450eb6d323fd10519896_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 39.06999969482422,
+      "cco:ont00001808": {
+        "@id": "mds:Product.DIHWTKQEQVRSQI-UHFFFAOYSA-N"
       },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
       }
     },
     {
@@ -304,17 +207,10 @@
       "mds:safetyNotes": "None"
     },
     {
-      "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_arylhalide",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
-      }
-    },
-    {
-      "@id": "cco:CatalystArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_0",
-      "@type": "cco:ont00000267",
+      "@id": "cco:SolventArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_Solvent_component_0",
+      "@type": "cco:ont00001160",
       "obo:BFO_0000197": {
-        "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N"
+        "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N"
       }
     },
     {
@@ -326,28 +222,29 @@
       }
     },
     {
-      "@id": "mds:SMILES.C1COCCO1",
+      "@id": "mds:SMILES.CC1%28C2%3DC%28C%28%3DCC%3DC2%29P%28C3%3DCC%3DCC%3DC3%29C4%3DCC%3DCC%3DC4%29OC5%3DC1C%3DCC%3DC5P%28C6%3DCC%3DCC%3DC6%29C7%3DCC%3DCC%3DC7%29C",
       "@type": "mds:SMILES",
-      "cco:ont00001765": "C1COCCO1",
+      "cco:ont00001765": "CC1(C2=C(C(=CC=C2)P(C3=CC=CC=C3)C4=CC=CC=C4)OC5=C1C=CC=C5P(C6=CC=CC=C6)C7=CC=CC=C7)C",
       "cco:ont00001916": {
-        "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N"
+        "@id": "mds:Component.CXNIUSPIQKWYAI-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_amine",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      "@id": "mds:SMILES.C1%3DC%28C%28%3DCN%3DC1Cl%29Cl%29I",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C1=C(C(=CN=C1Cl)Cl)I",
+      "cco:ont00001916": {
+        "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_Solvent"
+      "@id": "cco:Volume.f766bf8ef3f8450eb6d323fd10519896_Solvent_component_0",
+      "cco:ont00001769": 0.9129999876022339,
+      "cco:ont00001863": {
+        "@id": "unit:L"
       },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N"
       }
     },
     {
@@ -356,23 +253,63 @@
       "mds:isDesiredProduct": true
     },
     {
-      "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N",
+      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_arylhalide_component_0",
+      "cco:ont00001769": 0.27399998903274536,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_amine_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.VEBOWXZBIOQECE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:CatalystArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_1",
+      "@type": "cco:ont00000267",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_arylhalide_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.FJDQFPXHSGXQBY-UHFFFAOYSA-L",
       "@type": "mds:Component",
       "cco:ont00001841": {
-        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_metalandligand"
+        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_Base"
       },
       "obo:BFO_0000129": {
         "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
       }
     },
     {
-      "@id": "mds:Component.VEBOWXZBIOQECE-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_amine"
+      "@id": "mds:SMILES.C1COCCO1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C1COCCO1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.RYHBNJHYFVUHQT-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:TemperatureMeasurement.f766bf8ef3f8450eb6d323fd10519896_condition",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 100.0,
+      "cco:ont00001808": {
+        "@id": "mds:ReactionTemperature.f766bf8ef3f8450eb6d323fd10519896"
       },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      "cco:ont00001863": {
+        "@id": "unit:DEG_C"
       }
     },
     {
@@ -386,9 +323,10 @@
       }
     },
     {
-      "@id": "cco:ReactantArtifactFunction.f766bf8ef3f8450eb6d323fd10519896_amine_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
+      "@id": "mds:SMILES.CONC%28%3DO%29C1%3DCC%3DCC%3DC1N",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CONC(=O)C1=CC=CC=C1N",
+      "cco:ont00001916": {
         "@id": "mds:Component.VEBOWXZBIOQECE-UHFFFAOYSA-N"
       }
     },
@@ -398,6 +336,68 @@
       "cco:ont00001765": "CONC(=O)C1=CC=CC=C1NC2=CC(=NC=C2Cl)Cl",
       "cco:ont00001916": {
         "@id": "mds:Product.DIHWTKQEQVRSQI-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_metalandligand_component_1",
+      "cco:ont00001769": 0.013700000010430813,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.LXNAVEXFUKBNMK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.IWCZLVRNVBSAPH-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_arylhalide"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "mds:ReactionTemperature.f766bf8ef3f8450eb6d323fd10519896",
+      "@type": "mds:ReactionTemperature"
+    },
+    {
+      "@id": "mds:InputAddition.f766bf8ef3f8450eb6d323fd10519896_arylhalide",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.f766bf8ef3f8450eb6d323fd10519896"
+      }
+    },
+    {
+      "@id": "cco:Moles.f766bf8ef3f8450eb6d323fd10519896_Base_component_0",
+      "cco:ont00001769": 0.32899999618530273,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.FJDQFPXHSGXQBY-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:SMILES.C%28%3DO%29%28%5BO-%5D%29%5BO-%5D.%5BCs%2B%5D.%5BCs%2B%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(=O)([O-])[O-].[Cs+].[Cs+]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.FJDQFPXHSGXQBY-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.f766bf8ef3f8450eb6d323fd10519896",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.f766bf8ef3f8450eb6d323fd10519896"
       }
     }
   ]

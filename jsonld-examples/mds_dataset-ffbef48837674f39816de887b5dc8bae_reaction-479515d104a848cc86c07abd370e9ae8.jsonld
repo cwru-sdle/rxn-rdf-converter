@@ -1,0 +1,305 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC6H3Cl3O2S%2Fc7-4-1-2-6%285%288%293-4%2912%289%2C10%2911%2Fh1-3H",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C6H3Cl3O2S/c7-4-1-2-6(5(8)3-4)12(9,10)11/h1-3H",
+      "cco:ont00001916": {
+        "@id": "mds:Component.FDTPBIKNYWQLAE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.479515d104a848cc86c07abd370e9ae8_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.XXGWCJAWZWEJAX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.479515d104a848cc86c07abd370e9ae8"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3_component_1",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.FDTPBIKNYWQLAE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3_component_0",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ChemicalReaction.479515d104a848cc86c07abd370e9ae8",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001777": {
+        "@id": "mds:InputAddition.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3"
+      },
+      "cco:ont00001986": [
+        {
+          "@id": "mds:CrudeProduct.479515d104a848cc86c07abd370e9ae8"
+        },
+        {
+          "@id": "mds:Product.XXGWCJAWZWEJAX-UHFFFAOYSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "2,4-Dichloro-N-(3,5-dichloro-4-quinolin-3-ylmethyl-phenyl)-benzenesulfonamide was synthesized (63%) from 3,5-dichloro-4-quinolin-3-ylmethyl-phenylamine (230), 2,4-dichlorobenzenesulfonyl chloride (Maybridge) and pyridine (EM) in a similar manner as described in Examples 70-91. 1H NMR (400 MHz, DMSO-d6) δ 11.34 (br s, 1H), 8.78 (d, J=2.0 Hz, 1H), 8.13 (d, J=8.6 Hz, 1H), 7.97 (d, J=8.6 Hz, 1H), 7.93 (d, J=1.8 Hz, 1H), 7.88 (d, J=7.9 Hz, 1H), 7.80 (s, 1H), 7.73-7.68 (m, 2H), 7.58 (t, J=7.5 Hz, 1H), 7.21 (s, 2H), 4.34 (s, 2H). MS (EI): m/z 509 (M−H).",
+      "mds:safetyNotes": "None"
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3_component_2",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC16H12Cl2N2%2Fc17-14-7-12%2819%298-15%2818%2913%2814%296-10-5-11-3-1-2-4-16%2811%2920-9-10%2Fh1-5%2C7-9H%2C6%2C19H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C16H12Cl2N2/c17-14-7-12(19)8-15(18)13(14)6-10-5-11-3-1-2-4-16(11)20-9-10/h1-5,7-9H,6,19H2",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.XXGWCJAWZWEJAX-UHFFFAOYSA-N",
+      "@type": "mds:Product"
+    },
+    {
+      "@id": "mds:NAME.3%2C5-dichloro-4-quinolin-3-ylmethyl-phenylamine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "3,5-dichloro-4-quinolin-3-ylmethyl-phenylamine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:CrudeProduct.479515d104a848cc86c07abd370e9ae8",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "mds:REACTION_CXSMILES.%5BCl%3A1%5D%5BC%3A2%5D1%5BCH%3A3%5D%3D%5BC%3A4%5D%28%5BNH2%3A20%5D%29%5BCH%3A5%5D%3D%5BC%3A6%5D%28%5BCl%3A19%5D%29%5BC%3A7%5D%3D1%5BCH2%3A8%5D%5BC%3A9%5D1%5BCH%3A10%5D%3D%5BN%3A11%5D%5BC%3A12%5D2%5BC%3A17%5D%28%5BCH%3A18%5D%3D1%29%3D%5BCH%3A16%5D%5BCH%3A15%5D%3D%5BCH%3A14%5D%5BCH%3A13%5D%3D2.%5BCl%3A21%5D%5BC%3A22%5D1%5BCH%3A27%5D%3D%5BC%3A26%5D%28%5BCl%3A28%5D%29%5BCH%3A25%5D%3D%5BCH%3A24%5D%5BC%3A23%5D%3D1%5BS%3A29%5D%28Cl%29%28%3D%5BO%3A31%5D%29%3D%5BO%3A30%5D%3EN1C%3DCC%3DCC%3D1%3E%5BCl%3A21%5D%5BC%3A22%5D1%5BCH%3A27%5D%3D%5BC%3A26%5D%28%5BCl%3A28%5D%29%5BCH%3A25%5D%3D%5BCH%3A24%5D%5BC%3A23%5D%3D1%5BS%3A29%5D%28%5BNH%3A20%5D%5BC%3A4%5D1%5BCH%3A5%5D%3D%5BC%3A6%5D%28%5BCl%3A19%5D%29%5BC%3A7%5D%28%5BCH2%3A8%5D%5BC%3A9%5D2%5BCH%3A10%5D%3D%5BN%3A11%5D%5BC%3A12%5D3%5BC%3A17%5D%28%5BCH%3A18%5D%3D2%29%3D%5BCH%3A16%5D%5BCH%3A15%5D%3D%5BCH%3A14%5D%5BCH%3A13%5D%3D3%29%3D%5BC%3A2%5D%28%5BCl%3A1%5D%29%5BCH%3A3%5D%3D1%29%28%3D%5BO%3A31%5D%29%3D%5BO%3A30%5D",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "[Cl:1][C:2]1[CH:3]=[C:4]([NH2:20])[CH:5]=[C:6]([Cl:19])[C:7]=1[CH2:8][C:9]1[CH:10]=[N:11][C:12]2[C:17]([CH:18]=1)=[CH:16][CH:15]=[CH:14][CH:13]=2.[Cl:21][C:22]1[CH:27]=[C:26]([Cl:28])[CH:25]=[CH:24][C:23]=1[S:29](Cl)(=[O:31])=[O:30]>N1C=CC=CC=1>[Cl:21][C:22]1[CH:27]=[C:26]([Cl:28])[CH:25]=[CH:24][C:23]=1[S:29]([NH:20][C:4]1[CH:5]=[C:6]([Cl:19])[C:7]([CH2:8][C:9]2[CH:10]=[N:11][C:12]3[C:17]([CH:18]=2)=[CH:16][CH:15]=[CH:14][CH:13]=3)=[C:2]([Cl:1])[CH:3]=1)(=[O:31])=[O:30]",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.479515d104a848cc86c07abd370e9ae8"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "mds:SMILES.ClC%3D1C%3DC%28C%3DC%28C1CC%3D1C%3DNC2%3DCC%3DCC%3DC2C1%29Cl%29N",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "ClC=1C=C(C=C(C1CC=1C=NC2=CC=CC=C2C1)Cl)N",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.N1%3DCC%3DCC%3DC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "N1=CC=CC=C1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.479515d104a848cc86c07abd370e9ae8",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.479515d104a848cc86c07abd370e9ae8"
+      }
+    },
+    {
+      "@id": "cco:Moles.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3_component_1",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.FDTPBIKNYWQLAE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC22H14Cl4N2O2S%2Fc23-15-5-6-22%2820%2826%299-15%2931%2829%2C30%2928-16-10-18%2824%2917%2819%2825%2911-16%298-13-7-14-3-1-2-4-21%2814%2927-12-13%2Fh1-7%2C9-12%2C28H%2C8H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C22H14Cl4N2O2S/c23-15-5-6-22(20(26)9-15)31(29,30)28-16-10-18(24)17(19(25)11-16)8-13-7-14-3-1-2-4-21(14)27-12-13/h1-7,9-12,28H,8H2",
+      "cco:ont00001916": {
+        "@id": "mds:Product.XXGWCJAWZWEJAX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.2%2C4-dichlorobenzenesulfonyl%20chloride",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "2,4-dichlorobenzenesulfonyl chloride",
+      "cco:ont00001916": {
+        "@id": "mds:Component.FDTPBIKNYWQLAE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.2%2C4-Dichloro-N-%283%2C5-dichloro-4-quinolin-3-ylmethyl-phenyl%29-benzenesulfonamide",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "2,4-Dichloro-N-(3,5-dichloro-4-quinolin-3-ylmethyl-phenyl)-benzenesulfonamide",
+      "cco:ont00001916": {
+        "@id": "mds:Product.XXGWCJAWZWEJAX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.479515d104a848cc86c07abd370e9ae8",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.479515d104a848cc86c07abd370e9ae8"
+      }
+    },
+    {
+      "@id": "cco:Moles.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3_component_2",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.479515d104a848cc86c07abd370e9ae8"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC5H5N%2Fc1-2-4-6-5-3-1%2Fh1-5H",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C5H5N/c1-2-4-6-5-3-1/h1-5H",
+      "cco:ont00001916": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.ClC1%3DC%28C%3DCC%28%3DC1%29Cl%29S%28%3DO%29%28%3DO%29NC1%3DCC%28%3DC%28C%28%3DC1%29Cl%29CC%3D1C%3DNC2%3DCC%3DCC%3DC2C1%29Cl",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "ClC1=C(C=CC(=C1)Cl)S(=O)(=O)NC1=CC(=C(C(=C1)Cl)CC=1C=NC2=CC=CC=C2C1)Cl",
+      "cco:ont00001916": {
+        "@id": "mds:Product.XXGWCJAWZWEJAX-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.pyridine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "pyridine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.FDTPBIKNYWQLAE-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.479515d104a848cc86c07abd370e9ae8"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.ClC1%3DC%28C%3DCC%28%3DC1%29Cl%29S%28%3DO%29%28%3DO%29Cl",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "ClC1=C(C=CC(=C1)Cl)S(=O)(=O)Cl",
+      "cco:ont00001916": {
+        "@id": "mds:Component.FDTPBIKNYWQLAE-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.479515d104a848cc86c07abd370e9ae8",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.479515d104a848cc86c07abd370e9ae8"
+      }
+    },
+    {
+      "@id": "mds:NAME.3%2C5-Dichloro-4-quinolin-3-ylmethyl-phenylamine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "3,5-Dichloro-4-quinolin-3-ylmethyl-phenylamine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KYWNWTKGXUPWET-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.479515d104a848cc86c07abd370e9ae8_m0_m1_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.479515d104a848cc86c07abd370e9ae8"
+      }
+    }
+  ]
+}
