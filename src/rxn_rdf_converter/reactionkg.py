@@ -256,6 +256,7 @@ class ReactionKG:
         provenance_dict = {'reactionID': self.reaction_id}
         provenance_dict.update({item:None for item in list(self.reaction_pb.provenance.DESCRIPTOR.fields_by_name)})
         provenance_dict.update(message_to_row(self.reaction_pb.provenance))
+        self.reaction_provenance.append(provenance_dict)
         return self
         
     def generate_compound_identifiers (self, identifiers): 
@@ -760,13 +761,15 @@ class ReactionKG:
             raise ValueError(f"Invalid context: {context}. Must be 'input', 'workup', 'aliquot'")
         
         if f"{prefix}amount.type" in component_list:
-            amount_type = component_list[f"{prefix}amount.type"] 
+            amount_type = component_list[f"{prefix}amount.type"]
+            input_key = component_list.get("InputKey", f"aliquot_{component_list.get('Index', 0)}")
+            comp_idx = i if i is not None else component_list.get("Index", 0) 
             if amount_type == 'moles':
-                amount_added = self.cco.ont00000768(f'Moles.{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                amount_added = self.cco.ont00000768(f'Moles.{self.reaction_id}_{input_key}_component_{comp_idx}')
             elif amount_type == 'mass':
-                amount_added = self.cco.ont00000768(f'Mass.{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                amount_added = self.cco.ont00000768(f'Mass.{self.reaction_id}_{input_key}_component_{comp_idx}')
             elif amount_type == 'volume':
-                amount_added = self.cco.ont00000768(f'Volume.{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                amount_added = self.cco.ont00000768(f'Volume.{self.reaction_id}_{input_key}_component_{comp_idx}')
             else: amount_added = None
             if amount_added and f"{prefix}amount.{amount_type}.value" in component_list and f"{prefix}amount.{amount_type}.units" in component_list: 
                 self.instance_dict['inheres in'].append([amount_added.iri, reaction_component.iri])
@@ -880,27 +883,44 @@ class ReactionKG:
                 self._apply_triples(input_addition, ('has occurent part', addition_speed.iri))
             
             if item['addition_duration'] == True and 'addition_duration.value' in item and 'addition_duration.units' in item:
-                addition_duration = self._create_instance(self.obo.BFO_0000202, f'AdditionDuration.{self.reaction_id}',
-                    [('has datetime value',  item['addition_duration.value']),
-                     ('uses measurement unit', self.unit_mapping[item['addition_duration.units']].iri)
-                    ])
+                addition_duration = self._create_instance(
+                    self.obo.BFO_0000202,
+                    f'AdditionDuration.{self.reaction_id}',
+                    *[
+                        ('has datetime value', item['addition_duration.value']),
+                        ('uses measurement unit', self.unit_mapping[item['addition_duration.units']].iri)
+                    ]
+                )
                 self._apply_triples(input_addition, ('occupies temporal region', addition_duration.iri))
                     
             if item['addition_time'] == True and 'addition_time.value' in item and 'addition_time.units' in item:
-                addition_time = self._create_instance(self.obo.BFO_0000202, f'AdditionTime.{self.reaction_id}', 
-                    [('has datetime value', item['addition_time.value']),
-                    ('uses measurement unit', self.unit_mapping[item['addition_time.units']].iri)])
+                addition_time = self._create_instance(
+                    self.obo.BFO_0000202,
+                    f'AdditionTime.{self.reaction_id}',
+                    *[
+                        ('has datetime value', item['addition_time.value']),
+                        ('uses measurement unit', self.unit_mapping[item['addition_time.units']].iri)
+                    ]
+                )
                 self._apply_triples(input_addition, ('occupies temporal region',addition_time.iri))
                     
             if item['flow_rate'] == True and 'flow_rate.value' in item and 'flow_rate.units' in item:
-                flow_rate = self._create_instance(self.mds.FlowRate, f'FlowRate.{self.reaction_id}', 
-                        [('has decimal value', item['flow_rate.value']),
-                        ('uses measurement unit', item['flow_rate.units'])])
+                flow_rate = self._create_instance(
+                    self.mds.FlowRate,
+                    f'FlowRate.{self.reaction_id}',
+                    *[
+                        ('has decimal value', item['flow_rate.value']),
+                        ('uses measurement unit', item['flow_rate.units'])
+                    ]
+                )
                 self._apply_triples(input_addition, ('has occurent part', flow_rate.iri))
 
             if item['addition_device'] == True and 'addition_device.type' in item:
-                addition_device = self._create_instance(self.cco.ont00000581, f"AdditionDevice.{self.reaction_id}_{item['addition_device.type']}", 
-                        [('participates in', input_addition.iri)])
+                addition_device = self._create_instance(
+                    self.cco.ont00000581,
+                    f"AdditionDevice.{self.reaction_id}_{item['addition_device.type']}",
+                    *[('participates in', input_addition.iri)]
+                )
                 if 'addition_device.details' in item:  self._apply_triples(addition_device, ('details', item['addition_device.details']))
                 
     def _process_temperature(self, component_list, reaction_component=None, context='condition'):
@@ -1072,7 +1092,7 @@ class ReactionKG:
                 self._apply_triples(electrochemistry_condition, *triples)
                     #self.instance_dict['inheres in'].append([tube_diameter.iri, flow_tube.iri])
                     #self.instance_dict['has decimal value'].append([tube_diameter.iri, item['flow.tubing.diameter.value']])
-                    #self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diamter.units']])
+                    #self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diameter.units']])
                 #if 'electrochemistry.cell.type' in item:
                 #    self.instance_dict[]
             if item['flow'] == True and 'flow.type' in item: 
@@ -1100,7 +1120,7 @@ class ReactionKG:
                     }
                     flow_tube = self._create_instance(self.cco.ont00000581, f"{tube_mapping[item['flow.tubing.type']]}.{self.reaction_id}")
                     if 'flow.tubing.details' in item: self._apply_triples(flow_tube, ('details', item['flow.tubing.details']))
-                    if 'flow.tubing.diameter' in item and 'flow.tubing.diameter.value' in item and 'flow.tubing.diamter.units' in item:
+                    if 'flow.tubing.diameter' in item and 'flow.tubing.diameter.value' in item and 'flow.tubing.diameter.units' in item:
                         tube_diameter = self._create_instance(self.cco.ont00000738, f"TubeDiameter.{self.reaction_id}", *[
                             ('inheres in', flow_tube.iri),('has decimal value', item['flow.tubing.diameter.value']),
                             ('uses measurement unit', item['flow.tubing.diameter.units'])])
@@ -1173,10 +1193,16 @@ class ReactionKG:
             self.instance_dict['precedes'].append([self.chemical_reaction.iri, workup_instance.iri])
             if (item['type'] == 'ADDITION' or item['type'] ==  'DRY_WITH_MATERIAL' or item['type'] ==  'WASH' or item['type'] == 'SCAVENGING') and item['input'] == True:
                 self._extract_components(item, workup_instance, context='workup')
-            if (item['type'] == 'ALIQUOT') and 'amount.value' in item and 'amount.units' in item and 'workup.amount.type' in item: 
-                self._extract_component_amount(item, workup_instance, context='aliquot')
-            if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'workup.temperature.setpoint.value' in item and 'workup.temperature.setpoint.units' in item : 
+            if (item['type'] == 'ALIQUOT') and 'amount.type' in item:
+                amt_type = item['amount.type']
+                if f'amount.{amt_type}.value' in item and f'amount.{amt_type}.units' in item:
+                    self._extract_component_amount(item, workup_instance, i=item.get("Index", 0), context='aliquot')
+            #if (item['type'] == 'ALIQUOT') and 'amount.value' in item and 'amount.units' in item and 'workup.amount.type' in item: 
+            #    self._extract_component_amount(item, workup_instance, context='aliquot')
+            if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'temperature.setpoint.value' in item and 'temperature.setpoint.units' in item:
                 self._process_temperature(item, context='workup')
+            #if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'workup.temperature.setpoint.value' in item and 'workup.temperature.setpoint.units' in item : 
+            #    self._process_temperature(item, context='workup')
             if (item['type'] == 'EXTRACTION' or item['type'] == 'FILTRATION') and 'keep_phase' in item:
                 triples.append(('keep phase', item['keep_phase']))
             if item['type'] == 'PH_ADJUST' and 'target_ph' in item: 
@@ -1406,7 +1432,7 @@ class ReactionKG:
                         obj_uri = URIRef(item[1])
                         pred_uri = URIRef(prop_metadata[0])
                         self.graph.add((subj_uri, pred_uri, obj_uri))
-                    elif prop_metadata[1] == "Datatype Property":
+                    elif prop_metadata[1] in ("Datatype Property", "Annotation Property"):
                         subj_uri = URIRef(item[0])
                         pred_uri = URIRef(prop_metadata[0])
                         self.graph.add((subj_uri, pred_uri, Literal(item[1])))

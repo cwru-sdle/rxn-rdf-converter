@@ -12,7 +12,7 @@ from ord_schema.datasets import save_dataset
 from ord_schema.proto import dataset_pb2
 
 from src.rxn_rdf_converter.dataset_processor import DatasetProcessor  # Adjust module name if needed
-from src.rxn_rdf_converter.reaction_KG import ReactionKG
+from src.rxn_rdf_converter.reactionkg import ReactionKG
 
 logging.basicConfig(
     level=logging.INFO,
@@ -363,11 +363,10 @@ class TestDatasetProcessor(unittest.TestCase):
                 dataset_pb2, ds_path, MDS_FILE_PATH, output_dir, log_dir, fmt="turtle"
             )
 
-            with patch.object(
-                ReactionKG,
-                "generate_reaction",
-                side_effect=RuntimeError("Simulated parse failure"),
-            ):
+            # Patch where ReactionKG is imported/used in dataset_processor
+            # (Adjust 'src.rxn_rdf_converter...' to match the exact package structure)
+            with patch("src.rxn_rdf_converter.dataset_processor.ReactionKG.generate_reaction", 
+                       side_effect=RuntimeError("Simulated parse failure")):
                 _, reaction_errors, processed_list = processor.extract_reaction()
 
             processor.log_handler.close()

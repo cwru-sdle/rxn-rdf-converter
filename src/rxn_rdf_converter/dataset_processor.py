@@ -7,7 +7,7 @@ import os
 import re
 from rdflib import  Namespace
 import logging
-from rxn_rdf_converter.reaction_KG import ReactionKG
+from rxn_rdf_converter.reactionkg import ReactionKG
 
 # =================================================================
 #               NAMESPACE DEFINITIONS

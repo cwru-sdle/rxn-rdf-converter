@@ -50,55 +50,6 @@
       }
     },
     {
-      "@id": "mds:NAME.cyclopentanol",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "cyclopentanol",
-      "cco:ont00001916": {
-        "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:NAME.%28%20b%20%29",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "( b )",
-      "cco:ont00001916": {
-        "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2"
-      }
-    },
-    {
-      "@id": "mds:SMILES.BrC1%3DNC%3DC%28C%3DC1%29Br",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "BrC1=NC=C(C=C1)Br",
-      "cco:ont00001916": {
-        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:Moles.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_0",
-      "cco:ont00001769": 0.0,
-      "cco:ont00001863": {
-        "@id": "unit:MOL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099",
-      "@type": "mds:ReactionMixture",
-      "cco:ont00001841": {
-        "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
-      }
-    },
-    {
-      "@id": "mds:NAME.2%2C5-dibromopyridine",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "2,5-dibromopyridine",
-      "cco:ont00001916": {
-        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
-      }
-    },
-    {
       "@id": "mds:SMILES.C1%28CCCC1%29O",
       "@type": "mds:SMILES",
       "cco:ont00001765": "C1(CCCC1)O",
@@ -107,57 +58,12 @@
       }
     },
     {
-      "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.c3476e8e6af248f69136a8830a078099_m1_m2_m3"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099"
-      }
-    },
-    {
-      "@id": "cco:Moles.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2",
+      "@id": "cco:Moles.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_1",
       "cco:ont00001769": 0.0,
       "cco:ont00001863": {
         "@id": "unit:MOL"
       },
       "obo:BFO_0000197": {
-        "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC5H3Br2N%2Fc6-4-1-2-5%287%298-3-4%2Fh1-3H",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C5H3Br2N/c6-4-1-2-5(7)8-3-4/h1-3H",
-      "cco:ont00001916": {
-        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.c3476e8e6af248f69136a8830a078099_m1_m2_m3"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099"
-      }
-    },
-    {
-      "@id": "mds:REACTION_CXSMILES.Br%5BC%3A2%5D1%5BCH%3A7%5D%3D%5BCH%3A6%5D%5BC%3A5%5D%28%5BBr%3A8%5D%29%3D%5BCH%3A4%5D%5BN%3A3%5D%3D1.%5BCH%3A9%5D1%28%5BOH%3A14%5D%29%5BCH2%3A13%5D%5BCH2%3A12%5D%5BCH2%3A11%5D%5BCH2%3A10%5D1%3E%3E%5BBr%3A8%5D%5BC%3A5%5D1%5BCH%3A6%5D%3D%5BCH%3A7%5D%5BC%3A2%5D%28%5BO%3A14%5D%5BCH%3A9%5D2%5BCH2%3A13%5D%5BCH2%3A12%5D%5BCH2%3A11%5D%5BCH2%3A10%5D2%29%3D%5BN%3A3%5D%5BCH%3A4%5D%3D1",
-      "@type": "mds:ReactionCXSMILES",
-      "cco:ont00001765": "Br[C:2]1[CH:7]=[CH:6][C:5]([Br:8])=[CH:4][N:3]=1.[CH:9]1([OH:14])[CH2:13][CH2:12][CH2:11][CH2:10]1>>[Br:8][C:5]1[CH:6]=[CH:7][C:2]([O:14][CH:9]2[CH2:13][CH2:12][CH2:11][CH2:10]2)=[N:3][CH:4]=1",
-      "cco:ont00001916": {
-        "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
-      },
-      "mds:isMapped": true
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC5H10O%2Fc6-5-3-1-2-4-5%2Fh5-6H%2C1-4H2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C5H10O/c6-5-3-1-2-4-5/h5-6H,1-4H2",
-      "cco:ont00001916": {
         "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
       }
     },
@@ -165,33 +71,6 @@
       "@id": "mds:ReactionSetup.c3476e8e6af248f69136a8830a078099",
       "obo:BFO_0000063": {
         "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
-      }
-    },
-    {
-      "@id": "mds:CrudeProduct.c3476e8e6af248f69136a8830a078099",
-      "@type": "mds:CrudeProduct"
-    },
-    {
-      "@id": "mds:SMILES.BrC%3D1C%3DCC%28%3DNC1%29OC1CCCC1",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "BrC=1C=CC(=NC1)OC1CCCC1",
-      "cco:ont00001916": {
-        "@id": "mds:Product.ZCTNUTZJUDVPOD-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_1",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC10H12BrNO%2Fc11-8-5-6-10%2812-7-8%2913-9-3-1-2-4-9%2Fh5-7%2C9H%2C1-4H2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C10H12BrNO/c11-8-5-6-10(12-7-8)13-9-3-1-2-4-9/h5-7,9H,1-4H2",
-      "cco:ont00001916": {
-        "@id": "mds:Product.ZCTNUTZJUDVPOD-UHFFFAOYSA-N"
       }
     },
     {
@@ -219,17 +98,6 @@
       "mds:safetyNotes": "None"
     },
     {
-      "@id": "mds:Product.ZCTNUTZJUDVPOD-UHFFFAOYSA-N",
-      "@type": "mds:Product"
-    },
-    {
-      "@id": "mds:InputAddition.c3476e8e6af248f69136a8830a078099_m1_m2_m3",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099"
-      }
-    },
-    {
       "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
@@ -240,19 +108,114 @@
       }
     },
     {
-      "@id": "cco:Moles.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_1",
+      "@id": "cco:Moles.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2",
       "cco:ont00001769": 0.0,
       "cco:ont00001863": {
         "@id": "unit:MOL"
       },
       "obo:BFO_0000197": {
-        "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
+        "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2"
       }
     },
     {
       "@id": "cco:ReactantArtifactFunction.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2",
       "@type": "cco:ont00000808",
       "obo:BFO_0000197": {
+        "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2"
+      }
+    },
+    {
+      "@id": "mds:NAME.cyclopentanol",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "cyclopentanol",
+      "cco:ont00001916": {
+        "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC5H10O%2Fc6-5-3-1-2-4-5%2Fh5-6H%2C1-4H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C5H10O/c6-5-3-1-2-4-5/h5-6H,1-4H2",
+      "cco:ont00001916": {
+        "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.c3476e8e6af248f69136a8830a078099_m1_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC5H3Br2N%2Fc6-4-1-2-5%287%298-3-4%2Fh1-3H",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C5H3Br2N/c6-4-1-2-5(7)8-3-4/h1-3H",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.c3476e8e6af248f69136a8830a078099",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
+      }
+    },
+    {
+      "@id": "mds:SMILES.BrC1%3DNC%3DC%28C%3DC1%29Br",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "BrC1=NC=C(C=C1)Br",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.2%2C5-dibromopyridine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "2,5-dibromopyridine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.ZCTNUTZJUDVPOD-UHFFFAOYSA-N",
+      "@type": "mds:Product"
+    },
+    {
+      "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
+      }
+    },
+    {
+      "@id": "mds:REACTION_CXSMILES.Br%5BC%3A2%5D1%5BCH%3A7%5D%3D%5BCH%3A6%5D%5BC%3A5%5D%28%5BBr%3A8%5D%29%3D%5BCH%3A4%5D%5BN%3A3%5D%3D1.%5BCH%3A9%5D1%28%5BOH%3A14%5D%29%5BCH2%3A13%5D%5BCH2%3A12%5D%5BCH2%3A11%5D%5BCH2%3A10%5D1%3E%3E%5BBr%3A8%5D%5BC%3A5%5D1%5BCH%3A6%5D%3D%5BCH%3A7%5D%5BC%3A2%5D%28%5BO%3A14%5D%5BCH%3A9%5D2%5BCH2%3A13%5D%5BCH2%3A12%5D%5BCH2%3A11%5D%5BCH2%3A10%5D2%29%3D%5BN%3A3%5D%5BCH%3A4%5D%3D1",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "Br[C:2]1[CH:7]=[CH:6][C:5]([Br:8])=[CH:4][N:3]=1.[CH:9]1([OH:14])[CH2:13][CH2:12][CH2:11][CH2:10]1>>[Br:8][C:5]1[CH:6]=[CH:7][C:2]([O:14][CH:9]2[CH2:13][CH2:12][CH2:11][CH2:10]2)=[N:3][CH:4]=1",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "cco:Moles.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_0",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.ZHXUWDPHUQHFOV-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.%28%20b%20%29",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "( b )",
+      "cco:ont00001916": {
         "@id": "mds:Component.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_2"
       }
     },
@@ -264,10 +227,47 @@
       }
     },
     {
-      "@id": "mds:ReactionEnvironment.c3476e8e6af248f69136a8830a078099",
-      "@type": "mds:ReactionEnvironment",
-      "obo:BFO_0000183": {
-        "@id": "mds:ChemicalReaction.c3476e8e6af248f69136a8830a078099"
+      "@id": "mds:CrudeProduct.c3476e8e6af248f69136a8830a078099",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.c3476e8e6af248f69136a8830a078099_m1_m2_m3_component_1",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.XCIXKGXIYUWCLL-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.c3476e8e6af248f69136a8830a078099_m1_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC10H12BrNO%2Fc11-8-5-6-10%2812-7-8%2913-9-3-1-2-4-9%2Fh5-7%2C9H%2C1-4H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C10H12BrNO/c11-8-5-6-10(12-7-8)13-9-3-1-2-4-9/h5-7,9H,1-4H2",
+      "cco:ont00001916": {
+        "@id": "mds:Product.ZCTNUTZJUDVPOD-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.c3476e8e6af248f69136a8830a078099_m1_m2_m3",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.c3476e8e6af248f69136a8830a078099"
+      }
+    },
+    {
+      "@id": "mds:SMILES.BrC%3D1C%3DCC%28%3DNC1%29OC1CCCC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "BrC=1C=CC(=NC1)OC1CCCC1",
+      "cco:ont00001916": {
+        "@id": "mds:Product.ZCTNUTZJUDVPOD-UHFFFAOYSA-N"
       }
     }
   ]
