@@ -596,9 +596,52 @@ class TestReactionKG(unittest.TestCase):
         self.assertEqual(self.kg.instance_dict['is of isolated species'][0][1], True)
 
     def test_process_reaction_setup(self):
-        self.kg.reaction_setup = [{'reactionID': self.kg.reaction_id, 'vessel': True}]
+        self.kg.reaction_setup = [{
+            'reactionID': self.kg.reaction_id,
+            'is_automated': True,
+            'automation_platform': 'Chemspeed SWING XL',
+            'automation_code["script_1"]': 'run_protocol.py',
+            'vessel': True,
+            'vessel.type': 'ROUND_BOTTOM_FLASK',
+            'vessel.details': 'three-necked',
+            'vessel.vessel_id': 'flask_01',
+            'vessel.material.type': 'GLASS',
+            'vessel.material.details': 'borosilicate',
+            'vessel.volume.value': 100.0,
+            'vessel.volume.units': 'MILLILITER',
+            'vessel.preparations[0].type': 'OVEN_DRIED',
+            'vessel.preparations[0].details': '120 C overnight',
+            'vessel.preparations[1].type': 'PURGED',
+            'vessel.preparations[1].details': '3x vacuum/N2',
+            'vessel.attachments[0].type': 'SEPTUM',
+            'vessel.attachments[0].details': 'rubber septum',
+            'vessel.attachments[1].type': 'REFLUX_CONDENSER',
+            'vessel.attachments[1].details': 'water-cooled',
+            'environment': True,
+            'environment.type': 'FUME_HOOD',
+            'environment.details': 'standard lab hood'
+        }]
+
         self.kg._process_reaction_setup()
-        self.assertEqual(len(self.kg.instance_dict['precedes']), 1)
+
+        # Verify ReactionSetup precedes ChemicalReaction and VesselPreparations precede ReactionSetup
+        self.assertEqual(len(self.kg.instance_dict['precedes']), 3)
+        self.assertEqual(self.kg.instance_dict['is automated'][0][1], True)
+
+        # Verify Vessel Volume
+        self.assertTrue(any(v[1] == 100.0 for v in self.kg.instance_dict['has decimal value']))
+
+        # Verify Vessel Material link
+        self.assertEqual(len(self.kg.instance_dict['is made of']), 1)
+
+        # Verify Environment, Automation Platform, and Vessel text values
+        text_vals = [v[1] for v in self.kg.instance_dict['has text value']]
+        self.assertIn('Chemspeed SWING XL', text_vals)
+        self.assertIn('ROUND_BOTTOM_FLASK', text_vals)
+        self.assertIn('GLASS', text_vals)
+        self.assertIn('OVEN_DRIED', text_vals)
+        self.assertIn('SEPTUM', text_vals)
+        self.assertIn('FUME_HOOD', text_vals)
 
     # -----------------------------------------------------------------
     # Graph Serialization Tests (Turtle, JSON-LD, Error Cases)
