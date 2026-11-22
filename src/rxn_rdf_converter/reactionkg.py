@@ -212,19 +212,21 @@ class ReactionKG:
 
         # reaction workups
         for ind, workup in enumerate(self.reaction_pb.workups):
-            workups_dict = {'reactionID':self.reaction_id, 'Index':ind}
-            workups_dict.update({item:None for item in list(workup.DESCRIPTOR.fields_by_name)})
+            workups_dict = {'reactionID': self.reaction_id, 'Index': ind}
+            workups_dict.update({item: None for item in list(workup.DESCRIPTOR.fields_by_name)})
             workups_dict.update(message_to_row(workup))
-            if workup.input: 
+            if workup.input:
                 workups_dict['input'] = True
-                for ind, component in enumerate(workup.input.components):
+                workups_dict['InputKey'] = f"workup_{ind}"  # Use the current workup index
+                for comp_ind, component in enumerate(workup.input.components):
                     workup_input_list, inchi_key = self.generate_compound_identifiers(component.identifiers)
-                    workups_dict[f"input.components[{ind}].INCHI_KEY"] = inchi_key
+                    if inchi_key:  # Only add if valid InChIKey exists
+                        workups_dict[f"input.components[{comp_ind}].INCHI_KEY"] = inchi_key                
                     workups_dict['InputKey'] = f"workup_{0}"
+            
             if workup.amount: 
                 workups_dict['amount'] = True
                 workups_dict[f"amount.type"] = workup.amount.WhichOneof('kind')
-
             if workup.duration: 
                 workups_dict['duration'] = True
             if workup.temperature:
@@ -250,12 +252,14 @@ class ReactionKG:
                 outcome_dict['products'] = True
                 for index, product in enumerate(outcome.products):
                     product_identifier, inchi_key = self.generate_compound_identifiers(product.identifiers)
-                    outcome_dict[f"products[{index}].INCHI_KEY"] = inchi_key
+                    if inchi_key:
+                        outcome_dict[f"products[{index}].INCHI_KEY"] = inchi_key
             self.reaction_outcomes.append(outcome_dict)
 
         provenance_dict = {'reactionID': self.reaction_id}
         provenance_dict.update({item:None for item in list(self.reaction_pb.provenance.DESCRIPTOR.fields_by_name)})
         provenance_dict.update(message_to_row(self.reaction_pb.provenance))
+        self.reaction_provenance.append(provenance_dict)
         return self
         
     def generate_compound_identifiers (self, identifiers): 
@@ -426,12 +430,12 @@ class ReactionKG:
         self.onto = get_ontology(onto_file_path).load()
 
         #get namespaces 
-        self.onto.get_namespace('http://purl.allotrope.org/ontologies/equipment#')
-        self.onto.get_namespace('http://purl.allotrope.org/ontologies/result#')
-        self.onto.get_namespace('http://purl.allotrope.org/ontologies/role#')
-        self.onto.get_namespace('http://purl.allotrope.org/ontologies/quality#')
-        self.onto.get_namespace('http://purl.allotrope.org/ontologies/material#')
-        self.onto.get_namespace('http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
+        afe = self.onto.get_namespace('http://purl.allotrope.org/ontologies/equipment#')
+        afr = self.onto.get_namespace('http://purl.allotrope.org/ontologies/result#')
+        afrl = self.onto.get_namespace('http://purl.allotrope.org/ontologies/role#')
+        afq = self.onto.get_namespace('http://purl.allotrope.org/ontologies/quality#')
+        afm = self.onto.get_namespace('http://purl.allotrope.org/ontologies/material#')
+        ncit = self.onto.get_namespace('http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#')
         cco = self.onto.get_namespace('https://www.commoncoreontologies.org/')
         mds = self.onto.get_namespace('https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#')
         qudt = self.onto.get_namespace('http://qudt.org/schema/qudt/')
@@ -445,6 +449,12 @@ class ReactionKG:
         self.obo = obo
         self.qudt = qudt
         self.unit = unit
+        self.afe = afe
+        self.afr = afr
+        self.afrl = afrl
+        self.afq = afq
+        self.afm = afm
+        self.ncit = ncit
 
         # Setup and store units in unit_mapping dictionary to be used in other methods
         qudt_units = {
@@ -648,20 +658,20 @@ class ReactionKG:
         index_list = self._extract_index_set(component_list, pattern)
         
         for i in index_list:
-            if (context == 'input' or context == 'workup'): 
-                if f"{prefix}[{i}].INCHI_KEY" in component_list:
-                    inchi_key = component_list[f"{prefix}[{i}].INCHI_KEY"]
-                    # Use the InChIKey as the component ID
-                    safe_id = quote(inchi_key, safe='')
+            reaction_component = None
+            if (context == 'input' or context == 'workup'):
+                inchi_key = component_list.get(f"{prefix}[{i}].INCHI_KEY")
+                if inchi_key:
+                    safe_id = quote(str(inchi_key), safe='')
                     component_id = f"Component.{safe_id}"
-                    reaction_component = self.mds.Component(component_id)
+                    reaction_component = self.mds.Component(component_id) 
                 else:
                     # Fallback if no InChIKey
-                    component_id = f'Component.{self.reaction_id}_{component_list["InputKey"]}_component_{i}'
+                    component_id = f'Component.{self.reaction_id}_{component_list.get("InputKey", "workup")}_component_{i}'
                     reaction_component = self.mds.Component(component_id)
             elif context == 'product':
-                if f"{prefix}[{i}].INCHI_KEY" in component_list:
-                    inchi_key = component_list[f"{prefix}[{i}].INCHI_KEY"]
+                inchi_key = component_list.get(f"{prefix}[{i}].INCHI_KEY")
+                if inchi_key:
                     safe_id = quote(inchi_key, safe='')
                     product_id = f"Product.{safe_id}"
                     reaction_component = self.mds.Product(product_id)
@@ -669,8 +679,8 @@ class ReactionKG:
                     product_id = f'Product.{self.reaction_id}_Outcome_{component_list["Index"]}_Product_{i}'
                     reaction_component = self.mds.Product(product_id)
                 product_dict[i] = reaction_component
-            
-            self.instance_dict['type'].append([reaction_component.iri, reaction_component.is_instance_of[0].iri])
+            if reaction_component:
+                self.instance_dict['type'].append([reaction_component.iri, reaction_component.is_instance_of[0].iri])
 
             if context == 'input' and self.reaction_mixture: 
                 self.instance_dict['member part of'].append([reaction_component.iri, self.reaction_mixture.iri])
@@ -760,13 +770,15 @@ class ReactionKG:
             raise ValueError(f"Invalid context: {context}. Must be 'input', 'workup', 'aliquot'")
         
         if f"{prefix}amount.type" in component_list:
-            amount_type = component_list[f"{prefix}amount.type"] 
+            amount_type = component_list[f"{prefix}amount.type"]
+            input_key = component_list.get("InputKey", f"aliquot_{component_list.get('Index', 0)}")
+            comp_idx = i if i is not None else component_list.get("Index", 0) 
             if amount_type == 'moles':
-                amount_added = self.cco.ont00000768(f'Moles.{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                amount_added = self.cco.ont00000768(f'Moles.{self.reaction_id}_{input_key}_component_{comp_idx}')
             elif amount_type == 'mass':
-                amount_added = self.cco.ont00000768(f'Mass.{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                amount_added = self.cco.ont00000768(f'Mass.{self.reaction_id}_{input_key}_component_{comp_idx}')
             elif amount_type == 'volume':
-                amount_added = self.cco.ont00000768(f'Volume.{self.reaction_id}_{component_list["InputKey"]}_component_{i}')
+                amount_added = self.cco.ont00000768(f'Volume.{self.reaction_id}_{input_key}_component_{comp_idx}')
             else: amount_added = None
             if amount_added and f"{prefix}amount.{amount_type}.value" in component_list and f"{prefix}amount.{amount_type}.units" in component_list: 
                 self.instance_dict['inheres in'].append([amount_added.iri, reaction_component.iri])
@@ -880,27 +892,44 @@ class ReactionKG:
                 self._apply_triples(input_addition, ('has occurent part', addition_speed.iri))
             
             if item['addition_duration'] == True and 'addition_duration.value' in item and 'addition_duration.units' in item:
-                addition_duration = self._create_instance(self.obo.BFO_0000202, f'AdditionDuration.{self.reaction_id}',
-                    [('has datetime value',  item['addition_duration.value']),
-                     ('uses measurement unit', self.unit_mapping[item['addition_duration.units']].iri)
-                    ])
+                addition_duration = self._create_instance(
+                    self.obo.BFO_0000202,
+                    f'AdditionDuration.{self.reaction_id}',
+                    *[
+                        ('has datetime value', item['addition_duration.value']),
+                        ('uses measurement unit', self.unit_mapping[item['addition_duration.units']].iri)
+                    ]
+                )
                 self._apply_triples(input_addition, ('occupies temporal region', addition_duration.iri))
                     
             if item['addition_time'] == True and 'addition_time.value' in item and 'addition_time.units' in item:
-                addition_time = self._create_instance(self.obo.BFO_0000202, f'AdditionTime.{self.reaction_id}', 
-                    [('has datetime value', item['addition_time.value']),
-                    ('uses measurement unit', self.unit_mapping[item['addition_time.units']].iri)])
+                addition_time = self._create_instance(
+                    self.obo.BFO_0000202,
+                    f'AdditionTime.{self.reaction_id}',
+                    *[
+                        ('has datetime value', item['addition_time.value']),
+                        ('uses measurement unit', self.unit_mapping[item['addition_time.units']].iri)
+                    ]
+                )
                 self._apply_triples(input_addition, ('occupies temporal region',addition_time.iri))
                     
             if item['flow_rate'] == True and 'flow_rate.value' in item and 'flow_rate.units' in item:
-                flow_rate = self._create_instance(self.mds.FlowRate, f'FlowRate.{self.reaction_id}', 
-                        [('has decimal value', item['flow_rate.value']),
-                        ('uses measurement unit', item['flow_rate.units'])])
+                flow_rate = self._create_instance(
+                    self.mds.FlowRate,
+                    f'FlowRate.{self.reaction_id}',
+                    *[
+                        ('has decimal value', item['flow_rate.value']),
+                        ('uses measurement unit', item['flow_rate.units'])
+                    ]
+                )
                 self._apply_triples(input_addition, ('has occurent part', flow_rate.iri))
 
             if item['addition_device'] == True and 'addition_device.type' in item:
-                addition_device = self._create_instance(self.cco.ont00000581, f"AdditionDevice.{self.reaction_id}_{item['addition_device.type']}", 
-                        [('participates in', input_addition.iri)])
+                addition_device = self._create_instance(
+                    self.cco.ont00000581,
+                    f"AdditionDevice.{self.reaction_id}_{item['addition_device.type']}",
+                    *[('participates in', input_addition.iri)]
+                )
                 if 'addition_device.details' in item:  self._apply_triples(addition_device, ('details', item['addition_device.details']))
                 
     def _process_temperature(self, component_list, reaction_component=None, context='condition'):
@@ -1072,7 +1101,7 @@ class ReactionKG:
                 self._apply_triples(electrochemistry_condition, *triples)
                     #self.instance_dict['inheres in'].append([tube_diameter.iri, flow_tube.iri])
                     #self.instance_dict['has decimal value'].append([tube_diameter.iri, item['flow.tubing.diameter.value']])
-                    #self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diamter.units']])
+                    #self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diameter.units']])
                 #if 'electrochemistry.cell.type' in item:
                 #    self.instance_dict[]
             if item['flow'] == True and 'flow.type' in item: 
@@ -1100,7 +1129,7 @@ class ReactionKG:
                     }
                     flow_tube = self._create_instance(self.cco.ont00000581, f"{tube_mapping[item['flow.tubing.type']]}.{self.reaction_id}")
                     if 'flow.tubing.details' in item: self._apply_triples(flow_tube, ('details', item['flow.tubing.details']))
-                    if 'flow.tubing.diameter' in item and 'flow.tubing.diameter.value' in item and 'flow.tubing.diamter.units' in item:
+                    if 'flow.tubing.diameter' in item and 'flow.tubing.diameter.value' in item and 'flow.tubing.diameter.units' in item:
                         tube_diameter = self._create_instance(self.cco.ont00000738, f"TubeDiameter.{self.reaction_id}", *[
                             ('inheres in', flow_tube.iri),('has decimal value', item['flow.tubing.diameter.value']),
                             ('uses measurement unit', item['flow.tubing.diameter.units'])])
@@ -1173,10 +1202,16 @@ class ReactionKG:
             self.instance_dict['precedes'].append([self.chemical_reaction.iri, workup_instance.iri])
             if (item['type'] == 'ADDITION' or item['type'] ==  'DRY_WITH_MATERIAL' or item['type'] ==  'WASH' or item['type'] == 'SCAVENGING') and item['input'] == True:
                 self._extract_components(item, workup_instance, context='workup')
-            if (item['type'] == 'ALIQUOT') and 'amount.value' in item and 'amount.units' in item and 'workup.amount.type' in item: 
-                self._extract_component_amount(item, workup_instance, context='aliquot')
-            if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'workup.temperature.setpoint.value' in item and 'workup.temperature.setpoint.units' in item : 
+            if (item['type'] == 'ALIQUOT') and 'amount.type' in item:
+                amt_type = item['amount.type']
+                if f'amount.{amt_type}.value' in item and f'amount.{amt_type}.units' in item:
+                    self._extract_component_amount(item, workup_instance, i=item.get("Index", 0), context='aliquot')
+            #if (item['type'] == 'ALIQUOT') and 'amount.value' in item and 'amount.units' in item and 'workup.amount.type' in item: 
+            #    self._extract_component_amount(item, workup_instance, context='aliquot')
+            if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'temperature.setpoint.value' in item and 'temperature.setpoint.units' in item:
                 self._process_temperature(item, context='workup')
+            #if (item['type'] == 'TEMPERATURE' or item['type'] == 'DRY_IN_VACUUM' or item['type'] == 'DISTILLATION') and 'workup.temperature.setpoint.value' in item and 'workup.temperature.setpoint.units' in item : 
+            #    self._process_temperature(item, context='workup')
             if (item['type'] == 'EXTRACTION' or item['type'] == 'FILTRATION') and 'keep_phase' in item:
                 triples.append(('keep phase', item['keep_phase']))
             if item['type'] == 'PH_ADJUST' and 'target_ph' in item: 
@@ -1218,7 +1253,8 @@ class ReactionKG:
             product_prefix = f"products[{i}].measurements"
             pattern = rf'^products\[{i}\]\.measurements\[(\d+)\]\.(.+)$'
             ind_list = self._extract_index_set(outcome_list, pattern)
-            
+
+            product_measurement = None
             for j in ind_list: 
                 if i not in product_dict: 
                     continue
@@ -1313,6 +1349,7 @@ class ReactionKG:
                 analyses_set = self._extract_index_set(item, pattern)
 
                 for analysis in analyses_set:
+                    analysis_type = None
                     if f'analyses["{analysis}"].type' in item: 
                         analysis_type = self._create_instance(self.mds.AnalyticalTechnique, f'AnalyticalTechnique.{self.reaction_id}_{analysis}', ('details',item[f'analyses["{analysis}"].type'])) 
                     if f'analyses["{analysis}"].details' in item: self._apply_triples(analysis_type, ('details', item[f'analyses["{analysis}"].details']))
@@ -1344,15 +1381,178 @@ class ReactionKG:
     def _process_reaction_setup(self):
         """Processes the reaction setup details (:attr:`reaction_setup`).
 
-        Instantiates a `ReactionSetup` process instance and links it to the :attr:`chemical_reaction` via `precedes`.
+        Instantiates a `ReactionSetup` process instance and links it to :attr:`chemical_reaction` via `precedes`.
+        Extracts and links:
+            - Automation status, platform, and automation code maps
+            - Reaction vessel (type, details, material, volume)
+            - Vessel preparations (repeated `vessel.preparations[i]`)
+            - Vessel attachments (repeated `vessel.attachments[i]`)
+            - Reaction environment details (linked to :attr:`reaction_environment`)
 
         Returns:
             None: Updates the :attr:`instance_dict` attribute.
         """
+        vessel_type_mapping = {
+            'UNSPECIFIED': None,
+            'CUSTOM': None,
+            'ROUND_BOTTOM_FLASK': self.obo.PROCO_0000190, #'RoundBottomFlask', #obo:PROCO_0000190
+            'VIAL': self.afe.AFE_000032, #'Vial', afe:AFE_0000329
+            'WELL_PLATE': self.afe.AFE_0000029, #'WellPlate',
+            'MICROWAVE_VIAL': self.mds.MicrowaveReactionVial, #'MicrowaveVial',
+            'TUBE': self.afe.AFE_0000718, #'Tube',
+            'CONTINUOUS_STIRRED_TANK_REACTOR': self.mds.ContinuousStirredTankReactor, #'ContinuousStirredTankReactor',
+            'PACKED_BED_REACTOR': self.mds.PackedBedReactor, #'PackedBedReactor',
+            'NMR_TUBE': self.afe.AFE_0002281,  #'NMRTube',
+            'PRESSURE_FLASK': self.mds.PressureFlask, #'PressureFlask',
+            'PRESSURE_REACTOR': self.mds.PressureReactor, #'PressureReactor',
+            'ELECTROCHEMICAL_CELL': self.obo.CHMO_0002351, #'ElectrochemicalCell',
+        }
 
-        for item in self.reaction_setup: 
-            reaction_setup = self.mds.ReactionSetup(f'ReactionSetup.{self.reaction_id}')
-            self.instance_dict['precedes'].append([reaction_setup.iri, self.chemical_reaction.iri])
+        vessel_material_mapping = {
+            'UNSPECIFIED': None,
+            'CUSTOM': None,
+            'GLASS': self.mds.Glass, #'Glass',
+            'POLYPROPYLENE': self.obo.CHEBI_53550, #'Polypropylene',
+            'PLASTIC': self.ncit.C86968, #'Plastic',
+            'METAL': self.ncit.C637, #'Metal',
+            'QUARTZ': self.obo.CHEBI_46727, #'Quartz',
+        }
+
+        for item in self.reaction_setup:
+            setup_triples = [
+                ('precedes', self.chemical_reaction.iri)
+            ]
+
+            # 1. Automation platform, boolean flag, and automation_code map
+            if 'is_automated' in item and item['is_automated'] is not None:
+                setup_triples.append(('is automated', item['is_automated']))
+
+            if 'automation_platform' in item and item['automation_platform']:
+                setup_triples.append(('has text value', item['automation_platform']))
+
+            auto_code_pattern = r'^automation_code\["([^"]*)"\]$'
+            auto_code_keys = self._extract_index_set(item, auto_code_pattern)
+            for code_key in auto_code_keys:
+                full_key = f'automation_code["{code_key}"]'
+                if item.get(full_key):
+                    setup_triples.append(('details', f"{code_key}: {item[full_key]}"))
+
+            # Instantiate ReactionSetup via _create_instance so rdf:type is recorded
+            reaction_setup = self._create_instance(
+                self.mds.ReactionSetup,
+                f'ReactionSetup.{self.reaction_id}',
+                *setup_triples
+            )
+
+            # 2. Vessel information (type, material, volume, preparations, attachments)
+            if item.get('vessel') == True or any(k.startswith('vessel.') for k in item.keys()):
+                raw_vessel_type = item.get('vessel.type', 'UNSPECIFIED')
+                mapped_vessel_name = vessel_type_mapping.get(raw_vessel_type) or raw_vessel_type
+                vessel_instance_id = f'ReactionVessel.{self.reaction_id}_{mapped_vessel_name}'
+
+                vessel_triples = [
+                    ('participates in', reaction_setup.iri),
+                    ('participates in', self.chemical_reaction.iri),
+                ]
+                if 'vessel.type' in item and item['vessel.type']:
+                    vessel_triples.append(('has text value', item['vessel.type']))
+                if 'vessel.details' in item and item['vessel.details']:
+                    vessel_triples.append(('details', item['vessel.details']))
+                if 'vessel.vessel_id' in item and item['vessel.vessel_id']:
+                    vessel_triples.append(('has text value', item['vessel.vessel_id']))
+
+                vessel_instance = self._create_instance(
+                    self.mds.ReactionVessel,
+                    vessel_instance_id,
+                    *vessel_triples
+                )
+
+                # Vessel Material
+                if 'vessel.material.type' in item and item['vessel.material.type']:
+                    raw_mat_type = item['vessel.material.type']
+                    mapped_mat_name = vessel_material_mapping.get(raw_mat_type) or raw_mat_type
+                    mat_triples = [('has text value', raw_mat_type)]
+                    if 'vessel.material.details' in item and item['vessel.material.details']:
+                        mat_triples.append(('details', item['vessel.material.details']))
+
+                    vessel_material = self._create_instance(
+                        self.mds.VesselMaterial,
+                        f'VesselMaterial.{self.reaction_id}_{mapped_mat_name}',
+                        *mat_triples
+                    )
+                    self._apply_triples(vessel_instance, ('is made of', vessel_material.iri))
+
+                # Vessel Volume
+                if 'vessel.volume.value' in item and 'vessel.volume.units' in item:
+                    vol_unit_key = item['vessel.volume.units']
+                    vol_unit_entity = self.unit_mapping.get(vol_unit_key)
+                    vol_triples = [
+                        ('inheres in', vessel_instance.iri),
+                        ('has decimal value', item['vessel.volume.value']),
+                    ]
+                    if vol_unit_entity:
+                        vol_triples.append(('uses measurement unit', vol_unit_entity.iri))
+
+                    self._create_instance(
+                        self.cco.ont00000768,
+                        f'VesselVolume.{self.reaction_id}',
+                        *vol_triples
+                    )
+
+                # Vessel Preparations (repeated field: vessel.preparations[i])
+                prep_pattern = r'^vessel\.preparations\[(\d+)\]'
+                prep_indices = self._extract_index_set(item, prep_pattern)
+                for i in prep_indices:
+                    prep_type = item.get(f'vessel.preparations[{i}].type')
+                    prep_details = item.get(f'vessel.preparations[{i}].details')
+                    if prep_type or prep_details:
+                        prep_triples = [
+                            ('precedes', reaction_setup.iri),
+                            ('affects', vessel_instance.iri),
+                        ]
+                        if prep_type:
+                            prep_triples.append(('has text value', prep_type))
+                        if prep_details:
+                            prep_triples.append(('details', prep_details))
+
+                        self._create_instance(
+                            self.mds.VesselPreparation,
+                            f'VesselPreparation.{self.reaction_id}_{prep_type or "Custom"}_{i}',
+                            *prep_triples
+                        )
+
+                # Vessel Attachments (repeated field: vessel.attachments[i])
+                attach_pattern = r'^vessel\.attachments\[(\d+)\]'
+                attach_indices = self._extract_index_set(item, attach_pattern)
+                for i in attach_indices:
+                    attach_type = item.get(f'vessel.attachments[{i}].type')
+                    attach_details = item.get(f'vessel.attachments[{i}].details')
+                    if attach_type or attach_details:
+                        attach_triples = [
+                            ('participates in', reaction_setup.iri),
+                            ('affects', vessel_instance.iri),
+                        ]
+                        if attach_type:
+                            attach_triples.append(('has text value', attach_type))
+                        if attach_details:
+                            attach_triples.append(('details', attach_details))
+
+                        self._create_instance(
+                            self.cco.ont00000581,
+                            f'VesselAttachment.{self.reaction_id}_{attach_type or "Custom"}_{i}',
+                            *attach_triples
+                        )
+
+            # 3. Reaction Environment (links to pre-initialized self.reaction_environment)
+            if item.get('environment') == True or any(k.startswith('environment.') for k in item.keys()):
+                env_triples = []
+                if 'environment.type' in item and item['environment.type']:
+                    env_triples.append(('has text value', item['environment.type']))
+                if 'environment.details' in item and item['environment.details']:
+                    env_triples.append(('details', item['environment.details']))
+
+                if env_triples and self.reaction_environment:
+                    self._apply_triples(self.reaction_environment, *env_triples)
 
     def _strip_key_spaces(self):
         """Removes spaces from all keys in instance_dict and prop_metadata_dict."""
@@ -1406,7 +1606,7 @@ class ReactionKG:
                         obj_uri = URIRef(item[1])
                         pred_uri = URIRef(prop_metadata[0])
                         self.graph.add((subj_uri, pred_uri, obj_uri))
-                    elif prop_metadata[1] == "Datatype Property":
+                    elif prop_metadata[1] in ("Datatype Property", "Annotation Property"):
                         subj_uri = URIRef(item[0])
                         pred_uri = URIRef(prop_metadata[0])
                         self.graph.add((subj_uri, pred_uri, Literal(item[1])))

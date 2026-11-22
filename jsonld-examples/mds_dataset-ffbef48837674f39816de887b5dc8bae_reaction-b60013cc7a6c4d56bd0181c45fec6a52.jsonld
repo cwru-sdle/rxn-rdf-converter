@@ -42,176 +42,6 @@
   },
   "@graph": [
     {
-      "@id": "mds:INCHI.InChI%3D1S%2FH2O%2Fh1H2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/H2O/h1H2",
-      "cco:ont00001916": {
-        "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:NAME.ether",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "ether",
-      "cco:ont00001916": {
-        "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.%5BO-%5DS%28%3DO%29%28%3DO%29%5BO-%5D.%5BMg%2B2%5D",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "[O-]S(=O)(=O)[O-].[Mg+2]",
-      "cco:ont00001916": {
-        "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FClH%2Fh1H",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/ClH/h1H",
-      "cco:ont00001916": {
-        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m1",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C%28CC%28%3DO%29O%29%28%3DO%29O.C%28C%29%5BK%5D",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C(CC(=O)O)(=O)O.C(C)[K]",
-      "cco:ont00001916": {
-        "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N",
-      "@type": "mds:Product"
-    },
-    {
-      "@id": "mds:NAME.water",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "water",
-      "cco:ont00001916": {
-        "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_TEMPERATURE_0",
-      "mds:details": "cooled in an ice bath"
-    },
-    {
-      "@id": "mds:NAME.Ethyl%20potassium%20malonate",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "Ethyl potassium malonate",
-      "cco:ont00001916": {
-        "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:REACTION_CXSMILES.%5BC%3A1%5D%28%5BOH%3A7%5D%29%28%3D%5BO%3A6%5D%29%5BCH2%3A2%5D%5BC%3A3%5D%28%5BOH%3A5%5D%29%3D%5BO%3A4%5D.%5BCH2%3A8%5D%28%5BK%5D%29%5BCH3%3A9%5D.Cl%3EO%3E%5BC%3A1%5D%28%5BO%3A7%5D%5BCH2%3A8%5D%5BCH3%3A9%5D%29%28%3D%5BO%3A6%5D%29%5BCH2%3A2%5D%5BC%3A3%5D%28%5BOH%3A5%5D%29%3D%5BO%3A4%5D%20%7Cf%3A0.1%7C",
-      "@type": "mds:ReactionCXSMILES",
-      "cco:ont00001765": "[C:1]([OH:7])(=[O:6])[CH2:2][C:3]([OH:5])=[O:4].[CH2:8]([K])[CH3:9].Cl>O>[C:1]([O:7][CH2:8][CH3:9])(=[O:6])[CH2:2][C:3]([OH:5])=[O:4] |f:0.1|",
-      "cco:ont00001916": {
-        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
-      },
-      "mds:isMapped": true
-    },
-    {
-      "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m3",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_DRY_WITH_MATERIAL_5",
-      "mds:details": "The combined ethereal solutions were dried (MgSO4)"
-    },
-    {
-      "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m2"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC5H8O4%2Fc1-2-9-5%288%293-4%286%297%2Fh2-3H2%2C1H3%2C%28H%2C6%2C7%29",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C5H8O4/c1-2-9-5(8)3-4(6)7/h2-3H2,1H3,(H,6,7)",
-      "cco:ont00001916": {
-        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionSetup.b60013cc7a6c4d56bd0181c45fec6a52",
-      "obo:BFO_0000063": {
-        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC4H10O%2Fc1-3-5-4-2%2Fh3-4H2%2C1-2H3",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C4H10O/c1-3-5-4-2/h3-4H2,1-2H3",
-      "cco:ont00001916": {
-        "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C%28CC%28%3DO%29O%29%28%3DO%29OCC",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C(CC(=O)O)(=O)OCC",
-      "cco:ont00001916": {
-        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m2",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
-      "@id": "obo:StirringProcess.b60013cc7a6c4d56bd0181c45fec6a52",
-      "@type": "obo:CHMO_0002774"
-    },
-    {
-      "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_DRY_WITH_MATERIAL_5"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.b60013cc7a6c4d56bd0181c45fec6a52_m1_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_CUSTOM_6",
-      "mds:details": "evaporated"
-    },
-    {
-      "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m3"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
       "@id": "mds:ProductMeasurement.b60013cc7a6c4d56bd0181c45fec6a52_Product_0_Measurement_1",
       "@type": "mds:AnalyticalResult",
       "cco:ont00001769": 99.0,
@@ -223,12 +53,19 @@
       }
     },
     {
-      "@id": "mds:INCHI.InChI%3D1S%2FMg.H2O4S%2Fc%3B1-5%282%2C3%294%2Fh%3B%28H2%2C1%2C2%2C3%2C4%29%2Fq%2B2%3B%2Fp-2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/Mg.H2O4S/c;1-5(2,3)4/h;(H2,1,2,3,4)/q+2;/p-2",
-      "cco:ont00001916": {
-        "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L"
+      "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N",
+      "@type": "mds:Product"
+    },
+    {
+      "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_DRY_WITH_MATERIAL_5"
       }
+    },
+    {
+      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_DRY_WITH_MATERIAL_5",
+      "mds:details": "The combined ethereal solutions were dried (MgSO4)"
     },
     {
       "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52",
@@ -292,10 +129,56 @@
       }
     },
     {
-      "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N",
+      "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
-        "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_WASH_2"
+        "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m2"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FH2O%2Fh1H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/H2O/h1H2",
+      "cco:ont00001916": {
+        "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FClH%2Fh1H",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/ClH/h1H",
+      "cco:ont00001916": {
+        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CCOCC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CCOCC",
+      "cco:ont00001916": {
+        "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_CUSTOM_6",
+      "mds:details": "evaporated"
+    },
+    {
+      "@id": "mds:SMILES.Cl",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "Cl",
+      "cco:ont00001916": {
+        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.b60013cc7a6c4d56bd0181c45fec6a52",
+      "@type": "mds:ReactionSetup",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
       }
     },
     {
@@ -304,61 +187,6 @@
       "cco:ont00001765": "O",
       "cco:ont00001916": {
         "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Product.b60013cc7a6c4d56bd0181c45fec6a52_Outcome_0_Product_0",
-      "@type": "mds:Product",
-      "obo:BFO_0000197": {
-        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_CUSTOM_3",
-      "mds:details": "The filtrate was separated"
-    },
-    {
-      "@id": "mds:ReactionTime.b60013cc7a6c4d56bd0181c45fec6a52",
-      "@type": "mds:ReactionTime",
-      "cco:ont00001767": 10.0,
-      "cco:ont00001863": {
-        "@id": "unit:MIN"
-      }
-    },
-    {
-      "@id": "mds:ProductMeasurement.b60013cc7a6c4d56bd0181c45fec6a52_Product_0_Measurement_2",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001769": 96.9000015258789,
-      "cco:ont00001808": {
-        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
-      },
-      "cco:ont00001863": {
-        "@id": "unit:PERCENT"
-      }
-    },
-    {
-      "@id": "cco:Volume.b60013cc7a6c4d56bd0181c45fec6a52_m3_component_0",
-      "cco:ont00001769": 15.600000381469727,
-      "cco:ont00001863": {
-        "@id": "unit:MilliL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52",
-      "@type": "mds:ReactionMixture",
-      "cco:ont00001841": {
-        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
-      }
-    },
-    {
-      "@id": "mds:SMILES.Cl",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "Cl",
-      "cco:ont00001916": {
-        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
       }
     },
     {
@@ -389,52 +217,61 @@
       ]
     },
     {
-      "@id": "cco:SolventArtifactFunction.b60013cc7a6c4d56bd0181c45fec6a52_m3_component_0",
-      "@type": "cco:ont00001160",
-      "obo:BFO_0000197": {
+      "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m3",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:NAME.water",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "water",
+      "cco:ont00001916": {
         "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "mds:ProductMeasurement.b60013cc7a6c4d56bd0181c45fec6a52_Product_0_Measurement_0",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001808": {
-        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.CCOCC",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CCOCC",
+      "@id": "mds:INCHI.InChI%3D1S%2FMg.H2O4S%2Fc%3B1-5%282%2C3%294%2Fh%3B%28H2%2C1%2C2%2C3%2C4%29%2Fq%2B2%3B%2Fp-2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/Mg.H2O4S/c;1-5(2,3)4/h;(H2,1,2,3,4)/q+2;/p-2",
       "cco:ont00001916": {
-        "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N"
+        "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L"
       }
     },
     {
-      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_EXTRACTION_4",
-      "mds:details": "the aqueous phase was extracted with ether",
+      "@id": "mds:REACTION_CXSMILES.%5BC%3A1%5D%28%5BOH%3A7%5D%29%28%3D%5BO%3A6%5D%29%5BCH2%3A2%5D%5BC%3A3%5D%28%5BOH%3A5%5D%29%3D%5BO%3A4%5D.%5BCH2%3A8%5D%28%5BK%5D%29%5BCH3%3A9%5D.Cl%3EO%3E%5BC%3A1%5D%28%5BO%3A7%5D%5BCH2%3A8%5D%5BCH3%3A9%5D%29%28%3D%5BO%3A6%5D%29%5BCH2%3A2%5D%5BC%3A3%5D%28%5BOH%3A5%5D%29%3D%5BO%3A4%5D%20%7Cf%3A0.1%7C",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "[C:1]([OH:7])(=[O:6])[CH2:2][C:3]([OH:5])=[O:4].[CH2:8]([K])[CH3:9].Cl>O>[C:1]([O:7][CH2:8][CH3:9])(=[O:6])[CH2:2][C:3]([OH:5])=[O:4] |f:0.1|",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m1"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_FILTRATION_1",
+      "mds:details": "The precipitate was filtered",
       "mds:keepPhase": "None"
     },
     {
-      "@id": "mds:NAME.monoethyl%20hydrogen%20malonate",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "monoethyl hydrogen malonate",
-      "cco:ont00001916": {
+      "@id": "mds:ProductMeasurement.b60013cc7a6c4d56bd0181c45fec6a52_Product_0_Measurement_2",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 96.9000015258789,
+      "cco:ont00001808": {
         "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.b60013cc7a6c4d56bd0181c45fec6a52_m2_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionEnvironment.b60013cc7a6c4d56bd0181c45fec6a52",
-      "@type": "mds:ReactionEnvironment",
-      "obo:BFO_0000183": {
-        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
       }
     },
     {
@@ -448,11 +285,45 @@
       }
     },
     {
-      "@id": "mds:NAME.HCl",
+      "@id": "mds:ReactionEnvironment.b60013cc7a6c4d56bd0181c45fec6a52",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:Product.b60013cc7a6c4d56bd0181c45fec6a52_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Volume.b60013cc7a6c4d56bd0181c45fec6a52_m3_component_0",
+      "cco:ont00001769": 15.600000381469727,
+      "cco:ont00001863": {
+        "@id": "unit:MilliL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.MgSO4",
       "@type": "mds:CompoundName",
-      "cco:ont00001765": "HCl",
+      "cco:ont00001765": "MgSO4",
       "cco:ont00001916": {
-        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
+        "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L"
       }
     },
     {
@@ -466,8 +337,124 @@
       }
     },
     {
+      "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m2",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC5H8O4%2Fc1-2-9-5%288%293-4%286%297%2Fh2-3H2%2C1H3%2C%28H%2C6%2C7%29",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C5H8O4/c1-2-9-5(8)3-4(6)7/h2-3H2,1H3,(H,6,7)",
+      "cco:ont00001916": {
+        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.b60013cc7a6c4d56bd0181c45fec6a52_m2_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "obo:StirringProcess.b60013cc7a6c4d56bd0181c45fec6a52",
+      "@type": "obo:CHMO_0002774"
+    },
+    {
+      "@id": "mds:SMILES.C%28CC%28%3DO%29O%29%28%3DO%29OCC",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(CC(=O)O)(=O)OCC",
+      "cco:ont00001916": {
+        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.ether",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "ether",
+      "cco:ont00001916": {
+        "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_TEMPERATURE_0",
+      "mds:details": "cooled in an ice bath"
+    },
+    {
       "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_WASH_2",
       "mds:details": "washed twice with ether"
+    },
+    {
+      "@id": "mds:NAME.monoethyl%20hydrogen%20malonate",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "monoethyl hydrogen malonate",
+      "cco:ont00001916": {
+        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ProductMeasurement.b60013cc7a6c4d56bd0181c45fec6a52_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001808": {
+        "@id": "mds:Product.HGINADPHJQTSKN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionTime.b60013cc7a6c4d56bd0181c45fec6a52",
+      "@type": "mds:ReactionTime",
+      "cco:ont00001767": 10.0,
+      "cco:ont00001863": {
+        "@id": "unit:MIN"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m1",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_EXTRACTION_4",
+      "mds:details": "the aqueous phase was extracted with ether",
+      "mds:keepPhase": "None"
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC4H10O%2Fc1-3-5-4-2%2Fh3-4H2%2C1-2H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C4H10O/c1-3-5-4-2/h3-4H2,1-2H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.%5BO-%5DS%28%3DO%29%28%3DO%29%5BO-%5D.%5BMg%2B2%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "[O-]S(=O)(=O)[O-].[Mg+2]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:ReactionVessel.b60013cc7a6c4d56bd0181c45fec6a52_UNSPECIFIED",
+      "@type": "mds:ReactionVessel",
+      "obo:BFO_0000056": [
+        {
+          "@id": "mds:ReactionSetup.b60013cc7a6c4d56bd0181c45fec6a52"
+        },
+        {
+          "@id": "mds:ChemicalReaction.b60013cc7a6c4d56bd0181c45fec6a52"
+        }
+      ]
     },
     {
       "@id": "mds:INCHI.InChI%3D1S%2FC3H4O4.C2H5.K%2Fc4-2%285%291-3%286%297%3B1-2%3B%2Fh1H2%2C%28H%2C4%2C5%29%28H%2C6%2C7%29%3B1H2%2C2H3%3B",
@@ -478,26 +465,52 @@
       }
     },
     {
-      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_FILTRATION_1",
-      "mds:details": "The precipitate was filtered",
-      "mds:keepPhase": "None"
-    },
-    {
-      "@id": "mds:NAME.MgSO4",
+      "@id": "mds:NAME.HCl",
       "@type": "mds:CompoundName",
-      "cco:ont00001765": "MgSO4",
+      "cco:ont00001765": "HCl",
       "cco:ont00001916": {
-        "@id": "mds:Component.CSNNHWWHGAXBCP-UHFFFAOYSA-L"
+        "@id": "mds:Component.VEXZGXHMUGYJMC-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N",
+      "@id": "mds:SMILES.C%28CC%28%3DO%29O%29%28%3DO%29O.C%28C%29%5BK%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(CC(=O)O)(=O)O.C(C)[K]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.b60013cc7a6c4d56bd0181c45fec6a52_m3_component_0",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.XLYOFNOQVPJJNP-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.RTZKZFJDLAIYFH-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
-        "@id": "mds:InputAddition.b60013cc7a6c4d56bd0181c45fec6a52_m1"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.b60013cc7a6c4d56bd0181c45fec6a52"
+        "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_WASH_2"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.b60013cc7a6c4d56bd0181c45fec6a52_m1_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.b60013cc7a6c4d56bd0181c45fec6a52_CUSTOM_3",
+      "mds:details": "The filtrate was separated"
+    },
+    {
+      "@id": "mds:NAME.Ethyl%20potassium%20malonate",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "Ethyl potassium malonate",
+      "cco:ont00001916": {
+        "@id": "mds:Component.DFVYOEWFOJYXQS-UHFFFAOYSA-N"
       }
     }
   ]

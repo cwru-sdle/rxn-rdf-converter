@@ -1,20 +1,13 @@
 # =================================================================
 #               IMPORT REQUIREMENTS
 # =================================================================
-from ord_schema.message_helpers import load_message, message_to_row
-from ord_schema.proto import dataset_pb2, reaction_pb2
+from ord_schema.proto import dataset_pb2
 import os
-import re
-import rdflib
-from rdflib import Graph, RDF, RDFS, OWL, Namespace, Literal, URIRef
-from rdflib.namespace import RDFS, XSD, URIRef, OWL, SKOS, PROV
-from datetime import datetime
 import dataset_processor
 import logging
 import csv
 import argparse
 import sys
-
 
 # =================================================================
 #               SETUP LOGGING ERRORS
