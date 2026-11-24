@@ -1,0 +1,279 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC15H14F3NO%2Fc1-10%2819%2911-6-8-12%289-7-11%2913-4-2-3-5-14%2813%2920-15%2816%2C17%2918%2Fh2-10H%2C19H2%2C1H3%2Ft10-%2Fm1%2Fs1",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C15H14F3NO/c1-10(19)11-6-8-12(9-7-11)13-4-2-3-5-14(13)20-15(16,17)18/h2-10H,19H2,1H3/t10-/m1/s1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WDECLZXUAUYJBD-SNVBAGLBSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.84c927e3f6d24af685ab1bf3c6d071ff",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:SMILES.FC%28OC1%3DC%28C%3DCC%3DC1%29C1%3DCC%3DC%28C%3DC1%29%5BC%40%40H%5D%28C%29N%29%28F%29F",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "FC(OC1=C(C=CC=C1)C1=CC=C(C=C1)[C@@H](C)N)(F)F",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WDECLZXUAUYJBD-SNVBAGLBSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionVessel.84c927e3f6d24af685ab1bf3c6d071ff_UNSPECIFIED",
+      "@type": "mds:ReactionVessel",
+      "obo:BFO_0000056": [
+        {
+          "@id": "mds:ReactionSetup.84c927e3f6d24af685ab1bf3c6d071ff"
+        },
+        {
+          "@id": "mds:ChemicalReaction.84c927e3f6d24af685ab1bf3c6d071ff"
+        }
+      ]
+    },
+    {
+      "@id": "mds:ReactionEnvironment.84c927e3f6d24af685ab1bf3c6d071ff",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC20H18F5N3O3S%2Fc1-12%2827-32%2829%2C30%2918-11-28%2819%2821%2922%2926-13%2818%292%2914-7-9-15%2810-8-14%2916-5-3-4-6-17%2816%2931-20%2823%2C24%2925%2Fh3-12%2C19%2C27H%2C1-2H3%2Ft12-%2Fm1%2Fs1",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C20H18F5N3O3S/c1-12(27-32(29,30)18-11-28(19(21)22)26-13(18)2)14-7-9-15(10-8-14)16-5-3-4-6-17(16)31-20(23,24)25/h3-12,19,27H,1-2H3/t12-/m1/s1",
+      "cco:ont00001916": {
+        "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.84c927e3f6d24af685ab1bf3c6d071ff_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N",
+      "@type": "mds:Product"
+    },
+    {
+      "@id": "mds:SMILES.FC%28N1N%3DC%28C%28%3DC1%29S%28%3DO%29%28%3DO%29Cl%29C%29F",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "FC(N1N=C(C(=C1)S(=O)(=O)Cl)C)F",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KJILWYBETJFERM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.84c927e3f6d24af685ab1bf3c6d071ff_m2_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WDECLZXUAUYJBD-SNVBAGLBSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.WDECLZXUAUYJBD-SNVBAGLBSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.84c927e3f6d24af685ab1bf3c6d071ff_m2"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.84c927e3f6d24af685ab1bf3c6d071ff_m1",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:NAME.1-difluoromethyl-3-methylpyrazole-4-sulfonyl%20chloride",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "1-difluoromethyl-3-methylpyrazole-4-sulfonyl chloride",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KJILWYBETJFERM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.84c927e3f6d24af685ab1bf3c6d071ff_m2_component_0",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WDECLZXUAUYJBD-SNVBAGLBSA-N"
+      }
+    },
+    {
+      "@id": "mds:CrudeProduct.84c927e3f6d24af685ab1bf3c6d071ff",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "mds:REACTION_CXSMILES.%5BF%3A1%5D%5BCH%3A2%5D%28%5BF%3A13%5D%29%5BN%3A3%5D1%5BCH%3A7%5D%3D%5BC%3A6%5D%28%5BS%3A8%5D%28Cl%29%28%3D%5BO%3A10%5D%29%3D%5BO%3A9%5D%29%5BC%3A5%5D%28%5BCH3%3A12%5D%29%3D%5BN%3A4%5D1.%5BF%3A14%5D%5BC%3A15%5D%28%5BF%3A33%5D%29%28%5BF%3A32%5D%29%5BO%3A16%5D%5BC%3A17%5D1%5BCH%3A22%5D%3D%5BCH%3A21%5D%5BCH%3A20%5D%3D%5BCH%3A19%5D%5BC%3A18%5D%3D1%5BC%3A23%5D1%5BCH%3A28%5D%3D%5BCH%3A27%5D%5BC%3A26%5D%28%5BC%40H%3A29%5D%28%5BNH2%3A31%5D%29%5BCH3%3A30%5D%29%3D%5BCH%3A25%5D%5BCH%3A24%5D%3D1%3E%3E%5BF%3A14%5D%5BC%3A15%5D%28%5BF%3A32%5D%29%28%5BF%3A33%5D%29%5BO%3A16%5D%5BC%3A17%5D1%5BCH%3A22%5D%3D%5BCH%3A21%5D%5BCH%3A20%5D%3D%5BCH%3A19%5D%5BC%3A18%5D%3D1%5BC%3A23%5D1%5BCH%3A28%5D%3D%5BCH%3A27%5D%5BC%3A26%5D%28%5BC%40H%3A29%5D%28%5BNH%3A31%5D%5BS%3A8%5D%28%5BC%3A6%5D2%5BC%3A5%5D%28%5BCH3%3A12%5D%29%3D%5BN%3A4%5D%5BN%3A3%5D%28%5BCH%3A2%5D%28%5BF%3A13%5D%29%5BF%3A1%5D%29%5BCH%3A7%5D%3D2%29%28%3D%5BO%3A10%5D%29%3D%5BO%3A9%5D%29%5BCH3%3A30%5D%29%3D%5BCH%3A25%5D%5BCH%3A24%5D%3D1",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "[F:1][CH:2]([F:13])[N:3]1[CH:7]=[C:6]([S:8](Cl)(=[O:10])=[O:9])[C:5]([CH3:12])=[N:4]1.[F:14][C:15]([F:33])([F:32])[O:16][C:17]1[CH:22]=[CH:21][CH:20]=[CH:19][C:18]=1[C:23]1[CH:28]=[CH:27][C:26]([C@H:29]([NH2:31])[CH3:30])=[CH:25][CH:24]=1>>[F:14][C:15]([F:32])([F:33])[O:16][C:17]1[CH:22]=[CH:21][CH:20]=[CH:19][C:18]=1[C:23]1[CH:28]=[CH:27][C:26]([C@H:29]([NH:31][S:8]([C:6]2[C:5]([CH3:12])=[N:4][N:3]([CH:2]([F:13])[F:1])[CH:7]=2)(=[O:10])=[O:9])[CH3:30])=[CH:25][CH:24]=1",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.84c927e3f6d24af685ab1bf3c6d071ff"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "mds:Component.KJILWYBETJFERM-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.84c927e3f6d24af685ab1bf3c6d071ff_m1"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:NAME.%28R%29-1-%282%E2%80%B2-trifluoromethoxy-biphenyl-4-yl%29-ethylamine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "(R)-1-(2′-trifluoromethoxy-biphenyl-4-yl)-ethylamine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WDECLZXUAUYJBD-SNVBAGLBSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.84c927e3f6d24af685ab1bf3c6d071ff",
+      "@type": "mds:ReactionSetup",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC5H5ClF2N2O2S%2Fc1-3-4%2813%286%2C11%2912%292-10%289-3%295%287%298%2Fh2%2C5H%2C1H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C5H5ClF2N2O2S/c1-3-4(13(6,11)12)2-10(9-3)5(7)8/h2,5H,1H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.KJILWYBETJFERM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Moles.84c927e3f6d24af685ab1bf3c6d071ff_m1_component_0",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.KJILWYBETJFERM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.84c927e3f6d24af685ab1bf3c6d071ff_m2",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.84c927e3f6d24af685ab1bf3c6d071ff"
+      }
+    },
+    {
+      "@id": "mds:SMILES.FC%28OC1%3DC%28C%3DCC%3DC1%29C1%3DCC%3DC%28C%3DC1%29%5BC%40%40H%5D%28C%29NS%28%3DO%29%28%3DO%29C%3D1C%28%3DNN%28C1%29C%28F%29F%29C%29%28F%29F",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "FC(OC1=C(C=CC=C1)C1=CC=C(C=C1)[C@@H](C)NS(=O)(=O)C=1C(=NN(C1)C(F)F)C)(F)F",
+      "cco:ont00001916": {
+        "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N"
+      }
+    },
+    {
+      "@id": "mds:ChemicalReaction.84c927e3f6d24af685ab1bf3c6d071ff",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001777": [
+        {
+          "@id": "mds:InputAddition.84c927e3f6d24af685ab1bf3c6d071ff_m1"
+        },
+        {
+          "@id": "mds:InputAddition.84c927e3f6d24af685ab1bf3c6d071ff_m2"
+        }
+      ],
+      "cco:ont00001986": [
+        {
+          "@id": "mds:CrudeProduct.84c927e3f6d24af685ab1bf3c6d071ff"
+        },
+        {
+          "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "Palladium acetate (34 mg, 0.150 mmol) was added to a mixture of 2-(trifluoromethoxy)phenylboronic acid (773 mg, 3.75 mmol) and (R)-(+)-1-(4-bromophenyl)ethylamine (300 mg, 1.50 mmol) in water (12 ml). This mixture was heated in a microwave oven at 150° C. for 10 min, then diluted with methanol (200 ml) and purified on a SCX column (eluted with 2M ammonia in methanol) to give (R)-1-(2′-trifluoromethoxy-biphenyl-4-yl)-ethylamine (345 mg, 1.23 mmol, 81.9%) as a gum. The title compound was then prepared in a similar manner to (R)-2,5-dimethyl-furan-3-sulfonic acid [1-(5′-fluoro-2′-methoxy-biphenyl-4-yl)-ethyl]-amide (Example 10) using 1-difluoromethyl-3-methylpyrazole-4-sulfonyl chloride and (R)-1-(2′-trifluoromethoxy-biphenyl-4-yl)-ethylamine. Title compound: 1H NMR (400 MHz, CDCl3): δ 7.95 (s, 1H), 7.42-7.16 (m, 8H), 6.97 (s, 1H), 4.88 (d, 1H), 4.52 (m, 1H), 2.30 (s, 3H), 1.56 (d, 3H) ppm; MS (ESI) m/z: 476 [M+H]+.",
+      "mds:safetyNotes": "None"
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.84c927e3f6d24af685ab1bf3c6d071ff_m1_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.KJILWYBETJFERM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.%28R%29-1-Difluoromethyl-3-methyl-1H-pyrazole-4-sulfonic%20acid%20%5B1-%282%E2%80%B2-trifluoromethoxy-biphenyl-4-yl%29-ethyl%5D-amide",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "(R)-1-Difluoromethyl-3-methyl-1H-pyrazole-4-sulfonic acid [1-(2′-trifluoromethoxy-biphenyl-4-yl)-ethyl]-amide",
+      "cco:ont00001916": {
+        "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.Title%20compound",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "Title compound",
+      "cco:ont00001916": {
+        "@id": "mds:Product.YCWUQWSZIJUESS-GFCCVEGCSA-N"
+      }
+    }
+  ]
+}
