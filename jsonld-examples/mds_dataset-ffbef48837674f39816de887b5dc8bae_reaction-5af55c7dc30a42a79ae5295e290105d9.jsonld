@@ -1,0 +1,327 @@
+{
+  "@context": {
+    "afe": "http://purl.allotrope.org/ontologies/equipment#",
+    "afm": "http://purl.allotrope.org/ontologies/material#",
+    "afq": "http://purl.allotrope.org/ontologies/quality#",
+    "afr": "http://purl.allotrope.org/ontologies/result#",
+    "afrl": "http://purl.allotrope.org/ontologies/role#",
+    "brick": "https://brickschema.org/schema/Brick#",
+    "cco": "https://www.commoncoreontologies.org/",
+    "csvw": "http://www.w3.org/ns/csvw#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcam": "http://purl.org/dc/dcam/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcmitype": "http://purl.org/dc/dcmitype/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "doap": "http://usefulinc.com/ns/doap#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "geo": "http://www.opengis.net/ont/geosparql#",
+    "mds": "https://cwrusdle.bitbucket.io/files/MDS_Onto/index-en.html#",
+    "ncit": "http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#",
+    "obo": "http://purl.obolibrary.org/obo/",
+    "odrl": "http://www.w3.org/ns/odrl/2/",
+    "org": "http://www.w3.org/ns/org#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "qb": "http://purl.org/linked-data/cube#",
+    "qudt": "http://qudt.org/schema/qudt/",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "schema": "https://schema.org/",
+    "sh": "http://www.w3.org/ns/shacl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "time": "http://www.w3.org/2006/time#",
+    "unit": "http://qudt.org/vocab/unit/",
+    "vann": "http://purl.org/vocab/vann/",
+    "void": "http://rdfs.org/ns/void#",
+    "wgs": "https://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#"
+  },
+  "@graph": [
+    {
+      "@id": "cco:ReactantArtifactFunction.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2_component_1",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WFDIJRYMOXRFFG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Mass.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2_component_1",
+      "cco:ont00001769": 130.0,
+      "cco:ont00001863": {
+        "@id": "unit:MilliGM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WFDIJRYMOXRFFG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Volume.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2_component_2",
+      "cco:ont00001769": 0.5,
+      "cco:ont00001863": {
+        "@id": "unit:MilliL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.ABXDFRRYEBKWBN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.N-%7B4-%5B3-%28Acetylmethylamino%29-2-oxopyrrolidin-1-yl%5Dphenyl%7D-4-cyclohexyl-N-methyl-benzamide",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "N-{4-[3-(Acetylmethylamino)-2-oxopyrrolidin-1-yl]phenyl}-4-cyclohexyl-N-methyl-benzamide",
+      "cco:ont00001916": {
+        "@id": "mds:Product.CVUWCQZIZYEKLI-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ChemicalReaction.5af55c7dc30a42a79ae5295e290105d9",
+      "@type": "mds:ChemicalReaction",
+      "cco:ont00001777": {
+        "@id": "mds:InputAddition.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2"
+      },
+      "cco:ont00001986": [
+        {
+          "@id": "mds:CrudeProduct.5af55c7dc30a42a79ae5295e290105d9"
+        },
+        {
+          "@id": "mds:Product.CVUWCQZIZYEKLI-UHFFFAOYSA-N"
+        }
+      ],
+      "mds:formsPrecipitate": "None",
+      "mds:isExothermic": "None",
+      "mds:isHeterogeneous": "None",
+      "mds:isSensitiveToLight": "None",
+      "mds:isSensitiveToMoisture": "None",
+      "mds:isSensitiveToOxygen": "None",
+      "mds:offGasses": "None",
+      "mds:procedureDetails": "4-Cyclohexyl-N-methyl-N-[4-(3-methylamino-2-oxopyrrolidin-1-yl)phenyl]benzamide (52 mg) was mixed with pyridine (0.5 ml) and acetic anhydride (130 mg) and, after 3 hours, volatile fractions were removed in vacuo. This resulted in the product with the molecular weight of 447.58 (C27H33N3O3); MS (ESI): 448 (M+H+).",
+      "mds:safetyNotes": "None",
+      "obo:BFO_0000063": [
+        {
+          "@id": "mds:ReactionWorkup.5af55c7dc30a42a79ae5295e290105d9_CUSTOM_0"
+        },
+        {
+          "@id": "mds:ReactionWorkup.5af55c7dc30a42a79ae5295e290105d9_CUSTOM_1"
+        }
+      ]
+    },
+    {
+      "@id": "cco:Mass.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2_component_0",
+      "cco:ont00001769": 52.0,
+      "cco:ont00001863": {
+        "@id": "unit:MilliGM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.ABXDFRRYEBKWBN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionVessel.5af55c7dc30a42a79ae5295e290105d9_UNSPECIFIED",
+      "@type": "mds:ReactionVessel",
+      "obo:BFO_0000056": [
+        {
+          "@id": "mds:ReactionSetup.5af55c7dc30a42a79ae5295e290105d9"
+        },
+        {
+          "@id": "mds:ChemicalReaction.5af55c7dc30a42a79ae5295e290105d9"
+        }
+      ]
+    },
+    {
+      "@id": "mds:CrudeProduct.5af55c7dc30a42a79ae5295e290105d9",
+      "@type": "mds:CrudeProduct",
+      "cco:ont00001841": [
+        {
+          "@id": "mds:ReactionWorkup.5af55c7dc30a42a79ae5295e290105d9_CUSTOM_0"
+        },
+        {
+          "@id": "mds:ReactionWorkup.5af55c7dc30a42a79ae5295e290105d9_CUSTOM_1"
+        }
+      ]
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC27H33N3O3%2Fc1-19%2831%2918-28-25-16-17-30%2827%2825%2933%2924-14-12-23%2813-15-24%2929%282%2926%2832%2922-10-8-21%289-11-22%2920-6-4-3-5-7-20%2Fh8-15%2C20%2C25%2C28H%2C3-7%2C16-18H2%2C1-2H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C27H33N3O3/c1-19(31)18-28-25-16-17-30(27(25)33)24-14-12-23(13-15-24)29(2)26(32)22-10-8-21(9-11-22)20-6-4-3-5-7-20/h8-15,20,25,28H,3-7,16-18H2,1-2H3",
+      "cco:ont00001916": {
+        "@id": "mds:Product.CVUWCQZIZYEKLI-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.pyridine",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "pyridine",
+      "cco:ont00001916": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.5af55c7dc30a42a79ae5295e290105d9",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC5H5N%2Fc1-2-4-6-5-3-1%2Fh1-5H",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C5H5N/c1-2-4-6-5-3-1/h1-5H",
+      "cco:ont00001916": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.5af55c7dc30a42a79ae5295e290105d9_CUSTOM_1",
+      "mds:details": "This resulted in the product with the molecular weight of 447.58 (C27H33N3O3)"
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC4H6O3%2Fc1-3%285%297-4%282%296%2Fh1-2H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C4H6O3/c1-3(5)7-4(2)6/h1-2H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WFDIJRYMOXRFFG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.N1%3DCC%3DCC%3DC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "N1=CC=CC=C1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.5af55c7dc30a42a79ae5295e290105d9",
+      "@type": "mds:ReactionSetup",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    },
+    {
+      "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2_component_2",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.JUJWROOIHBZHMG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.5af55c7dc30a42a79ae5295e290105d9",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC25H31N3O2%2Fc1-26-23-16-17-28%2825%2823%2930%2922-14-12-21%2813-15-22%2927%282%2924%2829%2920-10-8-19%289-11-20%2918-6-4-3-5-7-18%2Fh8-15%2C18%2C23%2C26H%2C3-7%2C16-17H2%2C1-2H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C25H31N3O2/c1-26-23-16-17-28(25(23)30)22-14-12-21(13-15-22)27(2)24(29)20-10-8-19(9-11-20)18-6-4-3-5-7-18/h8-15,18,23,26H,3-7,16-17H2,1-2H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ABXDFRRYEBKWBN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.ABXDFRRYEBKWBN-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    },
+    {
+      "@id": "mds:REACTION_CXSMILES.%5BCH%3A1%5D1%28%5BC%3A7%5D2%5BCH%3A30%5D%3D%5BCH%3A29%5D%5BC%3A10%5D%28%5BC%3A11%5D%28%5BN%3A13%5D%28%5BCH3%3A28%5D%29%5BC%3A14%5D3%5BCH%3A19%5D%3D%5BCH%3A18%5D%5BC%3A17%5D%28%5BN%3A20%5D4%5BCH2%3A24%5D%5BCH2%3A23%5D%5BCH%3A22%5D%28%5BNH%3A25%5D%5BCH3%3A26%5D%29%5BC%3A21%5D4%3D%5BO%3A27%5D%29%3D%5BCH%3A16%5D%5BCH%3A15%5D%3D3%29%3D%5BO%3A12%5D%29%3D%5BCH%3A9%5D%5BCH%3A8%5D%3D2%29%5BCH2%3A6%5D%5BCH2%3A5%5D%5BCH2%3A4%5D%5BCH2%3A3%5D%5BCH2%3A2%5D1.%5BC%3A31%5D%28OC%28%3DO%29C%29%28%3D%5BO%3A33%5D%29%5BCH3%3A32%5D%3EN1C%3DCC%3DCC%3D1%3E%5BC%3A31%5D%28%5BCH2%3A26%5D%5BNH%3A25%5D%5BCH%3A22%5D1%5BCH2%3A23%5D%5BCH2%3A24%5D%5BN%3A20%5D%28%5BC%3A17%5D2%5BCH%3A18%5D%3D%5BCH%3A19%5D%5BC%3A14%5D%28%5BN%3A13%5D%28%5BCH3%3A28%5D%29%5BC%3A11%5D%28%3D%5BO%3A12%5D%29%5BC%3A10%5D3%5BCH%3A29%5D%3D%5BCH%3A30%5D%5BC%3A7%5D%28%5BCH%3A1%5D4%5BCH2%3A2%5D%5BCH2%3A3%5D%5BCH2%3A4%5D%5BCH2%3A5%5D%5BCH2%3A6%5D4%29%3D%5BCH%3A8%5D%5BCH%3A9%5D%3D3%29%3D%5BCH%3A15%5D%5BCH%3A16%5D%3D2%29%5BC%3A21%5D1%3D%5BO%3A27%5D%29%28%3D%5BO%3A33%5D%29%5BCH3%3A32%5D",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "[CH:1]1([C:7]2[CH:30]=[CH:29][C:10]([C:11]([N:13]([CH3:28])[C:14]3[CH:19]=[CH:18][C:17]([N:20]4[CH2:24][CH2:23][CH:22]([NH:25][CH3:26])[C:21]4=[O:27])=[CH:16][CH:15]=3)=[O:12])=[CH:9][CH:8]=2)[CH2:6][CH2:5][CH2:4][CH2:3][CH2:2]1.[C:31](OC(=O)C)(=[O:33])[CH3:32]>N1C=CC=CC=1>[C:31]([CH2:26][NH:25][CH:22]1[CH2:23][CH2:24][N:20]([C:17]2[CH:18]=[CH:19][C:14]([N:13]([CH3:28])[C:11](=[O:12])[C:10]3[CH:29]=[CH:30][C:7]([CH:1]4[CH2:2][CH2:3][CH2:4][CH2:5][CH2:6]4)=[CH:8][CH:9]=3)=[CH:15][CH:16]=2)[C:21]1=[O:27])(=[O:33])[CH3:32]",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.5af55c7dc30a42a79ae5295e290105d9"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "mds:ReactionWorkup.5af55c7dc30a42a79ae5295e290105d9_CUSTOM_0",
+      "mds:details": "volatile fractions were removed in vacuo"
+    },
+    {
+      "@id": "mds:SMILES.C%28C%29%28%3DO%29OC%28C%29%3DO",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(C)(=O)OC(C)=O",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WFDIJRYMOXRFFG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.acetic%20anhydride",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "acetic anhydride",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WFDIJRYMOXRFFG-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.CVUWCQZIZYEKLI-UHFFFAOYSA-N",
+      "@type": "mds:Product"
+    },
+    {
+      "@id": "mds:SMILES.C1%28CCCCC1%29C1%3DCC%3DC%28C%28%3DO%29N%28C2%3DCC%3DC%28C%3DC2%29N2C%28C%28CC2%29NC%29%3DO%29C%29C%3DC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C1(CCCCC1)C1=CC=C(C(=O)N(C2=CC=C(C=C2)N2C(C(CC2)NC)=O)C)C=C1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ABXDFRRYEBKWBN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.4-Cyclohexyl-N-methyl-N-%5B4-%283-methylamino-2-oxopyrrolidin-1-yl%29phenyl%5Dbenzamide",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "4-Cyclohexyl-N-methyl-N-[4-(3-methylamino-2-oxopyrrolidin-1-yl)phenyl]benzamide",
+      "cco:ont00001916": {
+        "@id": "mds:Component.ABXDFRRYEBKWBN-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.C%28C%29%28%3DO%29CNC1C%28N%28CC1%29C1%3DCC%3DC%28C%3DC1%29N%28C%28C1%3DCC%3DC%28C%3DC1%29C1CCCCC1%29%3DO%29C%29%3DO",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(C)(=O)CNC1C(N(CC1)C1=CC=C(C=C1)N(C(C1=CC=C(C=C1)C1CCCCC1)=O)C)=O",
+      "cco:ont00001916": {
+        "@id": "mds:Product.CVUWCQZIZYEKLI-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.WFDIJRYMOXRFFG-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.5af55c7dc30a42a79ae5295e290105d9_m1_m3_m2"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.5af55c7dc30a42a79ae5295e290105d9"
+      }
+    }
+  ]
+}
