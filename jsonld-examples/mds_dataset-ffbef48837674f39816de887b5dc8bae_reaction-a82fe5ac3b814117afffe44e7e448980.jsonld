@@ -42,14 +42,6 @@
   },
   "@graph": [
     {
-      "@id": "mds:NAME.isobutyryl%20chloride",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "isobutyryl chloride",
-      "cco:ont00001916": {
-        "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N"
-      }
-    },
-    {
       "@id": "mds:ReactionVessel.a82fe5ac3b814117afffe44e7e448980_UNSPECIFIED",
       "@type": "mds:ReactionVessel",
       "obo:BFO_0000056": [
@@ -62,15 +54,120 @@
       ]
     },
     {
-      "@id": "mds:ReactionWorkup.a82fe5ac3b814117afffe44e7e448980_CUSTOM_0",
-      "mds:details": "This resulted in the product with the molecular weight of 474.26 (C28H34N4O3)"
+      "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.a82fe5ac3b814117afffe44e7e448980_m1_m2"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.a82fe5ac3b814117afffe44e7e448980"
+      }
     },
     {
-      "@id": "mds:ReactionEnvironment.a82fe5ac3b814117afffe44e7e448980",
-      "@type": "mds:ReactionEnvironment",
-      "obo:BFO_0000183": {
+      "@id": "mds:REACTION_CXSMILES.%5BCH3%3A1%5D%5BN%3A2%5D%28%5BCH3%3A30%5D%29%5BCH%3A3%5D1%5BCH2%3A7%5D%5BCH2%3A6%5D%5BN%3A5%5D%28%5BC%3A8%5D2%5BCH%3A13%5D%3D%5BCH%3A12%5D%5BC%3A11%5D%28%5BNH%3A14%5D%5BC%3A15%5D%28%5BC%3A17%5D3%5BO%3A18%5D%5BC%3A19%5D%28%5BC%3A22%5D4%5BCH%3A27%5D%3D%5BCH%3A26%5D%5BC%3A25%5D%28%5BCH3%3A28%5D%29%3D%5BCH%3A24%5D%5BC%3A23%5D%3D4%5BNH2%3A29%5D%29%3D%5BCH%3A20%5D%5BCH%3A21%5D%3D3%29%3D%5BO%3A16%5D%29%3D%5BCH%3A10%5D%5BCH%3A9%5D%3D2%29%5BCH2%3A4%5D1.%5BC%3A31%5D%28Cl%29%28%3D%5BO%3A35%5D%29%5BCH%3A32%5D%28%5BCH3%3A34%5D%29%5BCH3%3A33%5D%3E%3E%5BCH3%3A30%5D%5BN%3A2%5D%28%5BCH3%3A1%5D%29%5BCH%3A3%5D1%5BCH2%3A7%5D%5BCH2%3A6%5D%5BN%3A5%5D%28%5BC%3A8%5D2%5BCH%3A13%5D%3D%5BCH%3A12%5D%5BC%3A11%5D%28%5BNH%3A14%5D%5BC%3A15%5D%28%5BC%3A17%5D3%5BO%3A18%5D%5BC%3A19%5D%28%5BC%3A22%5D4%5BCH%3A27%5D%3D%5BCH%3A26%5D%5BC%3A25%5D%28%5BCH3%3A28%5D%29%3D%5BCH%3A24%5D%5BC%3A23%5D%3D4%5BNH%3A29%5D%5BC%3A31%5D%28%3D%5BO%3A35%5D%29%5BCH%3A32%5D%28%5BCH3%3A34%5D%29%5BCH3%3A33%5D%29%3D%5BCH%3A20%5D%5BCH%3A21%5D%3D3%29%3D%5BO%3A16%5D%29%3D%5BCH%3A10%5D%5BCH%3A9%5D%3D2%29%5BCH2%3A4%5D1",
+      "@type": "mds:ReactionCXSMILES",
+      "cco:ont00001765": "[CH3:1][N:2]([CH3:30])[CH:3]1[CH2:7][CH2:6][N:5]([C:8]2[CH:13]=[CH:12][C:11]([NH:14][C:15]([C:17]3[O:18][C:19]([C:22]4[CH:27]=[CH:26][C:25]([CH3:28])=[CH:24][C:23]=4[NH2:29])=[CH:20][CH:21]=3)=[O:16])=[CH:10][CH:9]=2)[CH2:4]1.[C:31](Cl)(=[O:35])[CH:32]([CH3:34])[CH3:33]>>[CH3:30][N:2]([CH3:1])[CH:3]1[CH2:7][CH2:6][N:5]([C:8]2[CH:13]=[CH:12][C:11]([NH:14][C:15]([C:17]3[O:18][C:19]([C:22]4[CH:27]=[CH:26][C:25]([CH3:28])=[CH:24][C:23]=4[NH:29][C:31](=[O:35])[CH:32]([CH3:34])[CH3:33])=[CH:20][CH:21]=3)=[O:16])=[CH:10][CH:9]=2)[CH2:4]1",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
+      },
+      "mds:isMapped": true
+    },
+    {
+      "@id": "mds:SMILES.CN%28C1CN%28CC1%29C1%3DCC%3DC%28C%3DC1%29NC%28%3DO%29C%3D1OC%28%3DCC1%29C1%3DC%28C%3DC%28C%3DC1%29C%29N%29C",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CN(C1CN(CC1)C1=CC=C(C=C1)NC(=O)C=1OC(=CC1)C1=C(C=C(C=C1)C)N)C",
+      "cco:ont00001916": {
+        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_1",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionSetup.a82fe5ac3b814117afffe44e7e448980",
+      "@type": "mds:ReactionSetup",
+      "obo:BFO_0000063": {
         "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
       }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC24H28N4O2%2Fc1-16-4-9-20%2821%2825%2914-16%2922-10-11-23%2830-22%2924%2829%2926-17-5-7-18%288-6-17%2928-13-12-19%2815-28%2927%282%293%2Fh4-11%2C14%2C19H%2C12-13%2C15%2C25H2%2C1-3H3%2C%28H%2C26%2C29%29",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C24H28N4O2/c1-16-4-9-20(21(25)14-16)22-10-11-23(30-22)24(29)26-17-5-7-18(8-6-17)28-13-12-19(15-28)27(2)3/h4-11,14,19H,12-13,15,25H2,1-3H3,(H,26,29)",
+      "cco:ont00001916": {
+        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.a82fe5ac3b814117afffe44e7e448980",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
+      }
+    },
+    {
+      "@id": "mds:NAME.5-%282-Isobutyrylamino-4-methylphenyl%29furan-2-carboxylic%20acid%20%5B4-%283-dimethylamino-pyrrolidin-1-yl%29phenyl%5Damide",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "5-(2-Isobutyrylamino-4-methylphenyl)furan-2-carboxylic acid [4-(3-dimethylamino-pyrrolidin-1-yl)phenyl]amide",
+      "cco:ont00001916": {
+        "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.a82fe5ac3b814117afffe44e7e448980_m1_m2",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.a82fe5ac3b814117afffe44e7e448980"
+      }
+    },
+    {
+      "@id": "cco:Moles.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_0",
+      "cco:ont00001769": 0.0,
+      "cco:ont00001863": {
+        "@id": "unit:MOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC28H34N4O3%2Fc1-18%282%2927%2833%2930-24-16-19%283%296-11-23%2824%2925-12-13-26%2835-25%2928%2834%2929-20-7-9-21%2810-8-20%2932-15-14-22%2817-32%2931%284%295%2Fh6-13%2C16%2C18%2C22H%2C14-15%2C17H2%2C1-5H3%2C%28H%2C29%2C34%29%28H%2C30%2C33%29",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C28H34N4O3/c1-18(2)27(33)30-24-16-19(3)6-11-23(24)25-12-13-26(35-25)28(34)29-20-7-9-21(10-8-20)32-15-14-22(17-32)31(4)5/h6-13,16,18,22H,14-15,17H2,1-5H3,(H,29,34)(H,30,33)",
+      "cco:ont00001916": {
+        "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.5-%282-Amino-4-methylphenyl%29furan-2-carboxylic%20acid%20%5B4-%283-dimethylamino-pyrrolidin-1-yl%29-phenyl%5Damide",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "5-(2-Amino-4-methylphenyl)furan-2-carboxylic acid [4-(3-dimethylamino-pyrrolidin-1-yl)-phenyl]amide",
+      "cco:ont00001916": {
+        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.C%28C%28C%29C%29%28%3DO%29Cl",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(C(C)C)(=O)Cl",
+      "cco:ont00001916": {
+        "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N",
+      "@type": "mds:Product"
     },
     {
       "@id": "mds:INCHI.InChI%3D1S%2FC4H7ClO%2Fc1-3%282%294%285%296%2Fh3H%2C1-2H3",
@@ -108,35 +205,6 @@
       }
     },
     {
-      "@id": "mds:NAME.5-%282-Isobutyrylamino-4-methylphenyl%29furan-2-carboxylic%20acid%20%5B4-%283-dimethylamino-pyrrolidin-1-yl%29phenyl%5Damide",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "5-(2-Isobutyrylamino-4-methylphenyl)furan-2-carboxylic acid [4-(3-dimethylamino-pyrrolidin-1-yl)phenyl]amide",
-      "cco:ont00001916": {
-        "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionMixture.a82fe5ac3b814117afffe44e7e448980",
-      "@type": "mds:ReactionMixture",
-      "cco:ont00001841": {
-        "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_1",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N"
-      }
-    },
-    {
       "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
@@ -147,91 +215,8 @@
       }
     },
     {
-      "@id": "mds:REACTION_CXSMILES.%5BCH3%3A1%5D%5BN%3A2%5D%28%5BCH3%3A30%5D%29%5BCH%3A3%5D1%5BCH2%3A7%5D%5BCH2%3A6%5D%5BN%3A5%5D%28%5BC%3A8%5D2%5BCH%3A13%5D%3D%5BCH%3A12%5D%5BC%3A11%5D%28%5BNH%3A14%5D%5BC%3A15%5D%28%5BC%3A17%5D3%5BO%3A18%5D%5BC%3A19%5D%28%5BC%3A22%5D4%5BCH%3A27%5D%3D%5BCH%3A26%5D%5BC%3A25%5D%28%5BCH3%3A28%5D%29%3D%5BCH%3A24%5D%5BC%3A23%5D%3D4%5BNH2%3A29%5D%29%3D%5BCH%3A20%5D%5BCH%3A21%5D%3D3%29%3D%5BO%3A16%5D%29%3D%5BCH%3A10%5D%5BCH%3A9%5D%3D2%29%5BCH2%3A4%5D1.%5BC%3A31%5D%28Cl%29%28%3D%5BO%3A35%5D%29%5BCH%3A32%5D%28%5BCH3%3A34%5D%29%5BCH3%3A33%5D%3E%3E%5BCH3%3A30%5D%5BN%3A2%5D%28%5BCH3%3A1%5D%29%5BCH%3A3%5D1%5BCH2%3A7%5D%5BCH2%3A6%5D%5BN%3A5%5D%28%5BC%3A8%5D2%5BCH%3A13%5D%3D%5BCH%3A12%5D%5BC%3A11%5D%28%5BNH%3A14%5D%5BC%3A15%5D%28%5BC%3A17%5D3%5BO%3A18%5D%5BC%3A19%5D%28%5BC%3A22%5D4%5BCH%3A27%5D%3D%5BCH%3A26%5D%5BC%3A25%5D%28%5BCH3%3A28%5D%29%3D%5BCH%3A24%5D%5BC%3A23%5D%3D4%5BNH%3A29%5D%5BC%3A31%5D%28%3D%5BO%3A35%5D%29%5BCH%3A32%5D%28%5BCH3%3A34%5D%29%5BCH3%3A33%5D%29%3D%5BCH%3A20%5D%5BCH%3A21%5D%3D3%29%3D%5BO%3A16%5D%29%3D%5BCH%3A10%5D%5BCH%3A9%5D%3D2%29%5BCH2%3A4%5D1",
-      "@type": "mds:ReactionCXSMILES",
-      "cco:ont00001765": "[CH3:1][N:2]([CH3:30])[CH:3]1[CH2:7][CH2:6][N:5]([C:8]2[CH:13]=[CH:12][C:11]([NH:14][C:15]([C:17]3[O:18][C:19]([C:22]4[CH:27]=[CH:26][C:25]([CH3:28])=[CH:24][C:23]=4[NH2:29])=[CH:20][CH:21]=3)=[O:16])=[CH:10][CH:9]=2)[CH2:4]1.[C:31](Cl)(=[O:35])[CH:32]([CH3:34])[CH3:33]>>[CH3:30][N:2]([CH3:1])[CH:3]1[CH2:7][CH2:6][N:5]([C:8]2[CH:13]=[CH:12][C:11]([NH:14][C:15]([C:17]3[O:18][C:19]([C:22]4[CH:27]=[CH:26][C:25]([CH3:28])=[CH:24][C:23]=4[NH:29][C:31](=[O:35])[CH:32]([CH3:34])[CH3:33])=[CH:20][CH:21]=3)=[O:16])=[CH:10][CH:9]=2)[CH2:4]1",
-      "cco:ont00001916": {
-        "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
-      },
-      "mds:isMapped": true
-    },
-    {
-      "@id": "mds:SMILES.CN%28C1CN%28CC1%29C1%3DCC%3DC%28C%3DC1%29NC%28%3DO%29C%3D1OC%28%3DCC1%29C1%3DC%28C%3DC%28C%3DC1%29C%29N%29C",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CN(C1CN(CC1)C1=CC=C(C=C1)NC(=O)C=1OC(=CC1)C1=C(C=C(C=C1)C)N)C",
-      "cco:ont00001916": {
-        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.a82fe5ac3b814117afffe44e7e448980_m1_m2"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.a82fe5ac3b814117afffe44e7e448980"
-      }
-    },
-    {
-      "@id": "mds:InputAddition.a82fe5ac3b814117afffe44e7e448980_m1_m2",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.a82fe5ac3b814117afffe44e7e448980"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC24H28N4O2%2Fc1-16-4-9-20%2821%2825%2914-16%2922-10-11-23%2830-22%2924%2829%2926-17-5-7-18%288-6-17%2928-13-12-19%2815-28%2927%282%293%2Fh4-11%2C14%2C19H%2C12-13%2C15%2C25H2%2C1-3H3%2C%28H%2C26%2C29%29",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C24H28N4O2/c1-16-4-9-20(21(25)14-16)22-10-11-23(30-22)24(29)26-17-5-7-18(8-6-17)28-13-12-19(15-28)27(2)3/h4-11,14,19H,12-13,15,25H2,1-3H3,(H,26,29)",
-      "cco:ont00001916": {
-        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC28H34N4O3%2Fc1-18%282%2927%2833%2930-24-16-19%283%296-11-23%2824%2925-12-13-26%2835-25%2928%2834%2929-20-7-9-21%2810-8-20%2932-15-14-22%2817-32%2931%284%295%2Fh6-13%2C16%2C18%2C22H%2C14-15%2C17H2%2C1-5H3%2C%28H%2C29%2C34%29%28H%2C30%2C33%29",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C28H34N4O3/c1-18(2)27(33)30-24-16-19(3)6-11-23(24)25-12-13-26(35-25)28(34)29-20-7-9-21(10-8-20)32-15-14-22(17-32)31(4)5/h6-13,16,18,22H,14-15,17H2,1-5H3,(H,29,34)(H,30,33)",
-      "cco:ont00001916": {
-        "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.CN%28C1CN%28CC1%29C1%3DCC%3DC%28C%3DC1%29NC%28%3DO%29C%3D1OC%28%3DCC1%29C1%3DC%28C%3DC%28C%3DC1%29C%29NC%28C%28C%29C%29%3DO%29C",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CN(C1CN(CC1)C1=CC=C(C=C1)NC(=O)C=1OC(=CC1)C1=C(C=C(C=C1)C)NC(C(C)C)=O)C",
-      "cco:ont00001916": {
-        "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:Moles.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_0",
-      "cco:ont00001769": 0.0,
-      "cco:ont00001863": {
-        "@id": "unit:MOL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C%28C%28C%29C%29%28%3DO%29Cl",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C(C(C)C)(=O)Cl",
-      "cco:ont00001916": {
-        "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionSetup.a82fe5ac3b814117afffe44e7e448980",
-      "@type": "mds:ReactionSetup",
-      "obo:BFO_0000063": {
-        "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
-      }
-    },
-    {
-      "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N",
-      "@type": "mds:Product"
+      "@id": "mds:ReactionWorkup.a82fe5ac3b814117afffe44e7e448980_CUSTOM_0",
+      "mds:details": "This resulted in the product with the molecular weight of 474.26 (C28H34N4O3)"
     },
     {
       "@id": "cco:Moles.a82fe5ac3b814117afffe44e7e448980_m1_m2_component_1",
@@ -251,11 +236,26 @@
       }
     },
     {
-      "@id": "mds:NAME.5-%282-Amino-4-methylphenyl%29furan-2-carboxylic%20acid%20%5B4-%283-dimethylamino-pyrrolidin-1-yl%29-phenyl%5Damide",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "5-(2-Amino-4-methylphenyl)furan-2-carboxylic acid [4-(3-dimethylamino-pyrrolidin-1-yl)-phenyl]amide",
+      "@id": "mds:SMILES.CN%28C1CN%28CC1%29C1%3DCC%3DC%28C%3DC1%29NC%28%3DO%29C%3D1OC%28%3DCC1%29C1%3DC%28C%3DC%28C%3DC1%29C%29NC%28C%28C%29C%29%3DO%29C",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CN(C1CN(CC1)C1=CC=C(C=C1)NC(=O)C=1OC(=CC1)C1=C(C=C(C=C1)C)NC(C(C)C)=O)C",
       "cco:ont00001916": {
-        "@id": "mds:Component.CEJGGGQHEWLGLZ-UHFFFAOYSA-N"
+        "@id": "mds:Product.JCWCACIFBALCOJ-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.isobutyryl%20chloride",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "isobutyryl chloride",
+      "cco:ont00001916": {
+        "@id": "mds:Component.DGMOBVGABMBZSB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.a82fe5ac3b814117afffe44e7e448980",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.a82fe5ac3b814117afffe44e7e448980"
       }
     }
   ]

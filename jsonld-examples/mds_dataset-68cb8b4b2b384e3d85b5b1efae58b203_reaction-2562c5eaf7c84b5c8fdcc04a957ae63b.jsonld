@@ -42,133 +42,11 @@
   },
   "@graph": [
     {
-      "@id": "cco:Moles.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_0",
-      "cco:ont00001769": 0.4000000059604645,
-      "cco:ont00001863": {
-        "@id": "unit:MicroMOL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:index-en.html.SteelTube.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "cco:ont00000581",
-      "mds:details": "Hastelloy"
-    },
-    {
-      "@id": "cco:Volume.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_1",
-      "cco:ont00001769": 1.0,
-      "cco:ont00001863": {
-        "@id": "unit:MicroL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.AFZZYIJIWUTJFO-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N",
-      "@type": "mds:Product",
-      "mds:isDesiredProduct": true
-    },
-    {
-      "@id": "mds:REACTION_TYPE.Suzuki-Miyaura%20cross-coupling",
-      "@type": "mds:ReactionType",
-      "cco:ont00001765": "Suzuki-Miyaura cross-coupling",
-      "cco:ont00001916": {
-        "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
-      }
-    },
-    {
-      "@id": "mds:SMILES.IC1%3DCC%3DC2N%3DCC%3DCC2%3DC1",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "IC1=CC=C2N=CC=CC2=C1",
-      "cco:ont00001916": {
-        "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionPressure.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "mds:ReactionPressure",
-      "cco:ont00001769": 100.0,
-      "cco:ont00001863": {
-        "@id": "unit:BAR"
-      },
-      "mds:details": "PRESSURIZED"
-    },
-    {
-      "@id": "mds:SMILES.CC%28C%3DC1%29%3DC%28C2%3DCC%3DC%28N%3DCC%3DC3%29C3%3DC2%29C4%3DC1N%28C5OCCCC5%29N%3DC4",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CC(C=C1)=C(C2=CC=C(N=CC=C3)C3=C2)C4=C1N(C5OCCCC5)N=C4",
-      "cco:ont00001916": {
-        "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:AnalyticalTechnique.2562c5eaf7c84b5c8fdcc04a957ae63b_Agilent 1200 Infinity HPLC systems",
-      "@type": "mds:AnalyticalTechnique",
-      "cco:ont00001765": "Agilent",
-      "mds:details": [
-        "LCMS",
-        "HPLC S4\nconditions uses a 0.1% AcOH/NH4COOH/Water based gradient over 1.4 minutes running from 5-95% MeCN using a Waters Acquity UPLC BEH C18 30 x 2.1 mm column at 80 °C with a flow rate of 2.5ml/min and a detection wavelength of 210 360nm"
-      ]
-    },
-    {
       "@id": "mds:ReactionTime.2562c5eaf7c84b5c8fdcc04a957ae63b",
       "@type": "mds:ReactionTime",
       "cco:ont00001767": 1.0,
       "cco:ont00001863": {
         "@id": "unit:MIN"
-      }
-    },
-    {
-      "@id": "mds:ReactionTemperature.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "mds:ReactionTemperature"
-    },
-    {
-      "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide"
-      },
-      "mds:isLimiting": true,
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b"
-      }
-    },
-    {
-      "@id": "cco:SolventArtifactFunction.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_1",
-      "@type": "cco:ont00001160",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.AFZZYIJIWUTJFO-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ProductMeasurement.2562c5eaf7c84b5c8fdcc04a957ae63b_Agilent 1200 Infinity HPLC systems_Product_0_Measurement_0",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001769": 78.77999877929688,
-      "cco:ont00001808": {
-        "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N"
-      },
-      "cco:ont00001863": {
-        "@id": "unit:PERCENT"
-      },
-      "mds:isNormalized": true,
-      "mds:usesAuthenticStandard": false,
-      "mds:usesInternalStandard": true
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:InputAddition.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b"
       }
     },
     {
@@ -183,13 +61,33 @@
       }
     },
     {
-      "@id": "mds:Component.AFZZYIJIWUTJFO-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide"
+      "@id": "mds:CrudeProduct.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "mds:CrudeProduct"
+    },
+    {
+      "@id": "mds:AnalyticalTechnique.2562c5eaf7c84b5c8fdcc04a957ae63b_Agilent 1200 Infinity HPLC systems",
+      "@type": "mds:AnalyticalTechnique",
+      "cco:ont00001765": "Agilent",
+      "mds:details": [
+        "LCMS",
+        "HPLC S4\nconditions uses a 0.1% AcOH/NH4COOH/Water based gradient over 1.4 minutes running from 5-95% MeCN using a Waters Acquity UPLC BEH C18 30 x 2.1 mm column at 80 °C with a flow rate of 2.5ml/min and a detection wavelength of 210 360nm"
+      ]
+    },
+    {
+      "@id": "cco:Volume.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_1",
+      "cco:ont00001769": 1.0,
+      "cco:ont00001863": {
+        "@id": "unit:MicroL"
       },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.AFZZYIJIWUTJFO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "mds:ReactionMixture",
+      "cco:ont00001841": {
+        "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
       }
     },
     {
@@ -201,10 +99,74 @@
       }
     },
     {
-      "@id": "mds:Product.2562c5eaf7c84b5c8fdcc04a957ae63b_Outcome_0_Product_0",
-      "@type": "mds:Product",
+      "@id": "mds:InputAddition.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      }
+    },
+    {
+      "@id": "mds:ReactionTemperature.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "mds:ReactionTemperature"
+    },
+    {
+      "@id": "mds:ReactionPressure.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "mds:ReactionPressure",
+      "cco:ont00001769": 100.0,
+      "cco:ont00001863": {
+        "@id": "unit:BAR"
+      },
+      "mds:details": "PRESSURIZED"
+    },
+    {
+      "@id": "mds:ReactionSetup.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "mds:ReactionSetup",
+      "mds:isAutomated": true,
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      }
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_1",
+      "@type": "cco:ont00001160",
       "obo:BFO_0000197": {
-        "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+        "@id": "mds:Component.AFZZYIJIWUTJFO-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionVessel.2562c5eaf7c84b5c8fdcc04a957ae63b_equipment.AFE_0000718",
+      "@type": "mds:ReactionVessel",
+      "cco:ont00001765": "TUBE",
+      "obo:BFO_0000056": [
+        {
+          "@id": "mds:ReactionSetup.2562c5eaf7c84b5c8fdcc04a957ae63b"
+        },
+        {
+          "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
+        }
+      ]
+    },
+    {
+      "@id": "mds:FlowConditions.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "mds:ContinuousFlow"
+    },
+    {
+      "@id": "mds:SMILES.IC1%3DCC%3DC2N%3DCC%3DCC2%3DC1",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "IC1=CC=C2N=CC=CC2=C1",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide"
+      },
+      "mds:isLimiting": true,
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b"
       }
     },
     {
@@ -240,27 +202,50 @@
       }
     },
     {
-      "@id": "mds:ReactionSetup.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "mds:ReactionSetup",
-      "mds:isAutomated": true,
-      "obo:BFO_0000063": {
-        "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      "@id": "mds:SMILES.CC%28C%3DC1%29%3DC%28C2%3DCC%3DC%28N%3DCC%3DC3%29C3%3DC2%29C4%3DC1N%28C5OCCCC5%29N%3DC4",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC(C=C1)=C(C2=CC=C(N=CC=C3)C3=C2)C4=C1N(C5OCCCC5)N=C4",
+      "cco:ont00001916": {
+        "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "mds:FlowConditions.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "mds:ContinuousFlow"
-    },
-    {
-      "@id": "mds:CrudeProduct.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "mds:CrudeProduct"
-    },
-    {
-      "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b",
-      "@type": "mds:ReactionMixture",
-      "cco:ont00001841": {
-        "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      "@id": "cco:ReactantArtifactFunction.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N"
       }
+    },
+    {
+      "@id": "mds:ProductMeasurement.2562c5eaf7c84b5c8fdcc04a957ae63b_Agilent 1200 Infinity HPLC systems_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 78.77999877929688,
+      "cco:ont00001808": {
+        "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
+      },
+      "mds:isNormalized": true,
+      "mds:usesAuthenticStandard": false,
+      "mds:usesInternalStandard": true
+    },
+    {
+      "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N",
+      "@type": "mds:Product",
+      "mds:isDesiredProduct": true
+    },
+    {
+      "@id": "mds:Product.2562c5eaf7c84b5c8fdcc04a957ae63b_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.FDTIMQRDPFSSCS-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:index-en.html.SteelTube.2562c5eaf7c84b5c8fdcc04a957ae63b",
+      "@type": "cco:ont00000581",
+      "mds:details": "Hastelloy"
     },
     {
       "@id": "mds:ReactionEnvironment.2562c5eaf7c84b5c8fdcc04a957ae63b",
@@ -273,17 +258,32 @@
       }
     },
     {
-      "@id": "mds:ReactionVessel.2562c5eaf7c84b5c8fdcc04a957ae63b_equipment.AFE_0000718",
-      "@type": "mds:ReactionVessel",
-      "cco:ont00001765": "TUBE",
-      "obo:BFO_0000056": [
-        {
-          "@id": "mds:ReactionSetup.2562c5eaf7c84b5c8fdcc04a957ae63b"
-        },
-        {
-          "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
-        }
-      ]
+      "@id": "cco:Moles.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide_component_0",
+      "cco:ont00001769": 0.4000000059604645,
+      "cco:ont00001863": {
+        "@id": "unit:MicroMOL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WKTASELJZCIVBR-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.AFZZYIJIWUTJFO-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.2562c5eaf7c84b5c8fdcc04a957ae63b_ArylHalide"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      }
+    },
+    {
+      "@id": "mds:REACTION_TYPE.Suzuki-Miyaura%20cross-coupling",
+      "@type": "mds:ReactionType",
+      "cco:ont00001765": "Suzuki-Miyaura cross-coupling",
+      "cco:ont00001916": {
+        "@id": "mds:ChemicalReaction.2562c5eaf7c84b5c8fdcc04a957ae63b"
+      }
     }
   ]
 }

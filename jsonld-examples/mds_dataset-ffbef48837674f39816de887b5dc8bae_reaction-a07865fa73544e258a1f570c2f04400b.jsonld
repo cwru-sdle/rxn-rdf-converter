@@ -42,113 +42,26 @@
   },
   "@graph": [
     {
-      "@id": "mds:NAME.%284-chloro-3-hydroxy-phenyl%29acetonitrile",
+      "@id": "mds:ReactionSetup.a07865fa73544e258a1f570c2f04400b",
+      "@type": "mds:ReactionSetup",
+      "obo:BFO_0000063": {
+        "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
+      }
+    },
+    {
+      "@id": "mds:SMILES.ClC1%3DC%28C%3DC%28C%3DC1%29CC%23N%29O",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "ClC1=C(C=C(C=C1)CC#N)O",
+      "cco:ont00001916": {
+        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:NAME.K2CO3",
       "@type": "mds:CompoundName",
-      "cco:ont00001765": "(4-chloro-3-hydroxy-phenyl)acetonitrile",
-      "cco:ont00001916": {
-        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.a07865fa73544e258a1f570c2f04400b_FILTRATION_0",
-      "mds:details": "The solids were filtered off",
-      "mds:keepPhase": "None"
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC2H3N%2Fc1-2-3%2Fh1H3",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C2H3N/c1-2-3/h1H3",
-      "cco:ont00001916": {
-        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionTime.a07865fa73544e258a1f570c2f04400b",
-      "@type": "mds:ReactionTime",
-      "cco:ont00001767": 8.0,
-      "cco:ont00001863": {
-        "@id": "unit:HR"
-      }
-    },
-    {
-      "@id": "cco:SolventArtifactFunction.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_3",
-      "@type": "cco:ont00001160",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionVessel.a07865fa73544e258a1f570c2f04400b_UNSPECIFIED",
-      "@type": "mds:ReactionVessel",
-      "obo:BFO_0000056": [
-        {
-          "@id": "mds:ReactionSetup.a07865fa73544e258a1f570c2f04400b"
-        },
-        {
-          "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
-        }
-      ]
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FCH2O3.2K%2Fc2-1%283%294%3B%3B%2Fh%28H2%2C2%2C3%2C4%29%3B%3B%2Fq%3B2%2A%2B1%2Fp-2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/CH2O3.2K/c2-1(3)4;;/h(H2,2,3,4);;/q;2*+1/p-2",
+      "cco:ont00001765": "K2CO3",
       "cco:ont00001916": {
         "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_0",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ProductMeasurement.a07865fa73544e258a1f570c2f04400b_Product_0_Measurement_2",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001769": 58.70000076293945,
-      "cco:ont00001808": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
-      },
-      "cco:ont00001863": {
-        "@id": "unit:PERCENT"
-      }
-    },
-    {
-      "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3",
-      "@type": "mds:InputAddition",
-      "cco:ont00001986": {
-        "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
-      }
-    },
-    {
-      "@id": "cco:ReactantArtifactFunction.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_1",
-      "@type": "cco:ont00000808",
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "mds:ProductMeasurement.a07865fa73544e258a1f570c2f04400b_Product_0_Measurement_1",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001769": 60.0,
-      "cco:ont00001808": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
-      },
-      "cco:ont00001863": {
-        "@id": "unit:PERCENT"
-      }
-    },
-    {
-      "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N",
-      "@type": "mds:Product"
-    },
-    {
-      "@id": "mds:Product.a07865fa73544e258a1f570c2f04400b_Outcome_0_Product_0",
-      "@type": "mds:Product",
-      "obo:BFO_0000197": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
       }
     },
     {
@@ -160,60 +73,17 @@
       }
     },
     {
-      "@id": "cco:Mass.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_0",
-      "cco:ont00001769": 6.199999809265137,
-      "cco:ont00001863": {
-        "@id": "unit:GM"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
+      "@id": "mds:NAME.2-%283-%28benzyloxy%29-4-chlorophenyl%29acetonitrile",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "2-(3-(benzyloxy)-4-chlorophenyl)acetonitrile",
+      "cco:ont00001916": {
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
       }
     },
     {
       "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b",
       "@type": "mds:ReactionMixture",
       "cco:ont00001841": {
-        "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C%28%3DO%29%28%5BO-%5D%29%5BO-%5D.%5BK%2B%5D.%5BK%2B%5D",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C(=O)([O-])[O-].[K+].[K+]",
-      "cco:ont00001916": {
-        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC8H6ClNO%2Fc9-7-2-1-6%283-4-10%295-8%287%2911%2Fh1-2%2C5%2C11H%2C3H2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C8H6ClNO/c9-7-2-1-6(3-4-10)5-8(7)11/h1-2,5,11H,3H2",
-      "cco:ont00001916": {
-        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C1%3DCC%3DC%28C%3DC1%29CBr",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C1=CC=C(C=C1)CBr",
-      "cco:ont00001916": {
-        "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3"
-      },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
-      }
-    },
-    {
-      "@id": "mds:ReactionEnvironment.a07865fa73544e258a1f570c2f04400b",
-      "@type": "mds:ReactionEnvironment",
-      "obo:BFO_0000183": {
         "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
       }
     },
@@ -227,22 +97,7 @@
       "mds:isMapped": true
     },
     {
-      "@id": "mds:ProductMeasurement.a07865fa73544e258a1f570c2f04400b_Product_0_Measurement_0",
-      "@type": "mds:AnalyticalResult",
-      "cco:ont00001808": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:INCHI.InChI%3D1S%2FC15H12ClNO%2Fc16-14-7-6-12%288-9-17%2910-15%2814%2918-11-13-4-2-1-3-5-13%2Fh1-7%2C10H%2C8%2C11H2",
-      "@type": "mds:InChI",
-      "cco:ont00001765": "InChI=1S/C15H12ClNO/c16-14-7-6-12(8-9-17)10-15(14)18-11-13-4-2-1-3-5-13/h1-7,10H,8,11H2",
-      "cco:ont00001916": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L",
+      "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
         "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3"
@@ -250,6 +105,10 @@
       "obo:BFO_0000129": {
         "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
       }
+    },
+    {
+      "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N",
+      "@type": "mds:Product"
     },
     {
       "@id": "mds:CrudeProduct.a07865fa73544e258a1f570c2f04400b",
@@ -267,93 +126,24 @@
       ]
     },
     {
-      "@id": "obo:StirringProcess.a07865fa73544e258a1f570c2f04400b",
-      "@type": "obo:CHMO_0002774"
+      "@id": "mds:ReactionWorkup.a07865fa73544e258a1f570c2f04400b_FILTRATION_0",
+      "mds:details": "The solids were filtered off",
+      "mds:keepPhase": "None"
     },
     {
-      "@id": "mds:NAME.2-%283-%28benzyloxy%29-4-chlorophenyl%29acetonitrile",
+      "@id": "mds:NAME.%284-chloro-3-hydroxy-phenyl%29acetonitrile",
       "@type": "mds:CompoundName",
-      "cco:ont00001765": "2-(3-(benzyloxy)-4-chlorophenyl)acetonitrile",
-      "cco:ont00001916": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.C%28C1%3DCC%3DCC%3DC1%29OC%3D1C%3DC%28C%3DCC1Cl%29CC%23N",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "C(C1=CC=CC=C1)OC=1C=C(C=CC1Cl)CC#N",
-      "cco:ont00001916": {
-        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "cco:Volume.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_3",
-      "cco:ont00001769": 80.0,
-      "cco:ont00001863": {
-        "@id": "unit:MilliL"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.a07865fa73544e258a1f570c2f04400b_CUSTOM_1",
-      "mds:details": "the filtrate was evaporated under vacuum"
-    },
-    {
-      "@id": "cco:Mass.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_2",
-      "cco:ont00001769": 7.599999904632568,
-      "cco:ont00001863": {
-        "@id": "unit:GM"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:SMILES.ClC1%3DC%28C%3DC%28C%3DC1%29CC%23N%29O",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "ClC1=C(C=C(C=C1)CC#N)O",
+      "cco:ont00001765": "(4-chloro-3-hydroxy-phenyl)acetonitrile",
       "cco:ont00001916": {
         "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
       }
     },
     {
-      "@id": "cco:Mass.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_1",
-      "cco:ont00001769": 10.199999809265137,
-      "cco:ont00001863": {
-        "@id": "unit:GM"
-      },
-      "obo:BFO_0000197": {
-        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "mds:SMILES.CC%23N",
-      "@type": "mds:SMILES",
-      "cco:ont00001765": "CC#N",
+      "@id": "mds:INCHI.InChI%3D1S%2FC15H12ClNO%2Fc16-14-7-6-12%288-9-17%2910-15%2814%2918-11-13-4-2-1-3-5-13%2Fh1-7%2C10H%2C8%2C11H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C15H12ClNO/c16-14-7-6-12(8-9-17)10-15(14)18-11-13-4-2-1-3-5-13/h1-7,10H,8,11H2",
       "cco:ont00001916": {
-        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
-      }
-    },
-    {
-      "@id": "mds:NAME.K2CO3",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "K2CO3",
-      "cco:ont00001916": {
-        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
-      }
-    },
-    {
-      "@id": "mds:ReactionWorkup.a07865fa73544e258a1f570c2f04400b_CUSTOM_2",
-      "mds:details": "The residue was purified by column chromatography on silica gel (Petroleum Ether/Ethyl Acetate 50:1)"
-    },
-    {
-      "@id": "mds:NAME.CH3CN",
-      "@type": "mds:CompoundName",
-      "cco:ont00001765": "CH3CN",
-      "cco:ont00001916": {
-        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
       }
     },
     {
@@ -400,20 +190,13 @@
       }
     },
     {
-      "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N",
-      "@type": "mds:Component",
-      "cco:ont00001841": {
-        "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3"
+      "@id": "cco:Mass.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_1",
+      "cco:ont00001769": 10.199999809265137,
+      "cco:ont00001863": {
+        "@id": "unit:GM"
       },
-      "obo:BFO_0000129": {
-        "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
-      }
-    },
-    {
-      "@id": "mds:ReactionSetup.a07865fa73544e258a1f570c2f04400b",
-      "@type": "mds:ReactionSetup",
-      "obo:BFO_0000063": {
-        "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
       }
     },
     {
@@ -424,7 +207,52 @@
       }
     },
     {
-      "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N",
+      "@id": "cco:Mass.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_2",
+      "cco:ont00001769": 7.599999904632568,
+      "cco:ont00001863": {
+        "@id": "unit:GM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ProductMeasurement.a07865fa73544e258a1f570c2f04400b_Product_0_Measurement_2",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 58.70000076293945,
+      "cco:ont00001808": {
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
+      }
+    },
+    {
+      "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
+      }
+    },
+    {
+      "@id": "mds:ReactionEnvironment.a07865fa73544e258a1f570c2f04400b",
+      "@type": "mds:ReactionEnvironment",
+      "obo:BFO_0000183": {
+        "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_1",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N",
       "@type": "mds:Component",
       "cco:ont00001841": {
         "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3"
@@ -439,6 +267,178 @@
       "cco:ont00001765": "InChI=1S/C7H7Br/c8-6-7-4-2-1-3-5-7/h1-5H,6H2",
       "cco:ont00001916": {
         "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N",
+      "@type": "mds:Component",
+      "cco:ont00001841": {
+        "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3"
+      },
+      "obo:BFO_0000129": {
+        "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
+      }
+    },
+    {
+      "@id": "mds:ProductMeasurement.a07865fa73544e258a1f570c2f04400b_Product_0_Measurement_0",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001808": {
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:SolventArtifactFunction.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_3",
+      "@type": "cco:ont00001160",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:Product.a07865fa73544e258a1f570c2f04400b_Outcome_0_Product_0",
+      "@type": "mds:Product",
+      "obo:BFO_0000197": {
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.C%28%3DO%29%28%5BO-%5D%29%5BO-%5D.%5BK%2B%5D.%5BK%2B%5D",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(=O)([O-])[O-].[K+].[K+]",
+      "cco:ont00001916": {
+        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:SMILES.CC%23N",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "CC#N",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:ReactantArtifactFunction.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_0",
+      "@type": "cco:ont00000808",
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.C%28C1%3DCC%3DCC%3DC1%29OC%3D1C%3DC%28C%3DCC1Cl%29CC%23N",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C(C1=CC=CC=C1)OC=1C=C(C=CC1Cl)CC#N",
+      "cco:ont00001916": {
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "cco:Volume.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_3",
+      "cco:ont00001769": 80.0,
+      "cco:ont00001863": {
+        "@id": "unit:MilliL"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:SMILES.C1%3DCC%3DC%28C%3DC1%29CBr",
+      "@type": "mds:SMILES",
+      "cco:ont00001765": "C1=CC=C(C=C1)CBr",
+      "cco:ont00001916": {
+        "@id": "mds:Component.AGEZXYOZHKGVCM-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ProductMeasurement.a07865fa73544e258a1f570c2f04400b_Product_0_Measurement_1",
+      "@type": "mds:AnalyticalResult",
+      "cco:ont00001769": 60.0,
+      "cco:ont00001808": {
+        "@id": "mds:Product.JQJDURHGNPFXJB-UHFFFAOYSA-N"
+      },
+      "cco:ont00001863": {
+        "@id": "unit:PERCENT"
+      }
+    },
+    {
+      "@id": "mds:ReactionVessel.a07865fa73544e258a1f570c2f04400b_UNSPECIFIED",
+      "@type": "mds:ReactionVessel",
+      "obo:BFO_0000056": [
+        {
+          "@id": "mds:ReactionSetup.a07865fa73544e258a1f570c2f04400b"
+        },
+        {
+          "@id": "mds:ChemicalReaction.a07865fa73544e258a1f570c2f04400b"
+        }
+      ]
+    },
+    {
+      "@id": "cco:Mass.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3_component_0",
+      "cco:ont00001769": 6.199999809265137,
+      "cco:ont00001863": {
+        "@id": "unit:GM"
+      },
+      "obo:BFO_0000197": {
+        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.a07865fa73544e258a1f570c2f04400b_CUSTOM_2",
+      "mds:details": "The residue was purified by column chromatography on silica gel (Petroleum Ether/Ethyl Acetate 50:1)"
+    },
+    {
+      "@id": "obo:StirringProcess.a07865fa73544e258a1f570c2f04400b",
+      "@type": "obo:CHMO_0002774"
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FCH2O3.2K%2Fc2-1%283%294%3B%3B%2Fh%28H2%2C2%2C3%2C4%29%3B%3B%2Fq%3B2%2A%2B1%2Fp-2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/CH2O3.2K/c2-1(3)4;;/h(H2,2,3,4);;/q;2*+1/p-2",
+      "cco:ont00001916": {
+        "@id": "mds:Component.BWHMMNNQKKPAPP-UHFFFAOYSA-L"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC8H6ClNO%2Fc9-7-2-1-6%283-4-10%295-8%287%2911%2Fh1-2%2C5%2C11H%2C3H2",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C8H6ClNO/c9-7-2-1-6(3-4-10)5-8(7)11/h1-2,5,11H,3H2",
+      "cco:ont00001916": {
+        "@id": "mds:Component.AUSPPXLBZOTTKB-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionTime.a07865fa73544e258a1f570c2f04400b",
+      "@type": "mds:ReactionTime",
+      "cco:ont00001767": 8.0,
+      "cco:ont00001863": {
+        "@id": "unit:HR"
+      }
+    },
+    {
+      "@id": "mds:INCHI.InChI%3D1S%2FC2H3N%2Fc1-2-3%2Fh1H3",
+      "@type": "mds:InChI",
+      "cco:ont00001765": "InChI=1S/C2H3N/c1-2-3/h1H3",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:ReactionWorkup.a07865fa73544e258a1f570c2f04400b_CUSTOM_1",
+      "mds:details": "the filtrate was evaporated under vacuum"
+    },
+    {
+      "@id": "mds:NAME.CH3CN",
+      "@type": "mds:CompoundName",
+      "cco:ont00001765": "CH3CN",
+      "cco:ont00001916": {
+        "@id": "mds:Component.WEVYAHXRMPXWCK-UHFFFAOYSA-N"
+      }
+    },
+    {
+      "@id": "mds:InputAddition.a07865fa73544e258a1f570c2f04400b_m1_m4_m2_m3",
+      "@type": "mds:InputAddition",
+      "cco:ont00001986": {
+        "@id": "mds:ReactionMixture.a07865fa73544e258a1f570c2f04400b"
       }
     }
   ]
