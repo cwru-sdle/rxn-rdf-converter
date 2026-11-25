@@ -517,7 +517,7 @@ class ReactionKG:
 
         self.instance_dict['type'] = []
         self.crude_product = self._create_instance(self.mds.CrudeProduct, 'CrudeProduct.' + self.reaction_id)
-        self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction.' + self.reaction_id, ('has output', self.crude_product.iri))
+        self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction.' + self.reaction_id, ('has Output', self.crude_product.iri))
         self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture.' + self.reaction_id, ('is input of', self.chemical_reaction.iri)) 
         self.reaction_environment = self._create_instance(self.mds.ReactionEnvironment, 'ReactionEnvironment.' + self.reaction_id, ('environs', self.chemical_reaction.iri))
 
@@ -687,7 +687,7 @@ class ReactionKG:
             if (context == 'input' or context == 'workup') and process_node:
                 self.instance_dict['is input of'].append([reaction_component.iri, process_node.iri])
             elif context == 'product': 
-                self.instance_dict['has output'].append([self.chemical_reaction.iri, reaction_component.iri])
+                self.instance_dict['has Output'].append([self.chemical_reaction.iri, reaction_component.iri])
             
             try:
                 self._extract_compound_identifiers(component_list, i, context, prefix, reaction_component)
@@ -878,7 +878,7 @@ class ReactionKG:
         for item in self.reaction_inputs:
             #print(f"DEBUG InputKey: {repr(item['InputKey'])}")
             input_addition = self._create_instance(self.mds.InputAddition, f'InputAddition.{self.reaction_id}_{item["InputKey"]}', 
-                    ('has output', self.reaction_mixture.iri))
+                    ('has Output', self.reaction_mixture.iri))
             self._apply_triples(self.chemical_reaction, ('has process part', input_addition.iri))
 
             self._extract_components(item, input_addition)
