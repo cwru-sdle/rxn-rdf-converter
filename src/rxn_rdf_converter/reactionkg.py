@@ -518,7 +518,7 @@ class ReactionKG:
         self.instance_dict['type'] = []
         self.crude_product = self._create_instance(self.mds.CrudeProduct, 'CrudeProduct.' + self.reaction_id)
         self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction.' + self.reaction_id, ('has Output', self.crude_product.iri))
-        self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture.' + self.reaction_id, ('is input of', self.chemical_reaction.iri)) 
+        self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture.' + self.reaction_id, ('is Input Of', self.chemical_reaction.iri)) 
         self.reaction_environment = self._create_instance(self.mds.ReactionEnvironment, 'ReactionEnvironment.' + self.reaction_id, ('environs', self.chemical_reaction.iri))
 
     def _extract_index_set(self, item_dict, pattern): 
@@ -685,7 +685,7 @@ class ReactionKG:
             if context == 'input' and self.reaction_mixture: 
                 self.instance_dict['member part of'].append([reaction_component.iri, self.reaction_mixture.iri])
             if (context == 'input' or context == 'workup') and process_node:
-                self.instance_dict['is input of'].append([reaction_component.iri, process_node.iri])
+                self.instance_dict['is Input Of'].append([reaction_component.iri, process_node.iri])
             elif context == 'product': 
                 self.instance_dict['has Output'].append([self.chemical_reaction.iri, reaction_component.iri])
             
@@ -1198,7 +1198,7 @@ class ReactionKG:
                 duration_instance = self._create_instance(self.obo.BFO_0000202,f'WorkupDuration.{self.reaction_id}_{item["Index"]}', *[
                     ('has datetime value', item['duration.value']), ('uses measurement unit',self.unit_mapping[item['duration.units']].iri)])
                 triples.append(('occupies temporal region', duration_instance.iri))
-            self.instance_dict['is input of'].append([self.crude_product.iri, workup_instance.iri])
+            self.instance_dict['is Input Of'].append([self.crude_product.iri, workup_instance.iri])
             self.instance_dict['precedes'].append([self.chemical_reaction.iri, workup_instance.iri])
             if (item['type'] == 'ADDITION' or item['type'] ==  'DRY_WITH_MATERIAL' or item['type'] ==  'WASH' or item['type'] == 'SCAVENGING') and item['input'] == True:
                 self._extract_components(item, workup_instance, context='workup')
