@@ -56,14 +56,14 @@ def build_mock_ontology():
     mock_onto.get_namespace.side_effect = get_ns
 
     object_props = [
-        'hasOutput', 'isInputOf', 'environs', 'designates', 'member part of',
+        'has Output', 'is Input Of', 'environs', 'designates', 'member part of',
         'inheres in', 'uses measurement unit', 'has process part', 'has occurent part',
         'occupies temporal region', 'participates in', 'is about', 'affects',
         'bearer of', 'is made of', 'precedes'
     ]
     data_props = [
         'has text value', 'details', 'is mapped', 'is limiting', 'is desired product',
-        'isolated color', 'has decimal value', 'addition order', 'has datetime value',
+        'isolated color', 'has Decimal Value', 'addition order', 'has datetime value',
         'is heterogeneous', 'forms Precipitate', 'is exothermic', 'off gasses',
         'is sensitive to moisture', 'is sensitive to oxygen', 'is sensitive to light',
         'safety notes', 'procedure details', 'keep phase', 'is automated',
