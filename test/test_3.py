@@ -59,7 +59,7 @@ def build_mock_ontology():
         'has Output', 'is Input Of', 'environs', 'designates', 'member part of',
         'inheres in', 'uses measurement unit', 'has process part', 'has occurent part',
         'occupies temporal region', 'participates in', 'is about', 'affects',
-        'bearer of', 'is made of', 'precedes'
+        'bearer Of', 'is made of', 'precedes'
     ]
     data_props = [
         'has text value', 'details', 'is mapped', 'is limiting', 'is desired product',
@@ -416,7 +416,7 @@ class TestReactionKG(unittest.TestCase):
 
         self.assertEqual(len(self.kg.instance_dict['member part of']), 1)
         self.assertEqual(len(self.kg.instance_dict['is limiting']), 1)
-        self.assertTrue(any(v[1] == 2.5 for v in self.kg.instance_dict['has decimal value']))
+        self.assertTrue(any(v[1] == 2.5 for v in self.kg.instance_dict['has Decimal Value']))
         self.assertTrue(any(v[1] == 'CCO' for v in self.kg.instance_dict['has text value']))
 
         # Product context
@@ -456,8 +456,8 @@ class TestReactionKG(unittest.TestCase):
         self.kg._process_temperature(cond_temp_data, context='condition')
 
         self.assertEqual(len(self.kg.instance_dict['bearer of']), 1)
-        self.assertTrue(any(v[1] == 80.0 for v in self.kg.instance_dict['has decimal value']))
-        self.assertTrue(any(v[1] == 79.5 for v in self.kg.instance_dict['has decimal value']))
+        self.assertTrue(any(v[1] == 80.0 for v in self.kg.instance_dict['has Decimal Value']))
+        self.assertTrue(any(v[1] == 79.5 for v in self.kg.instance_dict['has Decimal Value']))
         self.assertTrue(any(v[1] == 30.0 for v in self.kg.instance_dict['has datetime value']))
 
     # -----------------------------------------------------------------
@@ -498,7 +498,7 @@ class TestReactionKG(unittest.TestCase):
 
         self.assertEqual(len(self.kg.instance_dict['is made of']), 1)
         self.assertGreaterEqual(len(self.kg.instance_dict['has process part']), 4)
-        self.assertTrue(any(v[1] == 450.0 for v in self.kg.instance_dict['has decimal value']))
+        self.assertTrue(any(v[1] == 450.0 for v in self.kg.instance_dict['has Decimal Value']))
 
     def test_process_reaction_notes(self):
         self.kg.reaction_notes = [{
@@ -589,9 +589,9 @@ class TestReactionKG(unittest.TestCase):
 
         self.kg._process_reaction_outcomes()
 
-        self.assertTrue(any(v[1] == 88.5 for v in self.kg.instance_dict['has decimal value']))
-        self.assertTrue(any(v[1] == 150.0 for v in self.kg.instance_dict['has decimal value']))
-        self.assertTrue(any(v[1] == 1234.5 for v in self.kg.instance_dict['has decimal value']))
+        self.assertTrue(any(v[1] == 88.5 for v in self.kg.instance_dict['has Decimal Value']))
+        self.assertTrue(any(v[1] == 150.0 for v in self.kg.instance_dict['has Decimal Value']))
+        self.assertTrue(any(v[1] == 1234.5 for v in self.kg.instance_dict['has Decimal Value']))
         self.assertEqual(self.kg.instance_dict['uses internal standard'][0][1], True)
         self.assertEqual(self.kg.instance_dict['is of isolated species'][0][1], True)
 
@@ -629,7 +629,7 @@ class TestReactionKG(unittest.TestCase):
         self.assertEqual(self.kg.instance_dict['is automated'][0][1], True)
 
         # Verify Vessel Volume
-        self.assertTrue(any(v[1] == 100.0 for v in self.kg.instance_dict['has decimal value']))
+        self.assertTrue(any(v[1] == 100.0 for v in self.kg.instance_dict['has Decimal Value']))
 
         # Verify Vessel Material link
         self.assertEqual(len(self.kg.instance_dict['is made of']), 1)
