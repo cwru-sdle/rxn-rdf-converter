@@ -256,14 +256,14 @@ class TestRxnRdfConverter(unittest.TestCase):
             }
 
             reaction_component = semi.mds.Component(
-                f"Component#{semi.reaction_id}_{input_key}_component_0"
+                f"Component.{semi.reaction_id}_{input_key}_component_0"
             )
             semi._extract_component_amount(
                 component_list, reaction_component, i=0, context="input"
             )
 
             assert any(
-                25.0 == v for _, v in semi.instance_dict.get("has decimal value", [])
+                25.0 == v for _, v in semi.instance_dict.get("has Decimal Value", [])
             )
             unit_list = semi.instance_dict.get("uses measurement unit", [])
             assert any("MilliGM" in str(u[1]) for u in unit_list)
@@ -290,7 +290,7 @@ class TestRxnRdfConverter(unittest.TestCase):
                 "components[0].identifiers[1].value": "custom-id",
             }
             reaction_component = semi.mds.Component(
-                f"Component#{semi.reaction_id}_{input_key}_component_0"
+                f"Component.{semi.reaction_id}_{input_key}_component_0"
             )
 
             semi._extract_compound_identifiers(
@@ -337,11 +337,11 @@ class TestRxnRdfConverter(unittest.TestCase):
             }
             semi._process_temperature(cond, context="condition")
             assert any(
-                60.0 == v for _, v in semi.instance_dict.get("has decimal value", [])
+                60.0 == v for _, v in semi.instance_dict.get("has Decimal Value", [])
             )
 
             reaction_component = semi.mds.Component(
-                f"Component#{semi.reaction_id}_fake_component_0"
+                f"Component.{semi.reaction_id}_fake_component_0"
             )
             add_temp = {
                 "addition_temperature.value": -5.0,
@@ -352,7 +352,7 @@ class TestRxnRdfConverter(unittest.TestCase):
                 add_temp, reaction_component=reaction_component, context="input"
             )
             assert any(
-                -5.0 == v for _, v in semi.instance_dict.get("has decimal value", [])
+                -5.0 == v for _, v in semi.instance_dict.get("has Decimal Value", [])
             )
 
     def test_process_reaction_conditions_full(self):

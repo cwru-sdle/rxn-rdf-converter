@@ -517,8 +517,8 @@ class ReactionKG:
 
         self.instance_dict['type'] = []
         self.crude_product = self._create_instance(self.mds.CrudeProduct, 'CrudeProduct.' + self.reaction_id)
-        self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction.' + self.reaction_id, ('has output', self.crude_product.iri))
-        self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture.' + self.reaction_id, ('is input of', self.chemical_reaction.iri)) 
+        self.chemical_reaction = self._create_instance(self.mds.ChemicalReaction, 'ChemicalReaction.' + self.reaction_id, ('has Output', self.crude_product.iri))
+        self.reaction_mixture = self._create_instance(self.mds.ReactionMixture, 'ReactionMixture.' + self.reaction_id, ('is Input Of', self.chemical_reaction.iri)) 
         self.reaction_environment = self._create_instance(self.mds.ReactionEnvironment, 'ReactionEnvironment.' + self.reaction_id, ('environs', self.chemical_reaction.iri))
 
     def _extract_index_set(self, item_dict, pattern): 
@@ -685,9 +685,9 @@ class ReactionKG:
             if context == 'input' and self.reaction_mixture: 
                 self.instance_dict['member part of'].append([reaction_component.iri, self.reaction_mixture.iri])
             if (context == 'input' or context == 'workup') and process_node:
-                self.instance_dict['is input of'].append([reaction_component.iri, process_node.iri])
+                self.instance_dict['is Input Of'].append([reaction_component.iri, process_node.iri])
             elif context == 'product': 
-                self.instance_dict['has output'].append([self.chemical_reaction.iri, reaction_component.iri])
+                self.instance_dict['has Output'].append([self.chemical_reaction.iri, reaction_component.iri])
             
             try:
                 self._extract_compound_identifiers(component_list, i, context, prefix, reaction_component)
@@ -782,7 +782,7 @@ class ReactionKG:
             else: amount_added = None
             if amount_added and f"{prefix}amount.{amount_type}.value" in component_list and f"{prefix}amount.{amount_type}.units" in component_list: 
                 self.instance_dict['inheres in'].append([amount_added.iri, reaction_component.iri])
-                self.instance_dict['has decimal value'].append([amount_added.iri, component_list[f"{prefix}amount.{amount_type}.value"]])
+                self.instance_dict['has Decimal Value'].append([amount_added.iri, component_list[f"{prefix}amount.{amount_type}.value"]])
                 unit_key = component_list[f"{prefix}amount.{amount_type}.units"]
                 unit_entity = self.unit_mapping.get(unit_key)
                 if unit_entity:
@@ -878,7 +878,7 @@ class ReactionKG:
         for item in self.reaction_inputs:
             #print(f"DEBUG InputKey: {repr(item['InputKey'])}")
             input_addition = self._create_instance(self.mds.InputAddition, f'InputAddition.{self.reaction_id}_{item["InputKey"]}', 
-                    ('has output', self.reaction_mixture.iri))
+                    ('has Output', self.reaction_mixture.iri))
             self._apply_triples(self.chemical_reaction, ('has process part', input_addition.iri))
 
             self._extract_components(item, input_addition)
@@ -918,7 +918,7 @@ class ReactionKG:
                     self.mds.FlowRate,
                     f'FlowRate.{self.reaction_id}',
                     *[
-                        ('has decimal value', item['flow_rate.value']),
+                        ('has Decimal Value', item['flow_rate.value']),
                         ('uses measurement unit', item['flow_rate.units'])
                     ]
                 )
@@ -975,7 +975,7 @@ class ReactionKG:
 
             temperature_measurement = self._create_instance(self.mds.AnalyticalResult, f'TemperatureMeasurement.{self.reaction_id}_{context}',
                     *[('is about', reaction_temperature.iri),
-                    ('has decimal value', component_list[f'{prefix}.value']),
+                    ('has Decimal Value', component_list[f'{prefix}.value']),
                     ('uses measurement unit', self.unit_mapping[component_list[f'{prefix}.units']].iri)]) 
                
         if f'{prefix}.control.type' in component_list and (context == 'input' or context == 'workup'): 
@@ -983,11 +983,11 @@ class ReactionKG:
                     ('affects', reaction_temperature.iri))
         
         if context == 'condition':
-            self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_temperature.iri])
+            self.instance_dict['bearer Of'].append([self.reaction_environment.iri, reaction_temperature.iri])
         elif context == 'workup': 
-            self.instance_dict['bearer of'].append([self.reaction_mixture.iri, reaction_temperature.iri])
+            self.instance_dict['bearer Of'].append([self.reaction_mixture.iri, reaction_temperature.iri])
         elif context == 'input':
-            self.instance_dict['bearer of'].append([reaction_component.iri, reaction_temperature.iri])
+            self.instance_dict['bearer Of'].append([reaction_component.iri, reaction_temperature.iri])
 
         if context == 'condition' or context == 'workup': 
             index_list = self._extract_index_set(component_list, pattern)
@@ -1007,7 +1007,7 @@ class ReactionKG:
                 if details_key in component_list and temperature_measurement:
                     self.instance_dict['details'].append([temperature_measurement.iri, component_list[details_key]])
                 if temp_key in component_list and f"{prefix}[{i}].temperature.units" in component_list: 
-                    self.instance_dict['has decimal value'].append([temperature_measurement.iri, component_list[temp_key]])
+                    self.instance_dict['has Decimal Value'].append([temperature_measurement.iri, component_list[temp_key]])
                     self.instance_dict['uses measurement unit'].append([temperature_measurement.iri, self.unit_mapping[component_list[f"{prefix}[{i}].temperature.units"]].iri])
                 if time_key in component_list and f"{prefix}[{i}].time.units" in component_list: 
                     time_measurement = self.obo.BFO_0000148(f"TemperatureMeasurementTime.{self.reaction_id}_{context}_{i}")
@@ -1047,7 +1047,7 @@ class ReactionKG:
                 
             if item['pressure'] == True and 'pressure.setpoint.value' in item and 'pressure.setpoint.units' in item: 
                 
-                triples_pressure = [('has decimal value', item['pressure.setpoint.value']),
+                triples_pressure = [('has Decimal Value', item['pressure.setpoint.value']),
                             ('uses measurement unit', self.unit_mapping[item['pressure.setpoint.units']].iri)]
 
                 triples_env = []
@@ -1072,7 +1072,7 @@ class ReactionKG:
                 illumination_conditions = self._create_instance(self.mds.Illumination, f'IlluminationProcess.{self.reaction_id}')
                 self._apply_triples(self.chemical_reaction, ('has process part', illumination_conditions.iri))
                 if 'illumination.peak_wavelength.value' in item and 'illumination.peak_wavelength.units' in item:
-                    peak_wavelength = self._create_instance(self.mds.PeakWavelength, f'PeakWavelength.{self.reaction_id}',('has decimal value', item['illumination.peak_wavelength.value']))
+                    peak_wavelength = self._create_instance(self.mds.PeakWavelength, f'PeakWavelength.{self.reaction_id}',('has Decimal Value', item['illumination.peak_wavelength.value']))
                     self._apply_triples(illumination_conditions, ('has occurent part', peak_wavelength.iri))
                 #if 'illumination.distance_to_vessel.value' in item and 'illumination.distance_to_vessel.units' in item: 
 
@@ -1085,10 +1085,10 @@ class ReactionKG:
                 if 'electrochemistry.details' in item: 
                     triples.append(('details', item['electrochemistry.details']))
                 if 'electrochemistry.current.value' in item and 'electrochemistry.current.units' in item:
-                    triples.append(('has decimal value', item['electrochemistry.current.value']))
+                    triples.append(('has Decimal Value', item['electrochemistry.current.value']))
                     triples.append(('uses measurement unit', item['electrochemistry.current.units']))
                 if 'electrochemistry.voltage.value' in item and 'electrochemistry.voltage.units' in item:
-                    triples.append(('has decimal value', item['electrochemistry.voltage.value']))
+                    triples.append(('has Decimal Value', item['electrochemistry.voltage.value']))
                     triples.append(('uses measurement unit', item['electrochemistry.voltage.units']))
                 if 'electrochemistry.anode_material' in item: 
                     triples.append(('has text value', item['electrochemistry.anode_material']))
@@ -1096,11 +1096,11 @@ class ReactionKG:
                     triples.append(('has text value', item['electrochemistry.cathode_material']))
                 if 'electrochemistry.electrode_separation.value' in item and 'electrochemistry.electrode_separation.units' in item: 
                     electrode_separation = self._create_instance(self.cco.ont00000738, f"ElectrodeSeparation.{self.reaction_id}")
-                    triples.append(('has decimal value', item['electrochemistry.electrode_separation.value']))
+                    triples.append(('has Decimal Value', item['electrochemistry.electrode_separation.value']))
                     triples.append(('uses measurement unit', item['electrochemistry.electrode_separation.units']))
                 self._apply_triples(electrochemistry_condition, *triples)
                     #self.instance_dict['inheres in'].append([tube_diameter.iri, flow_tube.iri])
-                    #self.instance_dict['has decimal value'].append([tube_diameter.iri, item['flow.tubing.diameter.value']])
+                    #self.instance_dict['has Decimal Value'].append([tube_diameter.iri, item['flow.tubing.diameter.value']])
                     #self.instance_dict['uses measurement unit'].append([tube_diameter.iri, item['flow.tubing.diameter.units']])
                 #if 'electrochemistry.cell.type' in item:
                 #    self.instance_dict[]
@@ -1131,7 +1131,7 @@ class ReactionKG:
                     if 'flow.tubing.details' in item: self._apply_triples(flow_tube, ('details', item['flow.tubing.details']))
                     if 'flow.tubing.diameter' in item and 'flow.tubing.diameter.value' in item and 'flow.tubing.diameter.units' in item:
                         tube_diameter = self._create_instance(self.cco.ont00000738, f"TubeDiameter.{self.reaction_id}", *[
-                            ('inheres in', flow_tube.iri),('has decimal value', item['flow.tubing.diameter.value']),
+                            ('inheres in', flow_tube.iri),('has Decimal Value', item['flow.tubing.diameter.value']),
                             ('uses measurement unit', item['flow.tubing.diameter.units'])])
                 self._apply_triples(flow_condition, *flow_triples)
     
@@ -1198,7 +1198,7 @@ class ReactionKG:
                 duration_instance = self._create_instance(self.obo.BFO_0000202,f'WorkupDuration.{self.reaction_id}_{item["Index"]}', *[
                     ('has datetime value', item['duration.value']), ('uses measurement unit',self.unit_mapping[item['duration.units']].iri)])
                 triples.append(('occupies temporal region', duration_instance.iri))
-            self.instance_dict['is input of'].append([self.crude_product.iri, workup_instance.iri])
+            self.instance_dict['is Input Of'].append([self.crude_product.iri, workup_instance.iri])
             self.instance_dict['precedes'].append([self.chemical_reaction.iri, workup_instance.iri])
             if (item['type'] == 'ADDITION' or item['type'] ==  'DRY_WITH_MATERIAL' or item['type'] ==  'WASH' or item['type'] == 'SCAVENGING') and item['input'] == True:
                 self._extract_components(item, workup_instance, context='workup')
@@ -1269,12 +1269,12 @@ class ReactionKG:
                     triples.append(('is about',product_dict[i].iri)) 
 
                     if f"{product_prefix}[{j}].percentage.value" in outcome_list: 
-                        triples.extend([('has decimal value',outcome_list[f"{product_prefix}[{j}].percentage.value"]), ('uses measurement unit',self.unit_mapping['PERCENTAGE'].iri)])  
-                    if f"{product_prefix}[{j}].float_value.value" in outcome_list: triples.append(('has decimal value',outcome_list[f"{product_prefix}[{j}].float_value.value"])) 
+                        triples.extend([('has Decimal Value',outcome_list[f"{product_prefix}[{j}].percentage.value"]), ('uses measurement unit',self.unit_mapping['PERCENTAGE'].iri)])  
+                    if f"{product_prefix}[{j}].float_value.value" in outcome_list: triples.append(('has Decimal Value',outcome_list[f"{product_prefix}[{j}].float_value.value"])) 
                     if f"{product_prefix}[{j}].string_value" in outcome_list: triples.append(('has text value',outcome_list[f"{product_prefix}[{j}].string_value"])) 
                     if outcome_list[f"{product_prefix}[{j}].type"] == 'AMOUNT' and f"{product_prefix}[{j}].amount.value" in outcome_list and f"{product_prefix}[{j}].amount.units" in outcome_list: 
                         amount_added = self._create_instance(self.cco.ont00000768,'Mass.' + outcome_list['reactionID'] + '_' + f"_Product_{str(i)}_Measurement_{str(j)}", ('inheres in', product_dict[i].iri))
-                        triples.extend([('is about', amount_added.iri), ('has decimal value',outcome_list[f"{product_prefix}[{j}].amount.value"]), ('uses measurement unit',self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri)])  
+                        triples.extend([('is about', amount_added.iri), ('has Decimal Value',outcome_list[f"{product_prefix}[{j}].amount.value"]), ('uses measurement unit',self.unit_mapping[outcome_list[f"{product_prefix}[{j}].amount.units"]].iri)])  
                     if f"{product_prefix}[{j}].retention_time.value" in outcome_list and f"{product_prefix}[{j}].retention_time.units" in outcome_list: 
                         retention_time = self._create_instance(self.mds.RetentionTime,'RetentionTime.' + outcome_list['reactionID'] + f"_Product_{str(i)}_Measurement_{str(j)}", *[
                             ('is about', product_dict[i].iri), ('has datetime value',outcome_list[f"{product_prefix}[{j}].retention_time.value"]),
@@ -1366,7 +1366,7 @@ class ReactionKG:
                     if data_set: 
                         for data in data_set: 
                             if f'analyses["{analysis}"].data["{data}"].float_value.value' in item: 
-                                self.instance_dict['has decimal value'].append([analysis_type.iri, item[f'analyses["{analysis}"].data["{data}"].float_value.value']])
+                                self.instance_dict['has Decimal Value'].append([analysis_type.iri, item[f'analyses["{analysis}"].data["{data}"].float_value.value']])
                             if f'analyses["{analysis}"].data["{data}"].integer_value' in item: 
                                 self.instance_dict['has integer value'].append([analysis_type.iri, item[f'analyses["{analysis}"].data["{data}"].integer_value']])
                             if f'analyses["{analysis}"].data["{data}"].bytes_value' in item: 
@@ -1488,7 +1488,7 @@ class ReactionKG:
                     vol_unit_entity = self.unit_mapping.get(vol_unit_key)
                     vol_triples = [
                         ('inheres in', vessel_instance.iri),
-                        ('has decimal value', item['vessel.volume.value']),
+                        ('has Decimal Value', item['vessel.volume.value']),
                     ]
                     if vol_unit_entity:
                         vol_triples.append(('uses measurement unit', vol_unit_entity.iri))

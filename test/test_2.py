@@ -196,14 +196,14 @@ class TestReactionKG(unittest.TestCase):
             "components[0].amount.mass.units": "MILLIGRAM",
         }
         reaction_component = semi.mds.Component(
-            f"Component#{semi.reaction_id}_m1_component_0"
+            f"Component.{semi.reaction_id}_m1_component_0"
         )
         semi._extract_component_amount(
             component_list, reaction_component, i=0, context="input"
         )
 
         self.assertTrue(
-            any(25.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            any(25.0 == v for _, v in semi.instance_dict.get("has Decimal Value", []))
         )
         unit_list = semi.instance_dict.get("uses measurement unit", [])
         self.assertTrue(any("MilliGM" in str(u[1]) for u in unit_list))
@@ -222,7 +222,7 @@ class TestReactionKG(unittest.TestCase):
             "components[0].identifiers[1].value": "custom-id",
         }
         reaction_component = semi.mds.Component(
-            f"Component#{semi.reaction_id}_m1_component_0"
+            f"Component.{semi.reaction_id}_m1_component_0"
         )
         semi._extract_compound_identifiers(
             component_list, 0, "input", "components", reaction_component
@@ -249,11 +249,11 @@ class TestReactionKG(unittest.TestCase):
             context="condition",
         )
         self.assertTrue(
-            any(60.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            any(60.0 == v for _, v in semi.instance_dict.get("has Decimal Value", []))
         )
 
         reaction_component = semi.mds.Component(
-            f"Component#{semi.reaction_id}_fake_component_0"
+            f"Component.{semi.reaction_id}_fake_component_0"
         )
         semi._process_temperature(
             {
@@ -265,7 +265,7 @@ class TestReactionKG(unittest.TestCase):
             context="input",
         )
         self.assertTrue(
-            any(-5.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            any(-5.0 == v for _, v in semi.instance_dict.get("has Decimal Value", []))
         )
 
     def test_end_to_end_graph_generation_jsonld_and_turtle(self):
