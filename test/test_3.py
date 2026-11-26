@@ -59,7 +59,7 @@ def build_mock_ontology():
         'has Output', 'is Input Of', 'environs', 'designates', 'member part of',
         'inheres in', 'uses measurement unit', 'has process part', 'has occurent part',
         'occupies temporal region', 'participates in', 'is about', 'affects',
-        'bearer of', 'is made of', 'precedes'
+        'bearer Of', 'is made of', 'precedes'
     ]
     data_props = [
         'has text value', 'details', 'is mapped', 'is limiting', 'is desired product',
