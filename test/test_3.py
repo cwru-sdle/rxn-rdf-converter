@@ -56,7 +56,7 @@ def build_mock_ontology():
     mock_onto.get_namespace.side_effect = get_ns
 
     object_props = [
-        'has Output', 'is Input Of', 'environs', 'designates', 'member part of',
+        'hasOutput', 'isInputOf', 'environs', 'designates', 'member part of',
         'inheres in', 'uses measurement unit', 'has process part', 'has occurent part',
         'occupies temporal region', 'participates in', 'is about', 'affects',
         'bearer Of', 'is made of', 'precedes'
