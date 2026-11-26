@@ -203,7 +203,7 @@ class TestReactionKG(unittest.TestCase):
         )
 
         self.assertTrue(
-            any(25.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            any(25.0 == v for _, v in semi.instance_dict.get("has Decimal Value", []))
         )
         unit_list = semi.instance_dict.get("uses measurement unit", [])
         self.assertTrue(any("MilliGM" in str(u[1]) for u in unit_list))
@@ -249,7 +249,7 @@ class TestReactionKG(unittest.TestCase):
             context="condition",
         )
         self.assertTrue(
-            any(60.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            any(60.0 == v for _, v in semi.instance_dict.get("has Decimal Value", []))
         )
 
         reaction_component = semi.mds.Component(
@@ -265,7 +265,7 @@ class TestReactionKG(unittest.TestCase):
             context="input",
         )
         self.assertTrue(
-            any(-5.0 == v for _, v in semi.instance_dict.get("has decimal value", []))
+            any(-5.0 == v for _, v in semi.instance_dict.get("has Decimal Value", []))
         )
 
     def test_end_to_end_graph_generation_jsonld_and_turtle(self):

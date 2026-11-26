@@ -263,7 +263,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             )
 
             assert any(
-                25.0 == v for _, v in semi.instance_dict.get("has decimal value", [])
+                25.0 == v for _, v in semi.instance_dict.get("has Decimal Value", [])
             )
             unit_list = semi.instance_dict.get("uses measurement unit", [])
             assert any("MilliGM" in str(u[1]) for u in unit_list)
@@ -337,7 +337,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             }
             semi._process_temperature(cond, context="condition")
             assert any(
-                60.0 == v for _, v in semi.instance_dict.get("has decimal value", [])
+                60.0 == v for _, v in semi.instance_dict.get("has Decimal Value", [])
             )
 
             reaction_component = semi.mds.Component(
@@ -352,7 +352,7 @@ class TestRxnRdfConverter(unittest.TestCase):
                 add_temp, reaction_component=reaction_component, context="input"
             )
             assert any(
-                -5.0 == v for _, v in semi.instance_dict.get("has decimal value", [])
+                -5.0 == v for _, v in semi.instance_dict.get("has Decimal Value", [])
             )
 
     def test_process_reaction_conditions_full(self):
