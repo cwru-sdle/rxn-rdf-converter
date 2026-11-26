@@ -63,7 +63,7 @@ def build_mock_ontology():
     ]
     data_props = [
         'has text value', 'details', 'is mapped', 'is limiting', 'is desired product',
-        'isolated color', 'has decimal value', 'addition order', 'has datetime value',
+        'isolated color', 'has Decimal Value', 'addition order', 'has datetime value',
         'is heterogeneous', 'forms Precipitate', 'is exothermic', 'off gasses',
         'is sensitive to moisture', 'is sensitive to oxygen', 'is sensitive to light',
         'safety notes', 'procedure details', 'keep phase', 'is automated',
