@@ -56,7 +56,7 @@ def build_mock_ontology():
     mock_onto.get_namespace.side_effect = get_ns
 
     object_props = [
-        'has output', 'is input of', 'environs', 'designates', 'member part of',
+        'has Output', 'is Input Of', 'environs', 'designates', 'member part of',
         'inheres in', 'uses measurement unit', 'has process part', 'has occurent part',
         'occupies temporal region', 'participates in', 'is about', 'affects',
         'bearer of', 'is made of', 'precedes'
@@ -455,7 +455,7 @@ class TestReactionKG(unittest.TestCase):
         }
         self.kg._process_temperature(cond_temp_data, context='condition')
 
-        self.assertEqual(len(self.kg.instance_dict['bearer of']), 1)
+        self.assertEqual(len(self.kg.instance_dict['bearer Of']), 1)
         self.assertTrue(any(v[1] == 80.0 for v in self.kg.instance_dict['has Decimal Value']))
         self.assertTrue(any(v[1] == 79.5 for v in self.kg.instance_dict['has Decimal Value']))
         self.assertTrue(any(v[1] == 30.0 for v in self.kg.instance_dict['has datetime value']))
