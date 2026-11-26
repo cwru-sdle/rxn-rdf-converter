@@ -256,7 +256,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             }
 
             reaction_component = semi.mds.Component(
-                f"Component#{semi.reaction_id}_{input_key}_component_0"
+                f"Component.{semi.reaction_id}_{input_key}_component_0"
             )
             semi._extract_component_amount(
                 component_list, reaction_component, i=0, context="input"
@@ -290,7 +290,7 @@ class TestRxnRdfConverter(unittest.TestCase):
                 "components[0].identifiers[1].value": "custom-id",
             }
             reaction_component = semi.mds.Component(
-                f"Component#{semi.reaction_id}_{input_key}_component_0"
+                f"Component.{semi.reaction_id}_{input_key}_component_0"
             )
 
             semi._extract_compound_identifiers(
@@ -341,7 +341,7 @@ class TestRxnRdfConverter(unittest.TestCase):
             )
 
             reaction_component = semi.mds.Component(
-                f"Component#{semi.reaction_id}_fake_component_0"
+                f"Component.{semi.reaction_id}_fake_component_0"
             )
             add_temp = {
                 "addition_temperature.value": -5.0,

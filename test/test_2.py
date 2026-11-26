@@ -196,7 +196,7 @@ class TestReactionKG(unittest.TestCase):
             "components[0].amount.mass.units": "MILLIGRAM",
         }
         reaction_component = semi.mds.Component(
-            f"Component#{semi.reaction_id}_m1_component_0"
+            f"Component.{semi.reaction_id}_m1_component_0"
         )
         semi._extract_component_amount(
             component_list, reaction_component, i=0, context="input"
@@ -222,7 +222,7 @@ class TestReactionKG(unittest.TestCase):
             "components[0].identifiers[1].value": "custom-id",
         }
         reaction_component = semi.mds.Component(
-            f"Component#{semi.reaction_id}_m1_component_0"
+            f"Component.{semi.reaction_id}_m1_component_0"
         )
         semi._extract_compound_identifiers(
             component_list, 0, "input", "components", reaction_component
@@ -253,7 +253,7 @@ class TestReactionKG(unittest.TestCase):
         )
 
         reaction_component = semi.mds.Component(
-            f"Component#{semi.reaction_id}_fake_component_0"
+            f"Component.{semi.reaction_id}_fake_component_0"
         )
         semi._process_temperature(
             {
