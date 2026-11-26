@@ -983,11 +983,11 @@ class ReactionKG:
                     ('affects', reaction_temperature.iri))
         
         if context == 'condition':
-            self.instance_dict['bearer of'].append([self.reaction_environment.iri, reaction_temperature.iri])
+            self.instance_dict['bearer Of'].append([self.reaction_environment.iri, reaction_temperature.iri])
         elif context == 'workup': 
-            self.instance_dict['bearer of'].append([self.reaction_mixture.iri, reaction_temperature.iri])
+            self.instance_dict['bearer Of'].append([self.reaction_mixture.iri, reaction_temperature.iri])
         elif context == 'input':
-            self.instance_dict['bearer of'].append([reaction_component.iri, reaction_temperature.iri])
+            self.instance_dict['bearer Of'].append([reaction_component.iri, reaction_temperature.iri])
 
         if context == 'condition' or context == 'workup': 
             index_list = self._extract_index_set(component_list, pattern)
